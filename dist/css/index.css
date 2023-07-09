@@ -1,99 +1,150 @@
 :root {
   --light-color: #FFF;
   --dark-color: #000;
-  --priamry_color-h: 215.02;
-  --priamry_color-s: 100;
-  --priamry_color-l: 54.31;
-  --font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --priamry-h: 215.02;
+  --priamry-s: 100;
+  --priamry-l: 54.31;
+  --secondary-h: 0;
+  --secondary-s: 0;
+  --secondary-l: 20;
+  --danger-h: 359.33;
+  --danger-s: 100;
+  --danger-l: 65.1;
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --line-height: 1.5;
   --font-size: 1rem;
   --font-weight: 400;
   --padding-x: 0.75rem;
   --padding-y: 0.375rem;
-  --border-color: var(--primary-color);
   --border-width: 1px;
   --border-style: solid;
   --border-radius: 0.375rem;
-  background-color: var(--light-color);
-}
-
-button {
-  --default_color-h: 0;
-  --default_color-s: 0;
-  --default_color-l: 88;
-  --default_color: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(var(--default_color-l) * 1%));
-  --btn_background-color: var(--default_color);
-  --btn_background-color_hover: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) + 5%));
-  --btn_background-color_active: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) - 5%));
-  --btn_border-color: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) - 5%), 0.5);
-  --btn_outline-color_focus-visible: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) - 5%), 0.5);
-  --threshold: 65;
-  --switch: calc((var(--default_color-l) - var(--threshold)) * -100000%);
-  --btn_color: hsl(0, 0%, var(--switch));
-  font-family: var(--font-sans-serif);
+  font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   line-height: var(--line-height);
-  display: inline-block;
+}
+
+*,
+::after,
+::before {
   box-sizing: border-box;
+}
+
+.button {
+  --default-h: 0;
+  --default-s: 0;
+  --default-l: 88;
+  --threshold: 70;
+  --switch: calc((var(--default-l) - var(--threshold)) * -100000%);
+  --button_color: hsl(0, 0%, var(--switch));
+  --default-s-percent: calc(var(--default-s) * 1%);
+  --default-l-percent: calc(var(--default-l) * 1%);
+  --button_background-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
+  --button_background-color_hover_amount: +5%;
+  --button_background-color_hover: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_hover_amount)));
+  --button_background-color_active_amount: -7.5%;
+  --button_background-color_active: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_active_amount)));
+  --button_border-color: var(--button_background-color);
+  --button_background-color_focus-visible_amount: -5%;
+  --button_outline-color_focus-visible: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_focus-visible_amount)), 0.5);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  display: inline-flex;
+  align-items: center;
   margin: 0;
   padding: var(--padding-y) var(--padding-x);
   vertical-align: middle;
   text-align: center;
-  overflow: hidden;
-  position: relative;
   border-width: var(--border-width);
   border-style: solid;
   border-radius: var(--border-radius);
   text-transform: none;
   user-select: none;
   cursor: pointer;
+  text-decoration: none;
   outline-color: transparent;
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 1px;
   transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, outline-color 0.35s ease-in-out 0s;
   border-color: transparent;
-  background-color: var(--btn_background-color);
-  color: var(--btn_color);
+  background-color: var(--button_background-color);
+  color: var(--button_color);
 }
-button:disabled {
+.button:has(> svg, > i) > span:last-child {
+  margin-inline-start: 0.375rem;
+}
+.button:has(> svg, > i) > span:first-child {
+  margin-inline-end: 0.375rem;
+}
+.button:disabled, .button.disabled {
   opacity: 0.65;
   cursor: auto;
 }
-button.primary {
-  --default_color-h: var(--priamry_color-h);
-  --default_color-s: var(--priamry_color-s);
-  --default_color-l: var(--priamry_color-l);
+.button.primary {
+  --default-h: var(--priamry-h);
+  --default-s: var(--priamry-s);
+  --default-l: var(--priamry-l);
 }
-button.outline {
-  border-color: var(--btn_border-color);
+.button.secondary {
+  --default-h: var(--secondary-h);
+  --default-s: var(--secondary-s);
+  --default-l: var(--secondary-l);
+}
+.button.danger {
+  --default-h: var(--danger-h);
+  --default-s: var(--danger-s);
+  --default-l: var(--danger-l);
+}
+.button.outline {
+  border-color: var(--button_border-color);
   background-color: transparent;
   color: var(--dark-color);
 }
-button.outline.primary {
-  color: var(--btn_background-color);
+.button.outline.primary {
+  color: var(--button_background-color);
 }
-button.text {
+.button.outline.secondary {
+  color: var(--button_background-color);
+}
+.button.outline.danger {
+  color: var(--button_background-color);
+}
+.button.outline:is([class*=custom-color]) {
+  color: var(--button_background-color);
+}
+.button.text {
   border-color: transparent;
   background-color: transparent;
   color: var(--dark-color);
 }
-button.text.primary {
-  color: var(--btn_background-color);
+.button.text.primary {
+  color: var(--button_background-color);
 }
-button:hover:not(:disabled) {
-  background-color: var(--btn_background-color_hover);
-  color: var(--btn_color);
+.button.text.secondary {
+  color: var(--button_background-color);
 }
-button:focus-visible:not(:disabled) {
-  outline-color: var(--btn_outline-color_focus-visible);
-  background-color: var(--btn_background-color_hover);
-  color: var(--btn_color);
+.button.text.danger {
+  color: var(--button_background-color);
 }
-button:active:not(:disabled) {
-  background-color: var(--btn_background-color_active);
-  color: var(--btn_color);
+.button.text:is([class*=custom-color]) {
+  color: var(--button_background-color);
+}
+.button:hover:not(:disabled, .disabled) {
+  background-color: var(--button_background-color_hover);
+  color: var(--button_color);
+}
+.button:focus-visible:not(:disabled, .disabled) {
+  outline-color: var(--button_outline-color_focus-visible);
+  background-color: var(--button_background-color_hover);
+  color: var(--button_color);
+}
+.button:active:not(:disabled, .disabled) {
+  background-color: var(--button_background-color_active);
+  color: var(--button_color);
 }
 
 /*# sourceMappingURL=index.css.map */
