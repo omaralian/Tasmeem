@@ -1,14 +1,8 @@
-$default_color-h: 	0;
-$default_color-s: 	0;
-$default_color-l: 	88;
-// $default_color: 	hsl($default_color-h, $default_color-s * 1%, $default_color-l * 1%);
-// $btn_color: GetColorBasedOnBackground($default_color, $light-color, $dark-color);
-
 .button {
 
-    --default-h: #{$default_color-h};
-    --default-s: #{$default_color-s};
-    --default-l: #{$default_color-l};
+    --default-h: 0;
+    --default-s: 0;
+    --default-l: 88;
 
     --threshold: 70;
     --switch: calc((var(--default-l) - var(--threshold)) * -100000%);
@@ -30,6 +24,12 @@ $default_color-l: 	88;
 
     --button_background-color_focus-visible_amount: -5%;
     --button_outline-color_focus-visible: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_focus-visible_amount)), 0.5);
+
+    @media (prefers-color-scheme: dark) {
+        --default-h: 0;
+        --default-s: 0;
+        --default-l: 38;
+    }
 
     font-family: inherit;
     font-size: inherit;

@@ -24,6 +24,20 @@
   font-weight: var(--font-weight);
   line-height: var(--line-height);
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #212121;
+    --priamry-h: 215.02;
+    --priamry-s: 100;
+    --priamry-l: 54.31;
+    --secondary-h: 0;
+    --secondary-s: 0;
+    --secondary-l: 80;
+    --danger-h: 359.33;
+    --danger-s: 100;
+    --danger-l: 65.1;
+  }
+}
 
 *,
 ::after,
@@ -73,6 +87,13 @@
   border-color: transparent;
   background-color: var(--button_background-color);
   color: var(--button_color);
+}
+@media (prefers-color-scheme: dark) {
+  .button {
+    --default-h: 0;
+    --default-s: 0;
+    --default-l: 38;
+  }
 }
 .button:has(> svg, > i) > span:last-child {
   margin-inline-start: 0.375rem;

@@ -9,10 +9,11 @@
     --dark-color: #{$dark-color};
     
     // Hue: Think of a color wheel. Around 0o and 360o are reds. 120o is where greens are and 240o are blues. Use anything in between 0-360. Values above and below will be modulus 360.
-    --priamry-h: 215.02;
     // Saturation: 0% is completely desaturated (grayscale). 100% is fully saturated (full color).
-    --priamry-s: 100;
     // Lightness: 0% is completely dark (black). 100% is completely light (white). 50% is average lightness.
+
+    --priamry-h: 215.02;
+    --priamry-s: 100;
     --priamry-l: 54.31;
     
     --secondary-h: 0;
@@ -22,6 +23,24 @@
     --danger-h: 359.33;
     --danger-s: 100;
     --danger-l: 65.1;
+
+    @media (prefers-color-scheme: dark) {
+
+        background-color: #212121;
+
+        --priamry-h: 215.02;
+        --priamry-s: 100;
+        --priamry-l: 54.31;
+        
+        --secondary-h: 0;
+        --secondary-s: 0;
+        --secondary-l: 80;
+        
+        --danger-h: 359.33;
+        --danger-s: 100;
+        --danger-l: 65.1;
+
+    }
 
     // hsl(152.18deg 68.75% 31.37%)
 
