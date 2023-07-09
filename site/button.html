@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../dist/css/index.css" />
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <div style="margin-bottom: 16px;">
+        <button class="" type="button">Click here</button>
+        <button class="outline" type="button">Click here</button>
+        <button class="text" type="button">Click here</button>
+    </div>
+    
+    <div style="margin-bottom: 16px;">
+        <button class="primary" type="button">Click here</button>
+        <button class="outline primary" type="button">Click here</button>
+        <button class="text primary" type="button">Click here</button>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+        <button class="primary" type="button" disabled>Click here</button>
+        <button class="outline primary" type="button" disabled>Click here</button>
+        <button class="text primary" type="button" disabled>Click here</button>
+    </div>
+
+    <script>
+        const elements = document.querySelectorAll(".with-ripple");
+        
+        elements.forEach(element => {
+            element.addEventListener('mousedown', function(event) {
+                const element = event.currentTarget;
+                // Create span element
+                let circle = document.createElement("span");
+                
+                // calculate its diameter and radius based on the width and height of the button
+                const diameter = Math.max(element.clientWidth, element.clientHeight);
+                const radius = diameter / 2;
+
+                // define the remaining properties we need for our ripples: the left, top, width and height
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - (element.offsetLeft + radius)}px`;
+                circle.style.top = `${event.clientY - (element.offsetTop + radius)}px`;
+                // Add ripple class to span
+                circle.classList.add("ripple");
+
+                // it’s good practice to check for any existing ripples that might be leftover from previous clicks, and remove them before executing the next one.
+                const ripple = element.getElementsByClassName("ripple")[0];
+
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                element.appendChild(circle);
+                
+            });
+        });
+    </script>
+
+</body>
+</html>

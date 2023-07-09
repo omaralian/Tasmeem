@@ -1,0 +1,177 @@
+@function GetColorBasedOnBackground($color, $light-color, $dark-color) {
+    // Parse RGB by isolating each color
+    $red: red($color );
+    $green: green($color );
+    $blue: blue($color );
+    // Compute the perceptive luminance, keeping
+    // in mind that the human eye favors green.
+    $l: calc(1 - (0.299 * $red + 0.587 * $green + 0.114 * $blue) / 255);
+
+    /* arguably this should be 0.50, but testing out various colors, this seemed to be the best so far. */
+    @if ($l < 0.41) {
+        // if the luminance is less than 0.5 return black
+        @return $dark-color;
+    }
+
+    @else {
+        // if the luminance is more than 0.5 return white
+        @return $light-color;
+    }
+}
+
+$light-color: #FFF;
+$dark-color: #000;
+
+$default_color-h: 	0;
+$default_color-s: 	0;
+$default_color-l: 	88;
+// $default_color: 	hsl($default_color-h, $default_color-s * 1%, $default_color-l * 1%);
+// $btn_color: GetColorBasedOnBackground($default_color, $light-color, $dark-color);
+
+:root {
+
+    // https://www.danywalls.com/how-to-use-hsl-and-calc-functions-in-css-to-build-darken-and-light-colors
+    // https://css-tricks.com/dark-modes-with-css/
+    // https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/
+
+    --light-color: #{$light-color};
+    --dark-color: #{$dark-color};
+    
+    --priamry_color-h: 215.02;
+    --priamry_color-s: 100;
+    --priamry_color-l: 54.31;
+
+    --font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --line-height: 1.5;
+    --font-size: 1rem;
+    --font-weight: 400;
+
+    --padding-x: 0.75rem;
+    --padding-y: 0.375rem;
+
+    --border-color: var(--primary-color);
+    --border-width: 1px;
+    --border-style: solid;
+    --border-radius: 0.375rem;
+
+    background-color: var(--light-color);
+
+    // @media (prefers-color-scheme: dark) {
+    //     background-color: var(--dark-color);
+    // }
+
+    // @media (prefers-color-scheme: dark) {
+    //     & * {
+    //         filter: invert(100%) hue-rotate(180deg);
+    //         mix-blend-mode: screen;
+    //     }
+    // }
+
+}
+
+button {
+
+    --default_color-h: #{$default_color-h};
+    --default_color-s: #{$default_color-s};
+    --default_color-l: #{$default_color-l};
+
+    --default_color: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(var(--default_color-l) * 1%));
+
+    --btn_background-color: var(--default_color);
+    --btn_background-color_hover: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) + 5%));
+    --btn_background-color_active: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) - 5%));
+
+    --btn_border-color: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) - 5%), 0.5);
+    --btn_outline-color_focus-visible: hsl(var(--default_color-h), calc(var(--default_color-s) * 1%), calc(calc(var(--default_color-l) * 1%) - 5%), 0.5);
+
+    // the threshold at which colors are considered "light". Range: decimals from 0 to 1, recommended 0.5 - 0.6
+    --threshold: 65;
+    --switch: calc((var(--default_color-l) - var(--threshold)) * -100000%);
+    --btn_color: hsl(0, 0%, var(--switch));
+
+    font-family: var(--font-sans-serif);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    padding: var(--padding-y) var(--padding-x);
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+    border-width: var(--border-width);
+    border-style: solid;
+
+    border-radius: var(--border-radius);
+
+    text-transform: none;
+    user-select: none;
+    cursor: pointer;
+
+    outline-color: transparent;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 1px;
+
+    transition:
+        color .15s ease-in-out 0s,
+        background-color .15s ease-in-out 0s,
+        border-color .15s ease-in-out 0s,
+        outline-color .35s ease-in-out 0s;
+
+    &:disabled {
+        opacity: 0.65;
+        cursor: auto;
+    }
+
+    &.primary {
+        --default_color-h: var(--priamry_color-h);
+        --default_color-s: var(--priamry_color-s);
+        --default_color-l: var(--priamry_color-l);
+    }
+
+    border-color: transparent;
+    background-color: var(--btn_background-color);
+    color: var(--btn_color);
+
+    &.outline {
+        border-color: var(--btn_border-color);
+        background-color: transparent;
+        color: var(--dark-color);
+
+        &.primary {
+            color: var(--btn_background-color);
+        }
+    }
+
+    &.text {
+        border-color: transparent;
+        background-color: transparent;
+        color: var(--dark-color);
+
+        &.primary {
+            color: var(--btn_background-color);
+        }
+    }
+
+    &:hover:not(:disabled) {
+        background-color: var(--btn_background-color_hover);
+        color: var(--btn_color);
+    }
+
+    &:focus-visible:not(:disabled) {
+        outline-color: var(--btn_outline-color_focus-visible);
+        background-color: var(--btn_background-color_hover);
+        color: var(--btn_color);
+    }
+
+    &:active:not(:disabled) {
+        background-color: var(--btn_background-color_active);
+        color: var(--btn_color);
+    }
+
+}
