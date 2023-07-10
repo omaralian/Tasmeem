@@ -1,0 +1,64 @@
+.input {
+
+    --default-h: 0;
+    --default-s: 0;
+    --default-l: 88;
+
+    --threshold: 70;
+    --switch: calc((var(--default-l) - var(--threshold)) * -100000%);
+    --button_color: hsl(0, 0%, var(--switch));
+    
+    // make values with percentage unit
+    --default-s-percent: calc(var(--default-s) * 1%);
+    --default-l-percent: calc(var(--default-l) * 1%);
+
+    --button_background-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
+    
+    --button_background-color_hover_amount: +5%;
+    --button_background-color_hover: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_hover_amount)));
+
+    --button_background-color_active_amount: -7.5%;
+    --button_background-color_active: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_active_amount)));
+
+    --button_border-color: var(--button_background-color);
+
+    --button_background-color_focus-visible_amount: -5%;
+    --button_outline-color_focus-visible: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_focus-visible_amount)), 0.5);
+
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
+    display: inline-flex;
+    align-items: start;
+
+    margin: 0;
+    padding: var(--padding-y) var(--padding-x);
+    vertical-align: middle;
+    text-align: start;
+
+    border-width: var(--border-width);
+    border-style: solid;
+
+    border-radius: var(--border-radius);
+
+    outline-color: transparent;
+    outline-style: solid;
+    outline-width: 2px; 
+    outline-offset: 1px;
+
+    transition:
+        border-color .15s ease-in-out 0s,
+        outline-color .35s ease-in-out 0s;
+
+    border-color: var(--button_border-color);
+
+    &:focus-visible:not(:disabled, .disabled) {
+        outline-color: var(--button_outline-color_focus-visible);
+        // background-color: var(--button_background-color_hover);
+        color: var(--button_color);
+    }
+
+}
