@@ -1,35 +1,23 @@
 .button {
 
-    --default-h: 0;
-    --default-s: 0;
-    --default-l: 88;
+    --h: var(--default-h);
+    --s: var(--default-s);
+    --l: var(--default-l);
 
+    // make values with percentage unit
+    --s-percent: calc(var(--s) * 1%);
+    --l-percent: calc(var(--l) * 1%);
+
+    --button_background-color: hsl(var(--h), var(--s-percent), var(--l-percent));
+    --button_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
+    
     --threshold: 70;
-    --switch: calc((var(--default-l) - var(--threshold)) * -100000%);
+    --switch: calc((var(--l) - var(--threshold)) * -100%);
     --button_color: hsl(0, 0%, var(--switch));
     
-    // make values with percentage unit
-    --default-s-percent: calc(var(--default-s) * 1%);
-    --default-l-percent: calc(var(--default-l) * 1%);
+    --button_background-color_hover: hsl(var(--h), var(--s-percent), calc(var(--l-percent) + +5%));
 
-    --button_background-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
-    
-    --button_background-color_hover_amount: +5%;
-    --button_background-color_hover: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_hover_amount)));
-
-    --button_background-color_active_amount: -7.5%;
-    --button_background-color_active: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_active_amount)));
-
-    --button_border-color: var(--button_background-color);
-
-    --button_background-color_focus-visible_amount: -5%;
-    --button_outline-color_focus-visible: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_focus-visible_amount)), 0.5);
-
-    @media (prefers-color-scheme: dark) {
-        --default-h: 0;
-        --default-s: 0;
-        --default-l: 38;
-    }
+    --button_background-color_active: hsl(var(--h), var(--s-percent), calc(var(--l-percent) + -7.5%));
 
     font-family: inherit;
     font-size: inherit;
@@ -84,21 +72,21 @@
     }
 
     &.primary {
-        --default-h: var(--priamry-h);
-        --default-s: var(--priamry-s);
-        --default-l: var(--priamry-l);
+        --h: var(--priamry-h);
+        --s: var(--priamry-s);
+        --l: var(--priamry-l);
     }
 
     &.secondary {
-        --default-h: var(--secondary-h);
-        --default-s: var(--secondary-s);
-        --default-l: var(--secondary-l);
+        --h: var(--secondary-h);
+        --s: var(--secondary-s);
+        --l: var(--secondary-l);
     }
 
     &.danger {
-        --default-h: var(--danger-h);
-        --default-s: var(--danger-s);
-        --default-l: var(--danger-l);
+        --h: var(--danger-h);
+        --s: var(--danger-s);
+        --l: var(--danger-l);
     }
 
     border-color: transparent;
@@ -106,8 +94,7 @@
     color: var(--button_color);
 
     &.outline {
-        border-color: var(--button_border-color);
-        background-color: transparent;
+        
         color: var(--dark-color);
 
         &.primary {
@@ -125,11 +112,13 @@
         &:is([class*='custom-color']) {
             color: var(--button_background-color);
         }
+
+        border-color: currentColor;
+        background-color: transparent;
     }
 
     &.text {
-        border-color: transparent;
-        background-color: transparent;
+        
         color: var(--dark-color);
 
         &.primary {
@@ -147,6 +136,9 @@
         &:is([class*='custom-color']) {
             color: var(--button_background-color);
         }
+
+        border-color: transparent;
+        background-color: transparent;
     }
 
     &:hover:not(:disabled, .disabled) {
@@ -155,7 +147,7 @@
     }
 
     &:focus-visible:not(:disabled, .disabled) {
-        outline-color: var(--button_outline-color_focus-visible);
+        outline-color: var(--outline-color);
         background-color: var(--button_background-color_hover);
         color: var(--button_color);
     }

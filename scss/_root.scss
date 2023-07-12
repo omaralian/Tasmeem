@@ -7,10 +7,31 @@
 
     --light-color: #{$light-color};
     --dark-color: #{$dark-color};
+
+    --grey-50: #FAFAFA;
+    --grey-100: #F5F5F5;
+    --grey-200: #EEEEEE;
+    --grey-300: #E0E0E0;
+    --grey-400: #BDBDBD;
+    --grey-500: #9E9E9E;
+    --grey-600: #757575;
+    --grey-700: #616161;
+    --grey-800: #424242;
+    --grey-900: #212121;
     
     // Hue: Think of a color wheel. Around 0o and 360o are reds. 120o is where greens are and 240o are blues. Use anything in between 0-360. Values above and below will be modulus 360.
     // Saturation: 0% is completely desaturated (grayscale). 100% is fully saturated (full color).
     // Lightness: 0% is completely dark (black). 100% is completely light (white). 50% is average lightness.
+
+    --default-h: 0;
+    --default-s: 0;
+    --default-l: 72;
+
+    // make values with percentage unit
+    --default-s-percent: calc(var(--default-s) * 1%);
+    --default-l-percent: calc(var(--default-l) * 1%);
+
+    --default-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
 
     --priamry-h: 215.02;
     --priamry-s: 100;
@@ -28,6 +49,10 @@
 
         background-color: #212121;
 
+        --default-h: 0;
+        --default-s: 0;
+        --default-l: 38;
+
         --priamry-h: 215.02;
         --priamry-s: 100;
         --priamry-l: 54.31;
@@ -41,6 +66,13 @@
         --danger-l: 65.1;
 
     }
+
+    // make values with percentage unit
+    --priamry-s-percent: calc(var(--priamry-s) * 1%);
+    --priamry-l-percent: calc(var(--priamry-l) * 1%);
+
+    // outline color based on primary color
+    --outline-color: hsl(var(--priamry-h), var(--priamry-s-percent), var(--priamry-l-percent), 0.5);
 
     --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --line-height: 1.5;

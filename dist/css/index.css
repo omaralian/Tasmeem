@@ -1,6 +1,22 @@
 :root {
   --light-color: #FFF;
   --dark-color: #000;
+  --grey-50: #FAFAFA;
+  --grey-100: #F5F5F5;
+  --grey-200: #EEEEEE;
+  --grey-300: #E0E0E0;
+  --grey-400: #BDBDBD;
+  --grey-500: #9E9E9E;
+  --grey-600: #757575;
+  --grey-700: #616161;
+  --grey-800: #424242;
+  --grey-900: #212121;
+  --default-h: 0;
+  --default-s: 0;
+  --default-l: 72;
+  --default-s-percent: calc(var(--default-s) * 1%);
+  --default-l-percent: calc(var(--default-l) * 1%);
+  --default-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
   --priamry-h: 215.02;
   --priamry-s: 100;
   --priamry-l: 54.31;
@@ -10,6 +26,9 @@
   --danger-h: 359.33;
   --danger-s: 100;
   --danger-l: 65.1;
+  --priamry-s-percent: calc(var(--priamry-s) * 1%);
+  --priamry-l-percent: calc(var(--priamry-l) * 1%);
+  --outline-color: hsl(var(--priamry-h), var(--priamry-s-percent), var(--priamry-l-percent), 0.5);
   --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --line-height: 1.5;
   --font-size: 1rem;
@@ -27,6 +46,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     background-color: #212121;
+    --default-h: 0;
+    --default-s: 0;
+    --default-l: 38;
     --priamry-h: 215.02;
     --priamry-s: 100;
     --priamry-l: 54.31;
@@ -46,22 +68,18 @@
 }
 
 .button {
-  --default-h: 0;
-  --default-s: 0;
-  --default-l: 88;
+  --h: var(--default-h);
+  --s: var(--default-s);
+  --l: var(--default-l);
+  --s-percent: calc(var(--s) * 1%);
+  --l-percent: calc(var(--l) * 1%);
+  --button_background-color: hsl(var(--h), var(--s-percent), var(--l-percent));
+  --button_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
   --threshold: 70;
-  --switch: calc((var(--default-l) - var(--threshold)) * -100000%);
+  --switch: calc((var(--l) - var(--threshold)) * -100%);
   --button_color: hsl(0, 0%, var(--switch));
-  --default-s-percent: calc(var(--default-s) * 1%);
-  --default-l-percent: calc(var(--default-l) * 1%);
-  --button_background-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
-  --button_background-color_hover_amount: +5%;
-  --button_background-color_hover: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_hover_amount)));
-  --button_background-color_active_amount: -7.5%;
-  --button_background-color_active: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_active_amount)));
-  --button_border-color: var(--button_background-color);
-  --button_background-color_focus-visible_amount: -5%;
-  --button_outline-color_focus-visible: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_focus-visible_amount)), 0.5);
+  --button_background-color_hover: hsl(var(--h), var(--s-percent), calc(var(--l-percent) + +5%));
+  --button_background-color_active: hsl(var(--h), var(--s-percent), calc(var(--l-percent) + -7.5%));
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -88,13 +106,6 @@
   background-color: var(--button_background-color);
   color: var(--button_color);
 }
-@media (prefers-color-scheme: dark) {
-  .button {
-    --default-h: 0;
-    --default-s: 0;
-    --default-l: 38;
-  }
-}
 .button:has(> svg, > i) > span:last-child {
   margin-inline-start: 0.375rem;
 }
@@ -106,24 +117,24 @@
   cursor: auto;
 }
 .button.primary {
-  --default-h: var(--priamry-h);
-  --default-s: var(--priamry-s);
-  --default-l: var(--priamry-l);
+  --h: var(--priamry-h);
+  --s: var(--priamry-s);
+  --l: var(--priamry-l);
 }
 .button.secondary {
-  --default-h: var(--secondary-h);
-  --default-s: var(--secondary-s);
-  --default-l: var(--secondary-l);
+  --h: var(--secondary-h);
+  --s: var(--secondary-s);
+  --l: var(--secondary-l);
 }
 .button.danger {
-  --default-h: var(--danger-h);
-  --default-s: var(--danger-s);
-  --default-l: var(--danger-l);
+  --h: var(--danger-h);
+  --s: var(--danger-s);
+  --l: var(--danger-l);
 }
 .button.outline {
-  border-color: var(--button_border-color);
-  background-color: transparent;
   color: var(--dark-color);
+  border-color: currentColor;
+  background-color: transparent;
 }
 .button.outline.primary {
   color: var(--button_background-color);
@@ -138,9 +149,9 @@
   color: var(--button_background-color);
 }
 .button.text {
+  color: var(--dark-color);
   border-color: transparent;
   background-color: transparent;
-  color: var(--dark-color);
 }
 .button.text.primary {
   color: var(--button_background-color);
@@ -159,7 +170,7 @@
   color: var(--button_color);
 }
 .button:focus-visible:not(:disabled, .disabled) {
-  outline-color: var(--button_outline-color_focus-visible);
+  outline-color: var(--outline-color);
   background-color: var(--button_background-color_hover);
   color: var(--button_color);
 }
@@ -169,32 +180,21 @@
 }
 
 .input {
-  --default-h: 0;
-  --default-s: 0;
-  --default-l: 88;
-  --threshold: 70;
-  --switch: calc((var(--default-l) - var(--threshold)) * -100000%);
-  --button_color: hsl(0, 0%, var(--switch));
-  --default-s-percent: calc(var(--default-s) * 1%);
-  --default-l-percent: calc(var(--default-l) * 1%);
-  --button_background-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
-  --button_background-color_hover_amount: +5%;
-  --button_background-color_hover: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_hover_amount)));
-  --button_background-color_active_amount: -7.5%;
-  --button_background-color_active: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_active_amount)));
-  --button_border-color: var(--button_background-color);
-  --button_background-color_focus-visible_amount: -5%;
-  --button_outline-color_focus-visible: hsl(var(--default-h), var(--default-s-percent), calc(var(--default-l-percent) + var(--button_background-color_focus-visible_amount)), 0.5);
+  --h: var(--default-h);
+  --s-percent: calc(var(--default-s) * 1%);
+  --l-percent: calc(var(--default-l) * 1%);
+  --input_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
+  --input_background-color: var(--light-color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-  display: inline-flex;
-  align-items: start;
+  display: inline-block;
+  width: 100%;
   margin: 0;
   padding: var(--padding-y) var(--padding-x);
-  vertical-align: middle;
   text-align: start;
+  vertical-align: middle;
   border-width: var(--border-width);
   border-style: solid;
   border-radius: var(--border-radius);
@@ -203,11 +203,14 @@
   outline-width: 2px;
   outline-offset: 1px;
   transition: border-color 0.15s ease-in-out 0s, outline-color 0.35s ease-in-out 0s;
-  border-color: var(--button_border-color);
+  color: var(--dark-color);
+  border-color: var(--input_border-color);
 }
-.input:focus-visible:not(:disabled, .disabled) {
-  outline-color: var(--button_outline-color_focus-visible);
-  color: var(--button_color);
+.input:focus-visible:not(:disabled) {
+  outline-color: var(--outline-color);
+}
+.input:disabled {
+  opacity: 0.3;
 }
 
 /*# sourceMappingURL=index.css.map */
