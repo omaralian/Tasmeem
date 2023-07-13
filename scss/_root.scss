@@ -4,6 +4,7 @@
     // https://css-tricks.com/dark-modes-with-css/
     // https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/
     // https://css-tricks.com/hsl-hsla-is-great-for-programmatic-color-control/
+    // https://tsh.io/blog/why-should-you-use-hsl-color-representation-in-css/
 
     --light-color: #{$light-color};
     --dark-color: #{$dark-color};
@@ -25,7 +26,7 @@
 
     --default-h: 0;
     --default-s: 0;
-    --default-l: 72;
+    --default-l: 74;
 
     // make values with percentage unit
     --default-s-percent: calc(var(--default-s) * 1%);

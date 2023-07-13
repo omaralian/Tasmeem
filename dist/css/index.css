@@ -13,7 +13,7 @@
   --grey-900: #212121;
   --default-h: 0;
   --default-s: 0;
-  --default-l: 72;
+  --default-l: 74;
   --default-s-percent: calc(var(--default-s) * 1%);
   --default-l-percent: calc(var(--default-l) * 1%);
   --default-color: hsl(var(--default-h), var(--default-s-percent), var(--default-l-percent));
@@ -74,7 +74,6 @@
   --s-percent: calc(var(--s) * 1%);
   --l-percent: calc(var(--l) * 1%);
   --button_background-color: hsl(var(--h), var(--s-percent), var(--l-percent));
-  --button_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
   --threshold: 70;
   --switch: calc((var(--l) - var(--threshold)) * -100%);
   --button_color: hsl(0, 0%, var(--switch));
@@ -86,6 +85,7 @@
   line-height: inherit;
   display: inline-flex;
   align-items: center;
+  appearance: button;
   margin: 0;
   padding: var(--padding-y) var(--padding-x);
   vertical-align: middle;
@@ -133,7 +133,7 @@
 }
 .button.outline {
   color: var(--dark-color);
-  border-color: currentColor;
+  border-color: var(--button_background-color);
   background-color: transparent;
 }
 .button.outline.primary {
@@ -183,18 +183,20 @@
   --h: var(--default-h);
   --s-percent: calc(var(--default-s) * 1%);
   --l-percent: calc(var(--default-l) * 1%);
+  --input_color: var(--dark-color);
   --input_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
-  --input_background-color: var(--light-color);
+  --input_background-color: --input_background-color: var(--grey-100);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
   display: inline-block;
   width: 100%;
+  appearance: none;
+  resize: vertical;
   margin: 0;
   padding: var(--padding-y) var(--padding-x);
   text-align: start;
-  vertical-align: middle;
   border-width: var(--border-width);
   border-style: solid;
   border-radius: var(--border-radius);
@@ -203,14 +205,21 @@
   outline-width: 2px;
   outline-offset: 1px;
   transition: border-color 0.15s ease-in-out 0s, outline-color 0.35s ease-in-out 0s;
-  color: var(--dark-color);
+  color: var(--input_color);
   border-color: var(--input_border-color);
+  background-color: var(--input_background-color);
+}
+@media (prefers-color-scheme: dark) {
+  .input {
+    --input_color: var(--light-color);
+    --input_background-color: var(--grey-900);
+  }
 }
 .input:focus-visible:not(:disabled) {
   outline-color: var(--outline-color);
 }
 .input:disabled {
-  opacity: 0.3;
+  opacity: 0.65;
 }
 
 /*# sourceMappingURL=index.css.map */

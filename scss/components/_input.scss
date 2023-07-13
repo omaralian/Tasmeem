@@ -4,9 +4,16 @@
     --s-percent: calc(var(--default-s) * 1%);
     --l-percent: calc(var(--default-l) * 1%);
     
+    --input_color: var(--dark-color);
     --input_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
-    --input_background-color: var(--light-color);
+    --input_background-color: --input_background-color: var(--grey-100);
     
+    @media (prefers-color-scheme: dark) {
+
+        --input_color: var(--light-color);
+        --input_background-color: var(--grey-900);
+
+    }
 
     font-family: inherit;
     font-size: inherit;
@@ -15,11 +22,12 @@
 
     display: inline-block;
     width: 100%;
+    appearance: none;
+    resize: vertical;
 
     margin: 0;
     padding: var(--padding-y) var(--padding-x);
     text-align: start;
-    vertical-align: middle;
 
     border-width: var(--border-width);
     border-style: solid;
@@ -35,16 +43,16 @@
         border-color .15s ease-in-out 0s,
         outline-color .35s ease-in-out 0s;
 
-    color: var(--dark-color);
+    color: var(--input_color);
     border-color: var(--input_border-color);
-    // background-color: var(--input_background-color);
+    background-color: var(--input_background-color);
 
     &:focus-visible:not(:disabled) {
         outline-color: var(--outline-color);
     }
 
     &:disabled {
-        opacity: 0.3;
+        opacity: 0.65;
     }
 
 }

@@ -9,7 +9,6 @@
     --l-percent: calc(var(--l) * 1%);
 
     --button_background-color: hsl(var(--h), var(--s-percent), var(--l-percent));
-    --button_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
     
     --threshold: 70;
     --switch: calc((var(--l) - var(--threshold)) * -100%);
@@ -26,6 +25,7 @@
 
     display: inline-flex;
     align-items: center;
+    appearance: button;
     
     margin: 0;
     padding: var(--padding-y) var(--padding-x);
@@ -113,7 +113,7 @@
             color: var(--button_background-color);
         }
 
-        border-color: currentColor;
+        border-color: var(--button_background-color);
         background-color: transparent;
     }
 
