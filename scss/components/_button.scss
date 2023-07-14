@@ -1,14 +1,16 @@
 .button {
 
-    --button_color: var(--dark-color);
+    --button_color: var(--light-color);
     --button_color_with-transparent: var(--dark-color);
-    --button_background-color: var(--default-color);
-    --button_background-color_hover: color-mix(in srgb, var(--default-color) 90%, white);
-    --button_background-color_active: color-mix(in srgb, var(--default-color) 90%, black);
+    --button_border-color: var(--border-color);
+    --button_background-color: var(--dark-color);
+    --button_background-color_hover: color-mix(in srgb, var(--dark-color) 90%, white);
+    --button_background-color_active: color-mix(in srgb, var(--dark-color) 90%, black);
 
     &.primary {
         --button_color: var(--light-color);
         --button_color_with-transparent: var(--priamry-color);
+        --button_border-color: var(--priamry-color);
         --button_background-color: var(--priamry-color);
         --button_background-color_hover: color-mix(in srgb, var(--priamry-color) 90%, white);
         --button_background-color_active: color-mix(in srgb, var(--priamry-color) 90%, black);
@@ -17,6 +19,7 @@
     &.secondary {
         --button_color: var(--light-color);
         --button_color_with-transparent: var(--secondary-color);
+        --button_border-color: var(--secondary-color);
         --button_background-color: var(--secondary-color);
         --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
         --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
@@ -25,6 +28,7 @@
     &.danger {
         --button_color: var(--light-color);
         --button_color_with-transparent: var(--danger-color);
+        --button_border-color: var(--danger-color);
         --button_background-color: var(--danger-color);
         --button_background-color_hover: color-mix(in srgb, var(--danger-color) 90%, white);
         --button_background-color_active: color-mix(in srgb, var(--danger-color) 90%, black);
@@ -34,17 +38,10 @@
 
         --button_color: var(--dark-color);
         --button_color_with-transparent: var(--light-color);
-        --button_background-color: var(--default-color);
-        --button_background-color_hover: color-mix(in srgb, var(--default-color) 90%, white);
-        --button_background-color_active: color-mix(in srgb, var(--default-color) 90%, black);
-    
-        &.secondary {
-            --button_color: var(--light-color);
-            --button_color_with-transparent: var(--light-color);
-            --button_background-color: var(--secondary-color);
-            --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
-            --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
-        }
+        --button_border-color: var(--border-color);
+        --button_background-color: var(--light-color);
+        --button_background-color_hover: color-mix(in srgb, var(--light-color) 90%, white);
+        --button_background-color_active: color-mix(in srgb, var(--light-color) 90%, black);
 
     }
 
@@ -108,7 +105,7 @@
 
     &.outline {
         color: var(--button_color_with-transparent);
-        border-color: var(--button_background-color);
+        border-color: var(--button_border-color);
         background-color: transparent;
     }
 

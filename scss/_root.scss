@@ -1,10 +1,12 @@
 :root {
 
+    --white-color: #FFFFFF;
+    --black-color: #000000;
     --light-color: #FAFAFA;
     --dark-color: #212121;
-    --default-color: #9E9E9E;
+    --border-color: rgb(174, 174, 174, .5);
     --priamry-color: #1677ff;
-    --secondary-color: #081a2d;
+    --secondary-color: #607D8B;
     --danger-color: #ff4d4f;
 
     @media (prefers-color-scheme: dark) {

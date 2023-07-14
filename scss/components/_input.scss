@@ -1,18 +1,13 @@
 .input {
-
-    --h: var(--default-h);
-    --s-percent: calc(var(--default-s) * 1%);
-    --l-percent: calc(var(--default-l) * 1%);
     
     --input_color: var(--dark-color);
-    --input_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
-    --input_background-color: --input_background-color: var(--grey-100);
+    --input_border-color: var(--border-color);
+    --input_background-color: var(--white-color);
     
     @media (prefers-color-scheme: dark) {
-
         --input_color: var(--light-color);
-        --input_background-color: var(--grey-900);
-
+        --input_border-color: var(--border-color);
+        --input_background-color: var(--black-color);
     }
 
     font-family: inherit;

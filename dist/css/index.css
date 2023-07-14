@@ -1,9 +1,11 @@
 :root {
+  --white-color: #FFFFFF;
+  --black-color: #000000;
   --light-color: #FAFAFA;
   --dark-color: #212121;
-  --default-color: #9E9E9E;
+  --border-color: rgb(174, 174, 174, .5);
   --priamry-color: #1677ff;
-  --secondary-color: #081a2d;
+  --secondary-color: #607D8B;
   --danger-color: #ff4d4f;
   --outline-color: var(--priamry-color);
   --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -33,11 +35,12 @@
 }
 
 .button {
-  --button_color: var(--dark-color);
+  --button_color: var(--light-color);
   --button_color_with-transparent: var(--dark-color);
-  --button_background-color: var(--default-color);
-  --button_background-color_hover: color-mix(in srgb, var(--default-color) 90%, white);
-  --button_background-color_active: color-mix(in srgb, var(--default-color) 90%, black);
+  --button_border-color: var(--border-color);
+  --button_background-color: var(--dark-color);
+  --button_background-color_hover: color-mix(in srgb, var(--dark-color) 90%, white);
+  --button_background-color_active: color-mix(in srgb, var(--dark-color) 90%, black);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -68,6 +71,7 @@
 .button.primary {
   --button_color: var(--light-color);
   --button_color_with-transparent: var(--priamry-color);
+  --button_border-color: var(--priamry-color);
   --button_background-color: var(--priamry-color);
   --button_background-color_hover: color-mix(in srgb, var(--priamry-color) 90%, white);
   --button_background-color_active: color-mix(in srgb, var(--priamry-color) 90%, black);
@@ -75,6 +79,7 @@
 .button.secondary {
   --button_color: var(--light-color);
   --button_color_with-transparent: var(--secondary-color);
+  --button_border-color: var(--secondary-color);
   --button_background-color: var(--secondary-color);
   --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
   --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
@@ -82,6 +87,7 @@
 .button.danger {
   --button_color: var(--light-color);
   --button_color_with-transparent: var(--danger-color);
+  --button_border-color: var(--danger-color);
   --button_background-color: var(--danger-color);
   --button_background-color_hover: color-mix(in srgb, var(--danger-color) 90%, white);
   --button_background-color_active: color-mix(in srgb, var(--danger-color) 90%, black);
@@ -90,16 +96,10 @@
   .button {
     --button_color: var(--dark-color);
     --button_color_with-transparent: var(--light-color);
-    --button_background-color: var(--default-color);
-    --button_background-color_hover: color-mix(in srgb, var(--default-color) 90%, white);
-    --button_background-color_active: color-mix(in srgb, var(--default-color) 90%, black);
-  }
-  .button.secondary {
-    --button_color: var(--light-color);
-    --button_color_with-transparent: var(--light-color);
-    --button_background-color: var(--secondary-color);
-    --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
-    --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
+    --button_border-color: var(--border-color);
+    --button_background-color: var(--light-color);
+    --button_background-color_hover: color-mix(in srgb, var(--light-color) 90%, white);
+    --button_background-color_active: color-mix(in srgb, var(--light-color) 90%, black);
   }
 }
 .button:has(> svg, > i) > span:last-child {
@@ -115,7 +115,7 @@
 }
 .button.outline {
   color: var(--button_color_with-transparent);
-  border-color: var(--button_background-color);
+  border-color: var(--button_border-color);
   background-color: transparent;
 }
 .button.text {
@@ -138,12 +138,9 @@
 }
 
 .input {
-  --h: var(--default-h);
-  --s-percent: calc(var(--default-s) * 1%);
-  --l-percent: calc(var(--default-l) * 1%);
   --input_color: var(--dark-color);
-  --input_border-color: hsl(var(--h), var(--s-percent), var(--l-percent));
-  --input_background-color: --input_background-color: var(--grey-100);
+  --input_border-color: var(--border-color);
+  --input_background-color: var(--white-color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -170,7 +167,8 @@
 @media (prefers-color-scheme: dark) {
   .input {
     --input_color: var(--light-color);
-    --input_background-color: var(--grey-900);
+    --input_border-color: var(--border-color);
+    --input_background-color: var(--black-color);
   }
 }
 .input:focus-visible:not(:disabled) {
