@@ -18,6 +18,10 @@
   --body_color: var(--dark-color);
   --body_background-color: var(--grey-050-color);
   --outline-color: var(--priamry-color);
+  --outline-color_transition: .45s ease-in-out 0s;
+  --outline-style: solid;
+  --outline-width: 2px;
+  --outline-offset: 1px;
   --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --line-height: 1.5;
   --font-size: 1rem;
@@ -27,6 +31,7 @@
   --border-width: 1px;
   --border-style: solid;
   --border-radius: 0.375rem;
+  --opacity_disabled: .65;
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
@@ -55,8 +60,21 @@ body {
   --button_color_with-transparent: var(--body_color);
   --button_border-color: var(--border-color);
   --button_background-color: var(--grey-300-color);
-  --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 90%, white);
+  --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 80%, white);
   --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
+  --button_padding: var(--padding-y) var(--padding-x);
+  --button_border-width: var(--border-width);
+  --button_border-radius: var(--border-radius);
+  --button_border-style: solid;
+  --button_transition:
+      color .25s ease-in-out 0s,
+      background-color .25s ease-in-out 0s,
+      border-color .25s ease-in-out 0s,
+      outline-color var(--outline-color_transition);
+  --button_icon_margin-inline: 0.375rem;
+  --button_icon_size: 1.125rem;
+  --button_icon_font-size: 1rem;
+  --button_opacity_disabled: var(--opacity_disabled);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -65,21 +83,21 @@ body {
   align-items: center;
   appearance: button;
   margin: 0;
-  padding: var(--padding-y) var(--padding-x);
+  padding: var(--button_padding);
   vertical-align: middle;
   text-align: center;
-  border-width: var(--border-width);
-  border-style: solid;
-  border-radius: var(--border-radius);
+  border-width: var(--button_border-width);
+  border-style: var(--button_border-style);
+  border-radius: var(--button_border-radius);
   text-transform: none;
   user-select: none;
   cursor: pointer;
   text-decoration: none;
   outline-color: transparent;
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 1px;
-  transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, outline-color 0.35s ease-in-out 0s;
+  outline-style: var(--outline-style);
+  outline-width: var(--outline-width);
+  outline-offset: var(--outline-offset);
+  transition: var(--button_transition);
   border-color: transparent;
   background-color: var(--button_background-color);
   color: var(--button_color);
@@ -116,13 +134,20 @@ body {
   }
 }
 .button:has(> svg, > i) > span:last-child {
-  margin-inline-start: 0.375rem;
+  margin-inline-start: var(--button_icon_margin-inline);
 }
 .button:has(> svg, > i) > span:first-child {
-  margin-inline-end: 0.375rem;
+  margin-inline-end: var(--button_icon_margin-inline);
+}
+.button > svg {
+  height: var(--button_icon_size);
+  max-width: var(--button_icon_size);
+}
+.button > i {
+  font-size: var(--button_icon_font-size);
 }
 .button:disabled, .button.disabled {
-  opacity: 0.65;
+  opacity: var(--button_opacity_disabled);
   cursor: auto;
   pointer-events: none;
 }
