@@ -1,11 +1,11 @@
 .button {
 
-    --button_color: var(--light-color);
-    --button_color_with-transparent: var(--dark-color);
+    --button_color: var(--body_color);
+    --button_color_with-transparent: var(--body_color);
     --button_border-color: var(--border-color);
-    --button_background-color: var(--dark-color);
-    --button_background-color_hover: color-mix(in srgb, var(--dark-color) 90%, white);
-    --button_background-color_active: color-mix(in srgb, var(--dark-color) 90%, black);
+    --button_background-color: var(--grey-300-color);
+    --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 90%, white);
+    --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
 
     &.primary {
         --button_color: var(--light-color);
@@ -35,14 +35,9 @@
     }
 
     @media (prefers-color-scheme: dark) {
-
-        --button_color: var(--dark-color);
-        --button_color_with-transparent: var(--light-color);
-        --button_border-color: var(--border-color);
-        --button_background-color: var(--light-color);
-        --button_background-color_hover: color-mix(in srgb, var(--light-color) 90%, white);
-        --button_background-color_active: color-mix(in srgb, var(--light-color) 90%, black);
-
+        --button_background-color: var(--grey-700-color);
+        --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 90%, white);
+        --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
     }
 
     font-family: inherit;

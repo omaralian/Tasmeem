@@ -1,14 +1,8 @@
 .input {
     
-    --input_color: var(--dark-color);
+    --input_color: var(--body_color);
     --input_border-color: var(--border-color);
-    --input_background-color: var(--white-color);
-    
-    @media (prefers-color-scheme: dark) {
-        --input_color: var(--light-color);
-        --input_border-color: var(--border-color);
-        --input_background-color: var(--black-color);
-    }
+    --input_background-color: var(--body_background-color);
 
     font-family: inherit;
     font-size: inherit;

@@ -1,12 +1,22 @@
 :root {
-  --white-color: #FFFFFF;
-  --black-color: #000000;
-  --light-color: #FAFAFA;
-  --dark-color: #212121;
-  --border-color: rgb(174, 174, 174, .5);
-  --priamry-color: #1677ff;
+  --grey-050-color: #FAFAFA;
+  --grey-100-color: #F5F5F5;
+  --grey-200-color: #EEEEEE;
+  --grey-300-color: #E0E0E0;
+  --grey-400-color: #BDBDBD;
+  --grey-500-color: #9E9E9E;
+  --grey-600-color: #757575;
+  --grey-700-color: #616161;
+  --grey-800-color: #424242;
+  --grey-900-color: #212121;
+  --light-color: var(--grey-050-color);
+  --dark-color: var(--grey-900-color);
+  --priamry-color: #2196F3;
   --secondary-color: #607D8B;
-  --danger-color: #ff4d4f;
+  --danger-color: #F44336;
+  --border-color: var(--grey-300-color);
+  --body_color: var(--dark-color);
+  --body_background-color: var(--grey-050-color);
   --outline-color: var(--priamry-color);
   --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --line-height: 1.5;
@@ -24,7 +34,9 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    background-color: var(--dark-color);
+    --border-color: var(--grey-700-color);
+    --body_color: var(--light-color);
+    --body_background-color: var(--grey-900-color);
   }
 }
 
@@ -34,13 +46,17 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--body_background-color);
+}
+
 .button {
-  --button_color: var(--light-color);
-  --button_color_with-transparent: var(--dark-color);
+  --button_color: var(--body_color);
+  --button_color_with-transparent: var(--body_color);
   --button_border-color: var(--border-color);
-  --button_background-color: var(--dark-color);
-  --button_background-color_hover: color-mix(in srgb, var(--dark-color) 90%, white);
-  --button_background-color_active: color-mix(in srgb, var(--dark-color) 90%, black);
+  --button_background-color: var(--grey-300-color);
+  --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 90%, white);
+  --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -94,12 +110,9 @@
 }
 @media (prefers-color-scheme: dark) {
   .button {
-    --button_color: var(--dark-color);
-    --button_color_with-transparent: var(--light-color);
-    --button_border-color: var(--border-color);
-    --button_background-color: var(--light-color);
-    --button_background-color_hover: color-mix(in srgb, var(--light-color) 90%, white);
-    --button_background-color_active: color-mix(in srgb, var(--light-color) 90%, black);
+    --button_background-color: var(--grey-700-color);
+    --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 90%, white);
+    --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
   }
 }
 .button:has(> svg, > i) > span:last-child {
@@ -138,9 +151,9 @@
 }
 
 .input {
-  --input_color: var(--dark-color);
+  --input_color: var(--body_color);
   --input_border-color: var(--border-color);
-  --input_background-color: var(--white-color);
+  --input_background-color: var(--body_background-color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -163,13 +176,6 @@
   color: var(--input_color);
   border-color: var(--input_border-color);
   background-color: var(--input_background-color);
-}
-@media (prefers-color-scheme: dark) {
-  .input {
-    --input_color: var(--light-color);
-    --input_border-color: var(--border-color);
-    --input_background-color: var(--black-color);
-  }
 }
 .input:focus-visible:not(:disabled) {
   outline-color: var(--outline-color);

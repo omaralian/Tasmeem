@@ -1,18 +1,37 @@
 :root {
 
-    --white-color: #FFFFFF;
-    --black-color: #000000;
-    --light-color: #FAFAFA;
-    --dark-color: #212121;
-    --border-color: rgb(174, 174, 174, .5);
-    --priamry-color: #1677ff;
-    --secondary-color: #607D8B;
-    --danger-color: #ff4d4f;
+    // colors
 
+    --grey-050-color: #FAFAFA;
+    --grey-100-color: #F5F5F5;
+    --grey-200-color: #EEEEEE;
+    --grey-300-color: #E0E0E0;
+    --grey-400-color: #BDBDBD;
+    --grey-500-color: #9E9E9E;
+    --grey-600-color: #757575;
+    --grey-700-color: #616161;
+    --grey-800-color: #424242;
+    --grey-900-color: #212121;
+
+    --light-color: var(--grey-050-color);
+    --dark-color: var(--grey-900-color);
+    --priamry-color: #2196F3;
+    --secondary-color: #607D8B;
+    --danger-color: #F44336;
+    
+    // theme
+
+    --border-color: var(--grey-300-color);
+
+    --body_color: var(--dark-color);
+    --body_background-color: var(--grey-050-color);
+    
     @media (prefers-color-scheme: dark) {
 
-        background-color: var(--dark-color);
+        --border-color: var(--grey-700-color);
 
+        --body_color: var(--light-color);
+        --body_background-color: var(--grey-900-color);
     }
 
     // outline color based on primary color
@@ -40,4 +59,8 @@
 ::after, 
 ::before {
     box-sizing: border-box;
+}
+
+body {
+    background-color: var(--body_background-color);
 }
