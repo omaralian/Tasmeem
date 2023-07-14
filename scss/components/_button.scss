@@ -1,22 +1,52 @@
 .button {
 
-    --h: var(--default-h);
-    --s: var(--default-s);
-    --l: var(--default-l);
+    --button_color: var(--dark-color);
+    --button_color_with-transparent: var(--dark-color);
+    --button_background-color: var(--default-color);
+    --button_background-color_hover: color-mix(in srgb, var(--default-color) 90%, white);
+    --button_background-color_active: color-mix(in srgb, var(--default-color) 90%, black);
 
-    // make values with percentage unit
-    --s-percent: calc(var(--s) * 1%);
-    --l-percent: calc(var(--l) * 1%);
+    &.primary {
+        --button_color: var(--light-color);
+        --button_color_with-transparent: var(--priamry-color);
+        --button_background-color: var(--priamry-color);
+        --button_background-color_hover: color-mix(in srgb, var(--priamry-color) 90%, white);
+        --button_background-color_active: color-mix(in srgb, var(--priamry-color) 90%, black);
+    }
 
-    --button_background-color: hsl(var(--h), var(--s-percent), var(--l-percent));
+    &.secondary {
+        --button_color: var(--light-color);
+        --button_color_with-transparent: var(--secondary-color);
+        --button_background-color: var(--secondary-color);
+        --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
+        --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
+    }
+
+    &.danger {
+        --button_color: var(--light-color);
+        --button_color_with-transparent: var(--danger-color);
+        --button_background-color: var(--danger-color);
+        --button_background-color_hover: color-mix(in srgb, var(--danger-color) 90%, white);
+        --button_background-color_active: color-mix(in srgb, var(--danger-color) 90%, black);
+    }
+
+    @media (prefers-color-scheme: dark) {
+
+        --button_color: var(--dark-color);
+        --button_color_with-transparent: var(--light-color);
+        --button_background-color: var(--default-color);
+        --button_background-color_hover: color-mix(in srgb, var(--default-color) 90%, white);
+        --button_background-color_active: color-mix(in srgb, var(--default-color) 90%, black);
     
-    --threshold: 70;
-    --switch: calc((var(--l) - var(--threshold)) * -100%);
-    --button_color: hsl(0, 0%, var(--switch));
-    
-    --button_background-color_hover: hsl(var(--h), var(--s-percent), calc(var(--l-percent) + +5%));
+        &.secondary {
+            --button_color: var(--light-color);
+            --button_color_with-transparent: var(--light-color);
+            --button_background-color: var(--secondary-color);
+            --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
+            --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
+        }
 
-    --button_background-color_active: hsl(var(--h), var(--s-percent), calc(var(--l-percent) + -7.5%));
+    }
 
     font-family: inherit;
     font-size: inherit;
@@ -69,24 +99,7 @@
     &.disabled {
         opacity: 0.65;
         cursor: auto;
-    }
-
-    &.primary {
-        --h: var(--priamry-h);
-        --s: var(--priamry-s);
-        --l: var(--priamry-l);
-    }
-
-    &.secondary {
-        --h: var(--secondary-h);
-        --s: var(--secondary-s);
-        --l: var(--secondary-l);
-    }
-
-    &.danger {
-        --h: var(--danger-h);
-        --s: var(--danger-s);
-        --l: var(--danger-l);
+        pointer-events: none;
     }
 
     border-color: transparent;
@@ -94,49 +107,13 @@
     color: var(--button_color);
 
     &.outline {
-        
-        color: var(--dark-color);
-
-        &.primary {
-            color: var(--button_background-color);
-        }
-
-        &.secondary {
-            color: var(--button_background-color);
-        }
-
-        &.danger {
-            color: var(--button_background-color);
-        }
-
-        &:is([class*='custom-color']) {
-            color: var(--button_background-color);
-        }
-
+        color: var(--button_color_with-transparent);
         border-color: var(--button_background-color);
         background-color: transparent;
     }
 
     &.text {
-        
-        color: var(--dark-color);
-
-        &.primary {
-            color: var(--button_background-color);
-        }
-
-        &.secondary {
-            color: var(--button_background-color);
-        }
-
-        &.danger {
-            color: var(--button_background-color);
-        }
-
-        &:is([class*='custom-color']) {
-            color: var(--button_background-color);
-        }
-
+        color: var(--button_color_with-transparent);
         border-color: transparent;
         background-color: transparent;
     }

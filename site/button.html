@@ -9,18 +9,15 @@
 
     <style>
 
-        :root {
-
-            --custom-h: 152.18;
-            --custom-s: 68.75;
-            --custom-l: 31.37;
-
-        }
-
         .button.custom-color-green {
-            --default-h: var(--custom-h);
-            --default-s: var(--custom-s);
-            --default-l: var(--custom-l);
+
+            --custom-color: #4CAF50;
+
+            --button_color: var(--light-color);
+            --button_color_with-transparent: var(--custom-color);
+            --button_background-color: var(--custom-color);
+            --button_background-color_hover: color-mix(in srgb, var(--custom-color) 90%, white);
+            --button_background-color_active: color-mix(in srgb, var(--custom-color) 90%, black);
         }
 
     </style>
