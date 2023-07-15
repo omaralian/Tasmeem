@@ -12,8 +12,8 @@
         --button_color_with-transparent: var(--priamry-color);
         --button_border-color: var(--priamry-color);
         --button_background-color: var(--priamry-color);
-        --button_background-color_hover: color-mix(in srgb, var(--priamry-color) 90%, white);
-        --button_background-color_active: color-mix(in srgb, var(--priamry-color) 90%, black);
+        --button_background-color_hover: var(--priamry-light-color);
+        --button_background-color_active: var(--priamry-dark-color);
     }
 
     &.secondary {
@@ -21,8 +21,8 @@
         --button_color_with-transparent: var(--secondary-color);
         --button_border-color: var(--secondary-color);
         --button_background-color: var(--secondary-color);
-        --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
-        --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
+        --button_background-color_hover: var(--secondary-light-color);
+        --button_background-color_active: var(--secondary-dark-color);
     }
 
     &.danger {
@@ -30,8 +30,8 @@
         --button_color_with-transparent: var(--danger-color);
         --button_border-color: var(--danger-color);
         --button_background-color: var(--danger-color);
-        --button_background-color_hover: color-mix(in srgb, var(--danger-color) 90%, white);
-        --button_background-color_active: color-mix(in srgb, var(--danger-color) 90%, black);
+        --button_background-color_hover: var(--danger-light-color);
+        --button_background-color_active: var(--danger-dark-color);
     }
 
     @media (prefers-color-scheme: dark) {

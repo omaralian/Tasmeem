@@ -12,13 +12,15 @@
         .button.custom-color-green {
 
             --custom-color: #009688;
+            --custom-light-color: #26A69A;
+            --custom-dark-color: #00897B;
 
             --button_color: var(--light-color);
             --button_color_with-transparent: var(--custom-color);
             --button_border-color: var(--custom-color);
             --button_background-color: var(--custom-color);
-            --button_background-color_hover: color-mix(in srgb, var(--custom-color) 90%, white);
-            --button_background-color_active: color-mix(in srgb, var(--custom-color) 90%, black);
+            --button_background-color_hover: var(--custom-light-color);
+            --button_background-color_active: var(--custom-dark-color);
         }
 
     </style>

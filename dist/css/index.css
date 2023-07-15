@@ -12,8 +12,14 @@
   --light-color: var(--grey-050-color);
   --dark-color: var(--grey-900-color);
   --priamry-color: #2196F3;
+  --priamry-light-color: #42A5F5;
+  --priamry-dark-color: #1E88E5;
   --secondary-color: #607D8B;
+  --secondary-light-color: #78909C;
+  --secondary-dark-color: #546E7A;
   --danger-color: #F44336;
+  --danger-light-color: #EF5350;
+  --danger-dark-color: #E53935;
   --body_color: var(--dark-color);
   --body_background-color: var(--grey-050-color);
   --border-color: var(--grey-400-color);
@@ -120,24 +126,24 @@ body {
   --button_color_with-transparent: var(--priamry-color);
   --button_border-color: var(--priamry-color);
   --button_background-color: var(--priamry-color);
-  --button_background-color_hover: color-mix(in srgb, var(--priamry-color) 90%, white);
-  --button_background-color_active: color-mix(in srgb, var(--priamry-color) 90%, black);
+  --button_background-color_hover: var(--priamry-light-color);
+  --button_background-color_active: var(--priamry-dark-color);
 }
 .button.secondary {
   --button_color: var(--light-color);
   --button_color_with-transparent: var(--secondary-color);
   --button_border-color: var(--secondary-color);
   --button_background-color: var(--secondary-color);
-  --button_background-color_hover: color-mix(in srgb, var(--secondary-color) 90%, white);
-  --button_background-color_active: color-mix(in srgb, var(--secondary-color) 90%, black);
+  --button_background-color_hover: var(--secondary-light-color);
+  --button_background-color_active: var(--secondary-dark-color);
 }
 .button.danger {
   --button_color: var(--light-color);
   --button_color_with-transparent: var(--danger-color);
   --button_border-color: var(--danger-color);
   --button_background-color: var(--danger-color);
-  --button_background-color_hover: color-mix(in srgb, var(--danger-color) 90%, white);
-  --button_background-color_active: color-mix(in srgb, var(--danger-color) 90%, black);
+  --button_background-color_hover: var(--danger-light-color);
+  --button_background-color_active: var(--danger-dark-color);
 }
 .button:has(> svg, > i) > span:last-child {
   margin-inline-start: var(--button_icon_margin-inline);
