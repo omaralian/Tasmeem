@@ -14,9 +14,17 @@
   --priamry-color: #2196F3;
   --secondary-color: #607D8B;
   --danger-color: #F44336;
-  --border-color: var(--grey-300-color);
   --body_color: var(--dark-color);
   --body_background-color: var(--grey-050-color);
+  --border-color: var(--grey-400-color);
+  --default-button_color: var(--body_color);
+  --default-button_color_with-transparent: var(--body_color);
+  --default-button_border-color: var(--border-color);
+  --default-button_background-color: var(--grey-400-color);
+  --default-button_background-color_hover: color-mix(in srgb, var(--default-button_background-color) 80%, white);
+  --default-button_background-color_active: color-mix(in srgb, var(--default-button_background-color) 90%, black);
+  --default-button_transition: .25s ease-in-out 0s;
+  --placeholder_color: var(--grey-400-color);
   --outline-color: var(--priamry-color);
   --outline-color_transition: .45s ease-in-out 0s;
   --outline-style: solid;
@@ -31,6 +39,7 @@
   --border-width: 1px;
   --border-style: solid;
   --border-radius: 0.375rem;
+  --border-color_transition: .25s ease-in-out 0s;
   --opacity_disabled: .65;
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -39,9 +48,11 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --border-color: var(--grey-700-color);
     --body_color: var(--light-color);
     --body_background-color: var(--grey-900-color);
+    --border-color: var(--grey-700-color);
+    --default-button_background-color: var(--grey-700-color);
+    --placeholder_color: var(--grey-700-color);
   }
 }
 
@@ -56,20 +67,20 @@ body {
 }
 
 .button {
-  --button_color: var(--body_color);
-  --button_color_with-transparent: var(--body_color);
-  --button_border-color: var(--border-color);
-  --button_background-color: var(--grey-300-color);
-  --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 80%, white);
-  --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
+  --button_color: var(--default-button_color);
+  --button_color_with-transparent: var(--default-button_color_with-transparent);
+  --button_border-color: var(--default-button_border-color);
+  --button_background-color: var(--default-button_background-color);
+  --button_background-color_hover: var(--default-button_background-color_hover);
+  --button_background-color_active: var(--default-button_background-color_active);
   --button_padding: var(--padding-y) var(--padding-x);
   --button_border-width: var(--border-width);
   --button_border-radius: var(--border-radius);
   --button_border-style: solid;
   --button_transition:
-      color .25s ease-in-out 0s,
-      background-color .25s ease-in-out 0s,
-      border-color .25s ease-in-out 0s,
+      color var(--default-button_transition),
+      background-color var(--default-button_transition),
+      border-color var(--border-color_transition),
       outline-color var(--outline-color_transition);
   --button_icon_margin-inline: 0.375rem;
   --button_icon_size: 1.125rem;
@@ -82,6 +93,8 @@ body {
   display: inline-flex;
   align-items: center;
   appearance: button;
+  -webkit-appearance: button;
+  -moz-appearance: button;
   margin: 0;
   padding: var(--button_padding);
   vertical-align: middle;
@@ -125,13 +138,6 @@ body {
   --button_background-color: var(--danger-color);
   --button_background-color_hover: color-mix(in srgb, var(--danger-color) 90%, white);
   --button_background-color_active: color-mix(in srgb, var(--danger-color) 90%, black);
-}
-@media (prefers-color-scheme: dark) {
-  .button {
-    --button_background-color: var(--grey-700-color);
-    --button_background-color_hover: color-mix(in srgb, var(--button_background-color) 90%, white);
-    --button_background-color_active: color-mix(in srgb, var(--button_background-color) 90%, black);
-  }
 }
 .button:has(> svg, > i) > span:last-child {
   margin-inline-start: var(--button_icon_margin-inline);
@@ -179,34 +185,70 @@ body {
   --input_color: var(--body_color);
   --input_border-color: var(--border-color);
   --input_background-color: var(--body_background-color);
+  --input_padding: var(--padding-y) var(--padding-x);
+  --input_text-align: start;
+  --input_border-width: var(--border-width);
+  --input_border-style: var(--border-style);
+  --input_border-radius: var(--border-radius);
+  --input_transition:
+      border-color var(--border-color_transition),
+      outline-color var(--outline-color_transition);
+  --input_opacity_disabled: var(--opacity_disabled);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-  display: inline-block;
-  width: 100%;
+  display: inline-flex;
   appearance: none;
-  resize: vertical;
+  width: 100%;
   margin: 0;
-  padding: var(--padding-y) var(--padding-x);
-  text-align: start;
-  border-width: var(--border-width);
-  border-style: solid;
-  border-radius: var(--border-radius);
+  padding: var(--input_padding);
+  text-align: var(--input_text-align);
+  border-width: var(--input_border-width);
+  border-style: var(--input_border-style);
+  border-radius: var(--input_border-radius);
   outline-color: transparent;
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 1px;
-  transition: border-color 0.15s ease-in-out 0s, outline-color 0.35s ease-in-out 0s;
+  outline-style: var(--outline-style);
+  outline-width: var(--outline-width);
+  outline-offset: var(--outline-offset);
+  transition: var(--input_transition);
   color: var(--input_color);
   border-color: var(--input_border-color);
   background-color: var(--input_background-color);
+}
+.input.danger {
+  --input_border-color: var(--danger-color);
+}
+.input::-webkit-datetime-edit {
+  padding: 0;
+  margin-bottom: -2px;
+}
+.input::placeholder {
+  color: var(--placeholder_color);
 }
 .input:focus-visible:not(:disabled) {
   outline-color: var(--outline-color);
 }
 .input:disabled {
-  opacity: 0.65;
+  opacity: var(--input_opacity_disabled);
+}
+.input::file-selector-button {
+  padding: 1rem;
+  margin: -1rem;
+  margin-inline-end: var(--padding-x);
+  color: var(--default-button_color);
+  background-color: var(--default-button_background-color);
+  border: none;
+  transition: var(--default-button_transition);
+}
+.input:hover:not(:disabled):not([readonly])::file-selector-button {
+  background-color: var(--default-button_background-color_hover);
+}
+.input:active:not(:disabled):not([readonly])::file-selector-button {
+  background-color: var(--default-button_background-color_active);
+}
+.input::-webkit-calendar-picker-indicator {
+  filter: invert(50%);
 }
 
 /*# sourceMappingURL=index.css.map */

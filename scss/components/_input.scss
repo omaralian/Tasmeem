@@ -4,33 +4,60 @@
     --input_border-color: var(--border-color);
     --input_background-color: var(--body_background-color);
 
+    &.danger {
+        --input_border-color: var(--danger-color);
+    }
+
+    --input_padding: var(--padding-y) var(--padding-x);
+
+    --input_text-align: start;
+
+    --input_border-width: var(--border-width);
+    --input_border-style: var(--border-style);
+    --input_border-radius: var(--border-radius);
+
+    --input_transition:
+        border-color var(--border-color_transition),
+        outline-color var(--outline-color_transition);
+
+    --input_opacity_disabled: var(--opacity_disabled);
+
+
+
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
 
-    display: inline-block;
-    width: 100%;
+    display: inline-flex;
     appearance: none;
-    resize: vertical;
+    width: 100%;
+
+    // https://8yd.no/article/date-input-height-in-safari
+    &::-webkit-datetime-edit {
+        padding: 0;
+        margin-bottom: -2px;
+    }
 
     margin: 0;
-    padding: var(--padding-y) var(--padding-x);
-    text-align: start;
+    padding: var(--input_padding);
+    text-align: var(--input_text-align);
 
-    border-width: var(--border-width);
-    border-style: solid;
-
-    border-radius: var(--border-radius);
+    border-width: var(--input_border-width);
+    border-style: var(--input_border-style);
+    border-radius: var(--input_border-radius);
 
     outline-color: transparent;
-    outline-style: solid;
-    outline-width: 2px; 
-    outline-offset: 1px;
+    outline-style: var(--outline-style);
+    outline-width: var(--outline-width); 
+    outline-offset: var(--outline-offset);
     
-    transition:
-        border-color .15s ease-in-out 0s,
-        outline-color .35s ease-in-out 0s;
+    transition: var(--input_transition);
+
+    // Placeholder
+    &::placeholder {
+        color: var(--placeholder_color);
+    }
 
     color: var(--input_color);
     border-color: var(--input_border-color);
@@ -41,7 +68,30 @@
     }
 
     &:disabled {
-        opacity: 0.65;
+        opacity: var(--input_opacity_disabled);
+    }
+
+    // File input buttons theming
+    &::file-selector-button {
+        padding: 1rem;
+        margin: -1rem;
+        margin-inline-end: var(--padding-x);
+        color: var(--default-button_color);
+        background-color: var(--default-button_background-color);
+        border: none;
+        transition: var(--default-button_transition);
+    }
+
+    &:hover:not(:disabled):not([readonly])::file-selector-button {
+        background-color: var(--default-button_background-color_hover);
+    }
+
+    &:active:not(:disabled):not([readonly])::file-selector-button {
+        background-color: var(--default-button_background-color_active);
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(50%);
     }
 
 }
