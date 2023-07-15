@@ -21,6 +21,10 @@
         outline-color var(--outline-color_transition);
 
     --input_opacity_disabled: var(--opacity_disabled);
+    --input_background-color_disabled: var(--grey-200-color);
+    @media (prefers-color-scheme: dark) {
+        --input_background-color_disabled: var(--grey-800-color);
+    }
 
 
 
@@ -69,6 +73,7 @@
 
     &:disabled {
         opacity: var(--input_opacity_disabled);
+        background-color: var(--input_background-color_disabled);
     }
 
     // File input buttons theming
@@ -91,6 +96,10 @@
     }
 
     &::-webkit-calendar-picker-indicator {
+        filter: invert(50%);
+    }
+
+    &::-ms-reveal {
         filter: invert(50%);
     }
 

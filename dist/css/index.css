@@ -200,6 +200,7 @@ body {
       border-color var(--border-color_transition),
       outline-color var(--outline-color_transition);
   --input_opacity_disabled: var(--opacity_disabled);
+  --input_background-color_disabled: var(--grey-200-color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -225,6 +226,11 @@ body {
 .input.danger {
   --input_border-color: var(--danger-color);
 }
+@media (prefers-color-scheme: dark) {
+  .input {
+    --input_background-color_disabled: var(--grey-800-color);
+  }
+}
 .input::-webkit-datetime-edit {
   padding: 0;
   margin-bottom: -2px;
@@ -237,6 +243,7 @@ body {
 }
 .input:disabled {
   opacity: var(--input_opacity_disabled);
+  background-color: var(--input_background-color_disabled);
 }
 .input::file-selector-button {
   padding: 1rem;
@@ -254,6 +261,9 @@ body {
   background-color: var(--default-button_background-color_active);
 }
 .input::-webkit-calendar-picker-indicator {
+  filter: invert(50%);
+}
+.input::-ms-reveal {
   filter: invert(50%);
 }
 
