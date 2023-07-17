@@ -16,11 +16,35 @@
             --custom-dark-color: #00897B;
 
             --button_color: var(--light-color);
-            --button_color_with-transparent: var(--custom-color);
+            --button_color_transparent-background: var(--custom-color);
             --button_border-color: var(--custom-color);
             --button_background-color: var(--custom-color);
             --button_background-color_hover: var(--custom-light-color);
             --button_background-color_active: var(--custom-dark-color);
+        }
+
+        .button.custom-color-green:hover:not(:disabled, .disabled) {
+            --button_color: var(--light-color);
+            --button_background-color: var(--custom-light-color);
+        }
+    
+        .button.custom-color-green:focus-visible:not(:disabled, .disabled) {
+            --button_color: var(--light-color);
+            --button_background-color: var(--custom-light-color);
+        }
+    
+        .button.custom-color-green:active:not(:disabled, .disabled) {
+            --button_color: var(--light-color);
+            --button_background-color: var(--custom-dark-color);
+        }
+
+        .button.custom-color-green.text {
+            --button_color: var(--custom-color);
+        }
+    
+        .button.custom-color-green.outline {
+            --button_color: var(--custom-color);
+            --button_border-color: var(--custom-color);
         }
 
     </style>

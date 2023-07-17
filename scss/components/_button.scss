@@ -1,7 +1,7 @@
 .button {
 
     --button_color: var(--default-button_color);
-    --button_color_with-transparent: var(--default-button_color_with-transparent);
+    --button_color_transparent-background: var(--default-button_color_transparent-background);
     --button_border-color: var(--default-button_border-color);
     --button_background-color: var(--default-button_background-color);
     --button_background-color_hover: var(--default-button_background-color_hover);
@@ -9,7 +9,7 @@
 
     &.primary {
         --button_color: var(--light-color);
-        --button_color_with-transparent: var(--priamry-color);
+        --button_color_transparent-background: var(--priamry-color);
         --button_border-color: var(--priamry-color);
         --button_background-color: var(--priamry-color);
         --button_background-color_hover: var(--priamry-light-color);
@@ -18,7 +18,7 @@
 
     &.secondary {
         --button_color: var(--light-color);
-        --button_color_with-transparent: var(--secondary-color);
+        --button_color_transparent-background: var(--secondary-color);
         --button_border-color: var(--secondary-color);
         --button_background-color: var(--secondary-color);
         --button_background-color_hover: var(--secondary-light-color);
@@ -27,21 +27,41 @@
 
     &.danger {
         --button_color: var(--light-color);
-        --button_color_with-transparent: var(--danger-color);
+        --button_color_transparent-background: var(--danger-color);
         --button_border-color: var(--danger-color);
         --button_background-color: var(--danger-color);
         --button_background-color_hover: var(--danger-light-color);
         --button_background-color_active: var(--danger-dark-color);
     }
 
-    @media (prefers-color-scheme: dark) {
-        
+    &.text:not(:hover, :active, :focus-visible) {
+        --button_color: var(--button_color_transparent-background);
+        --button_background-color: transparent;
+        --button_border-color: transparent;
+    }
+
+    &.outline:not(:hover, :active, :focus-visible) {
+        --button_color: var(--button_color_transparent-background);
+        --button_background-color: transparent;
+    }
+
+    &:hover:not(:disabled, .disabled) {
+        --button_background-color: var(--button_background-color_hover);
+    }
+
+    &:focus-visible:not(:disabled, .disabled) {
+        --button_background-color: var(--button_background-color_hover);
+    }
+
+    &:active:not(:disabled, .disabled) {
+        --button_background-color: var(--button_background-color_active);
     }
 
     --button_padding: var(--padding-y) var(--padding-x);
+    
     --button_border-width: var(--border-width);
     --button_border-radius: var(--border-radius);
-    --button_border-style: solid;
+    --button_border-style: var(--border-style);
     
     --button_transition:
         color var(--default-button_transition),
@@ -49,11 +69,28 @@
         border-color var(--border-color_transition),
         outline-color var(--outline-color_transition);
 
+    --button_opacity: 1;
+    --button_cursor: pointer;
+    --button_pointer-events: auto;
+
+    &:disabled,
+    &.disabled {
+        --button_opacity: var(--opacity_disabled);
+        --button_cursor: auto;
+        --button_pointer-events: none;
+    }
+
+    --button_outline-color: transparent;
+
+    &:focus-visible:not(:disabled, .disabled) {
+        --button_outline-color: var(--outline-color);
+    }
+
     --button_icon_margin-inline: 0.375rem;
     --button_icon_size: 1.125rem;
     --button_icon_font-size: 1rem;
 
-    --button_opacity_disabled: var(--opacity_disabled);
+
 
     font-family: inherit;
     font-size: inherit;
@@ -78,10 +115,11 @@
 
     text-transform: none;
     user-select: none;
-    cursor: pointer;
+    cursor: var(--button_cursor);
     text-decoration: none;
+    pointer-events: var(--button_pointer-events);
 
-    outline-color: transparent;
+    outline-color: var(--button_outline-color);
     outline-style: var(--outline-style);
     outline-width: var(--outline-width); 
     outline-offset: var(--outline-offset);
@@ -109,43 +147,9 @@
         font-size: var(--button_icon_font-size);
     }
 
-    &:disabled,
-    &.disabled {
-        opacity: var(--button_opacity_disabled);
-        cursor: auto;
-        pointer-events: none;
-    }
-
-    border-color: transparent;
+    border-color: var(--button_border-color);
     background-color: var(--button_background-color);
     color: var(--button_color);
-
-    &.outline {
-        color: var(--button_color_with-transparent);
-        border-color: var(--button_border-color);
-        background-color: transparent;
-    }
-
-    &.text {
-        color: var(--button_color_with-transparent);
-        border-color: transparent;
-        background-color: transparent;
-    }
-
-    &:hover:not(:disabled, .disabled) {
-        background-color: var(--button_background-color_hover);
-        color: var(--button_color);
-    }
-
-    &:focus-visible:not(:disabled, .disabled) {
-        outline-color: var(--outline-color);
-        background-color: var(--button_background-color_hover);
-        color: var(--button_color);
-    }
-
-    &:active:not(:disabled, .disabled) {
-        background-color: var(--button_background-color_active);
-        color: var(--button_color);
-    }
+    opacity: var(--button_opacity);
 
 }

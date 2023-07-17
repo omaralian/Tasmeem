@@ -3,7 +3,7 @@
     --input_color: var(--body_color);
     --input_border-color: var(--border-color);
     --input_background-color: var(--body_background-color);
-
+    
     &.danger {
         --input_border-color: var(--danger-color);
     }
@@ -20,10 +20,17 @@
         border-color var(--border-color_transition),
         outline-color var(--outline-color_transition);
 
-    --input_opacity_disabled: var(--opacity_disabled);
-    --input_background-color_disabled: var(--grey-200-color);
-    @media (prefers-color-scheme: dark) {
-        --input_background-color_disabled: var(--grey-800-color);
+    &:disabled {
+        --input_opacity: var(--opacity_disabled);
+        --input_background-color: var(--grey-200-color);
+        @media (prefers-color-scheme: dark) {
+            --input_background-color: var(--grey-800-color);
+        }
+    }
+
+    --input_outline-color: transparent;
+    &:focus-visible:not(:disabled) {
+        --input_outline-color: var(--outline-color);
     }
 
 
@@ -51,7 +58,7 @@
     border-style: var(--input_border-style);
     border-radius: var(--input_border-radius);
 
-    outline-color: transparent;
+    outline-color: var(--input_outline-color);
     outline-style: var(--outline-style);
     outline-width: var(--outline-width); 
     outline-offset: var(--outline-offset);
@@ -66,15 +73,7 @@
     color: var(--input_color);
     border-color: var(--input_border-color);
     background-color: var(--input_background-color);
-
-    &:focus-visible:not(:disabled) {
-        outline-color: var(--outline-color);
-    }
-
-    &:disabled {
-        opacity: var(--input_opacity_disabled);
-        background-color: var(--input_background-color_disabled);
-    }
+    opacity: var(--input_opacity);
 
     // File input buttons theming
     &::file-selector-button {
