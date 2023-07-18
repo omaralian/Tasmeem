@@ -89,10 +89,8 @@ body {
       background-color var(--default-button_transition),
       border-color var(--border-color_transition),
       outline-color var(--outline-color_transition);
-  --button_opacity: 1;
-  --button_cursor: pointer;
-  --button_pointer-events: auto;
-  --button_outline-color: transparent;
+  --button_opacity_disabled: var(--opacity_disabled);
+  --button_outline-color_focus-visible: var(--outline-color);
   --button_icon_margin-inline: 0.375rem;
   --button_icon_size: 1.125rem;
   --button_icon_font-size: 1rem;
@@ -101,6 +99,7 @@ body {
   font-weight: inherit;
   line-height: inherit;
   display: inline-flex;
+  flex-wrap: nowrap;
   align-items: center;
   appearance: button;
   -webkit-appearance: button;
@@ -114,10 +113,10 @@ body {
   border-radius: var(--button_border-radius);
   text-transform: none;
   user-select: none;
-  cursor: var(--button_cursor);
+  cursor: pointer;
   text-decoration: none;
-  pointer-events: var(--button_pointer-events);
-  outline-color: var(--button_outline-color);
+  pointer-events: auto;
+  outline-color: transparent;
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-offset: var(--outline-offset);
@@ -125,7 +124,6 @@ body {
   border-color: var(--button_border-color);
   background-color: var(--button_background-color);
   color: var(--button_color);
-  opacity: var(--button_opacity);
 }
 .button.primary {
   --button_color: var(--light-color);
@@ -151,44 +149,48 @@ body {
   --button_background-color_hover: var(--danger-light-color);
   --button_background-color_active: var(--danger-dark-color);
 }
-.button.text:not(:hover, :active, :focus-visible) {
-  --button_color: var(--button_color_transparent-background);
-  --button_background-color: transparent;
-  --button_border-color: transparent;
+.button > svg:first-child, .button > i:first-child {
+  margin-inline-end: 0.375rem;
 }
-.button.outline:not(:hover, :active, :focus-visible) {
-  --button_color: var(--button_color_transparent-background);
-  --button_background-color: transparent;
-}
-.button:hover:not(:disabled, .disabled) {
-  --button_background-color: var(--button_background-color_hover);
-}
-.button:focus-visible:not(:disabled, .disabled) {
-  --button_background-color: var(--button_background-color_hover);
-}
-.button:active:not(:disabled, .disabled) {
-  --button_background-color: var(--button_background-color_active);
-}
-.button:disabled, .button.disabled {
-  --button_opacity: var(--opacity_disabled);
-  --button_cursor: auto;
-  --button_pointer-events: none;
-}
-.button:focus-visible:not(:disabled, .disabled) {
-  --button_outline-color: var(--outline-color);
-}
-.button:has(> svg, > i) > span:last-child {
-  margin-inline-start: var(--button_icon_margin-inline);
-}
-.button:has(> svg, > i) > span:first-child {
-  margin-inline-end: var(--button_icon_margin-inline);
+.button > svg:last-child, .button > i:last-child {
+  margin-inline-start: 0.375rem;
 }
 .button > svg {
   height: var(--button_icon_size);
   max-width: var(--button_icon_size);
 }
 .button > i {
+  display: inline-block;
   font-size: var(--button_icon_font-size);
+}
+.button.text {
+  color: var(--button_color_transparent-background);
+  background-color: transparent;
+  border-color: transparent;
+}
+.button.outline {
+  color: var(--button_color_transparent-background);
+  background-color: transparent;
+}
+.button:hover:not(:disabled, .disabled) {
+  color: var(--button_color);
+  background-color: var(--button_background-color_hover);
+  border-color: transparent;
+}
+.button:focus-visible:not(:disabled, .disabled) {
+  color: var(--button_color);
+  background-color: var(--button_background-color_hover);
+  border-color: transparent;
+  outline-color: var(--button_outline-color_focus-visible);
+}
+.button:active:not(:disabled, .disabled) {
+  background-color: var(--button_background-color_active);
+  border-color: transparent;
+}
+.button:disabled, .button.disabled {
+  opacity: var(--button_opacity_disabled);
+  cursor: auto;
+  pointer-events: none;
 }
 
 .input {

@@ -34,29 +34,6 @@
         --button_background-color_active: var(--danger-dark-color);
     }
 
-    &.text:not(:hover, :active, :focus-visible) {
-        --button_color: var(--button_color_transparent-background);
-        --button_background-color: transparent;
-        --button_border-color: transparent;
-    }
-
-    &.outline:not(:hover, :active, :focus-visible) {
-        --button_color: var(--button_color_transparent-background);
-        --button_background-color: transparent;
-    }
-
-    &:hover:not(:disabled, .disabled) {
-        --button_background-color: var(--button_background-color_hover);
-    }
-
-    &:focus-visible:not(:disabled, .disabled) {
-        --button_background-color: var(--button_background-color_hover);
-    }
-
-    &:active:not(:disabled, .disabled) {
-        --button_background-color: var(--button_background-color_active);
-    }
-
     --button_padding: var(--padding-y) var(--padding-x);
     
     --button_border-width: var(--border-width);
@@ -69,22 +46,9 @@
         border-color var(--border-color_transition),
         outline-color var(--outline-color_transition);
 
-    --button_opacity: 1;
-    --button_cursor: pointer;
-    --button_pointer-events: auto;
+    --button_opacity_disabled: var(--opacity_disabled);
 
-    &:disabled,
-    &.disabled {
-        --button_opacity: var(--opacity_disabled);
-        --button_cursor: auto;
-        --button_pointer-events: none;
-    }
-
-    --button_outline-color: transparent;
-
-    &:focus-visible:not(:disabled, .disabled) {
-        --button_outline-color: var(--outline-color);
-    }
+    --button_outline-color_focus-visible: var(--outline-color);
 
     --button_icon_margin-inline: 0.375rem;
     --button_icon_size: 1.125rem;
@@ -98,6 +62,7 @@
     line-height: inherit;
 
     display: inline-flex;
+    flex-wrap: nowrap;
     align-items: center;
     
     appearance: button;
@@ -115,27 +80,25 @@
 
     text-transform: none;
     user-select: none;
-    cursor: var(--button_cursor);
+    cursor: pointer;
     text-decoration: none;
-    pointer-events: var(--button_pointer-events);
+    pointer-events: auto;
 
-    outline-color: var(--button_outline-color);
+    outline-color: transparent;
     outline-style: var(--outline-style);
     outline-width: var(--outline-width); 
     outline-offset: var(--outline-offset);
 
     transition: var(--button_transition);
 
-    &:has(> svg, > i) {
-        
-        & > span:last-child {
-            margin-inline-start: var(--button_icon_margin-inline);
-        }
+    & > svg:first-child,
+    & > i:first-child {
+        margin-inline-end: 0.375rem;
+    }
 
-        & > span:first-child {
-            margin-inline-end: var(--button_icon_margin-inline);
-        }
-        
+    & > svg:last-child,
+    & > i:last-child {
+        margin-inline-start: 0.375rem;
     }
 
     & > svg {
@@ -144,12 +107,48 @@
     }
 
     & > i {
+        display: inline-block;
         font-size: var(--button_icon_font-size);
     }
 
     border-color: var(--button_border-color);
     background-color: var(--button_background-color);
     color: var(--button_color);
-    opacity: var(--button_opacity);
+
+    &.text {
+        color: var(--button_color_transparent-background);
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    &.outline {
+        color: var(--button_color_transparent-background);
+        background-color: transparent;
+    }
+
+    &:hover:not(:disabled, .disabled) {
+        color: var(--button_color);
+        background-color: var(--button_background-color_hover);
+        border-color: transparent;
+    }
+    
+    &:focus-visible:not(:disabled, .disabled) {
+        color: var(--button_color);
+        background-color: var(--button_background-color_hover);
+        border-color: transparent;
+        outline-color: var(--button_outline-color_focus-visible);
+    }
+
+    &:active:not(:disabled, .disabled) {
+        background-color: var(--button_background-color_active);
+        border-color: transparent;
+    }
+
+    &:disabled,
+    &.disabled {
+        opacity: var(--button_opacity_disabled);
+        cursor: auto;
+        pointer-events: none;
+    }
 
 }
