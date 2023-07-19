@@ -14,8 +14,13 @@
     <div>
 
         <div style="margin-bottom: 16px;" style="clear: both;">
-            <input type="checkbox" class="checkbox" id="checkbox-1" />
+            <input type="checkbox" class="checkbox" id="checkbox-1" checked />
             <label for="checkbox-1" style="display: inline-block;">Checkbox</label>
+        </div>
+
+        <div style="margin-bottom: 16px;" style="clear: both;">
+            <input type="checkbox" class="checkbox" id="checkbox-indeterminate" />
+            <label for="checkbox-indeterminate" style="display: inline-block;">Checkbox</label>
         </div>
 
         <div style="margin-bottom: 16px;" style="clear: both;">
@@ -47,6 +52,11 @@
         </div>
 
     </div>
+
+    <script>
+        var checkboxIndeterminate = document.getElementById("checkbox-indeterminate");
+        checkboxIndeterminate.indeterminate = true;
+    </script>
 
 </body>
 </html>
