@@ -1,36 +1,48 @@
+/*
+Body
+Default color and background, including components.
+*/
+/*
+Body Secondary
+Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
+*/
+/*
+Border
+For component borders, dividers, and rules.
+*/
+/*
+Primary
+Main theme color, used for hyperlinks, focus styles, and component and form active states.
+*/
+/*
+Secondary
+*/
+/*
+Danger
+*/
 :root {
-  --grey-050-color: #FAFAFA;
-  --grey-100-color: #F5F5F5;
-  --grey-200-color: #EEEEEE;
-  --grey-300-color: #E0E0E0;
-  --grey-400-color: #BDBDBD;
-  --grey-500-color: #9E9E9E;
-  --grey-600-color: #757575;
-  --grey-700-color: #616161;
-  --grey-800-color: #424242;
-  --grey-900-color: #212121;
-  --light-color: var(--grey-050-color);
-  --dark-color: var(--grey-900-color);
   --priamry-color: #2196F3;
-  --priamry-light-color: #42A5F5;
-  --priamry-dark-color: #1E88E5;
+  --priamry-color_light: #42A5F5;
+  --priamry-color_dark: #1E88E5;
+  --priamry-color_contrast-text: #FAFAFA;
   --secondary-color: #607D8B;
-  --secondary-light-color: #78909C;
-  --secondary-dark-color: #546E7A;
+  --secondary-color_light: #78909C;
+  --secondary-color_dark: #546E7A;
+  --secondary-color_contrast-text: #FAFAFA;
   --danger-color: #F44336;
-  --danger-light-color: #EF5350;
-  --danger-dark-color: #E53935;
-  --body_color: var(--dark-color);
-  --body_background-color: var(--grey-050-color);
-  --border-color: var(--grey-400-color);
+  --danger-color_light: #EF5350;
+  --danger-color_dark: #E53935;
+  --danger-color_contrast-text: #FAFAFA;
+  --body_color: #212121;
+  --body_background-color: #FFFFFF;
+  --border-color: #BDBDBD;
   --default-button_color: var(--body_color);
-  --default-button_color_transparent-background: var(--body_color);
+  --default-button_color_contrast-text: var(--body_color);
   --default-button_border-color: var(--border-color);
-  --default-button_background-color: var(--grey-400-color);
-  --default-button_background-color_hover: color-mix(in srgb, var(--default-button_background-color) 80%, white);
-  --default-button_background-color_active: color-mix(in srgb, var(--default-button_background-color) 90%, black);
-  --default-button_transition: .25s ease-in-out 0s;
-  --placeholder_color: var(--grey-400-color);
+  --default-button_background-color: #EEEEEE;
+  --default-button_background-color_hover: #F5F5F5;
+  --default-button_background-color_active: #E0E0E0;
+  --default-button_transition: .15s ease-in-out 0s;
   --outline-color: var(--priamry-color);
   --outline-color_transition: .45s ease-in-out 0s;
   --outline-style: solid;
@@ -75,25 +87,11 @@ body {
 
 .button {
   --button_color: var(--default-button_color);
-  --button_color_transparent-background: var(--default-button_color_transparent-background);
+  --button_color_contrast-text: var(--default-button_color_contrast-text);
   --button_border-color: var(--default-button_border-color);
   --button_background-color: var(--default-button_background-color);
   --button_background-color_hover: var(--default-button_background-color_hover);
   --button_background-color_active: var(--default-button_background-color_active);
-  --button_padding: var(--padding-y) var(--padding-x);
-  --button_border-width: var(--border-width);
-  --button_border-radius: var(--border-radius);
-  --button_border-style: var(--border-style);
-  --button_transition:
-      color var(--default-button_transition),
-      background-color var(--default-button_transition),
-      border-color var(--border-color_transition),
-      outline-color var(--outline-color_transition);
-  --button_opacity_disabled: var(--opacity_disabled);
-  --button_outline-color_focus-visible: var(--outline-color);
-  --button_icon_margin-inline: 0.375rem;
-  --button_icon_size: 1.125rem;
-  --button_icon_font-size: 1rem;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -105,12 +103,12 @@ body {
   -webkit-appearance: button;
   -moz-appearance: button;
   margin: 0;
-  padding: var(--button_padding);
+  padding: var(--padding-y) var(--padding-x);
   vertical-align: middle;
   text-align: center;
-  border-width: var(--button_border-width);
-  border-style: var(--button_border-style);
-  border-radius: var(--button_border-radius);
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-radius: var(--border-radius);
   text-transform: none;
   user-select: none;
   cursor: pointer;
@@ -120,34 +118,34 @@ body {
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-offset: var(--outline-offset);
-  transition: var(--button_transition);
-  border-color: var(--button_border-color);
+  transition: color var(--default-button_transition), background-color var(--default-button_transition), border-color var(--border-color_transition), outline-color var(--outline-color_transition);
+  border-color: transparent;
   background-color: var(--button_background-color);
-  color: var(--button_color);
+  color: var(--button_color_contrast-text);
 }
 .button.primary {
-  --button_color: var(--light-color);
-  --button_color_transparent-background: var(--priamry-color);
+  --button_color: var(--priamry-color);
+  --button_color_contrast-text: var(--priamry-color_contrast-text);
   --button_border-color: var(--priamry-color);
   --button_background-color: var(--priamry-color);
-  --button_background-color_hover: var(--priamry-light-color);
-  --button_background-color_active: var(--priamry-dark-color);
+  --button_background-color_hover: var(--priamry-color_light);
+  --button_background-color_active: var(--priamry-color_dark);
 }
 .button.secondary {
-  --button_color: var(--light-color);
-  --button_color_transparent-background: var(--secondary-color);
+  --button_color: var(--secondary-color);
+  --button_color_contrast-text: var(--secondary-color_contrast-text);
   --button_border-color: var(--secondary-color);
   --button_background-color: var(--secondary-color);
-  --button_background-color_hover: var(--secondary-light-color);
-  --button_background-color_active: var(--secondary-dark-color);
+  --button_background-color_hover: var(--secondary-color_light);
+  --button_background-color_active: var(--secondary-color_dark);
 }
 .button.danger {
-  --button_color: var(--light-color);
-  --button_color_transparent-background: var(--danger-color);
+  --button_color: var(--danger-color);
+  --button_color_contrast-text: var(--danger-color_contrast-text);
   --button_border-color: var(--danger-color);
   --button_background-color: var(--danger-color);
-  --button_background-color_hover: var(--danger-light-color);
-  --button_background-color_active: var(--danger-dark-color);
+  --button_background-color_hover: var(--danger-color_light);
+  --button_background-color_active: var(--danger-color_dark);
 }
 .button > svg:first-child, .button > i:first-child {
   margin-inline-end: 0.375rem;
@@ -156,39 +154,40 @@ body {
   margin-inline-start: 0.375rem;
 }
 .button > svg {
-  height: var(--button_icon_size);
-  max-width: var(--button_icon_size);
+  height: 1.125rem;
+  max-width: 1.125rem;
 }
 .button > i {
   display: inline-block;
-  font-size: var(--button_icon_font-size);
+  font-size: 1rem;
 }
 .button.text {
-  color: var(--button_color_transparent-background);
+  color: var(--button_color);
   background-color: transparent;
   border-color: transparent;
 }
 .button.outline {
-  color: var(--button_color_transparent-background);
+  color: var(--button_color);
+  border-color: var(--button_border-color);
   background-color: transparent;
 }
 .button:hover:not(:disabled, .disabled) {
-  color: var(--button_color);
+  color: var(--button_color_contrast-text);
   background-color: var(--button_background-color_hover);
   border-color: transparent;
 }
 .button:focus-visible:not(:disabled, .disabled) {
-  color: var(--button_color);
+  color: var(--button_color_contrast-text);
   background-color: var(--button_background-color_hover);
   border-color: transparent;
-  outline-color: var(--button_outline-color_focus-visible);
+  outline-color: var(--outline-color);
 }
 .button:active:not(:disabled, .disabled) {
   background-color: var(--button_background-color_active);
   border-color: transparent;
 }
 .button:disabled, .button.disabled {
-  opacity: var(--button_opacity_disabled);
+  opacity: var(--opacity_disabled);
   cursor: auto;
   pointer-events: none;
 }
@@ -197,15 +196,7 @@ body {
   --input_color: var(--body_color);
   --input_border-color: var(--border-color);
   --input_background-color: var(--body_background-color);
-  --input_padding: var(--padding-y) var(--padding-x);
-  --input_text-align: start;
-  --input_border-width: var(--border-width);
-  --input_border-style: var(--border-style);
-  --input_border-radius: var(--border-radius);
-  --input_transition:
-      border-color var(--border-color_transition),
-      outline-color var(--outline-color_transition);
-  --input_outline-color: transparent;
+  --placeholder_color: #9E9E9E;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -214,39 +205,28 @@ body {
   appearance: none;
   width: 100%;
   margin: 0;
-  padding: var(--input_padding);
-  text-align: var(--input_text-align);
-  border-width: var(--input_border-width);
-  border-style: var(--input_border-style);
-  border-radius: var(--input_border-radius);
-  outline-color: var(--input_outline-color);
+  padding: var(--padding-y) var(--padding-x);
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-radius: var(--border-radius);
+  outline-color: transparent;
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-offset: var(--outline-offset);
-  transition: var(--input_transition);
+  transition: border-color var(--border-color_transition), outline-color var(--outline-color_transition);
   color: var(--input_color);
   border-color: var(--input_border-color);
   background-color: var(--input_background-color);
-  opacity: var(--input_opacity);
 }
 .input.danger {
   --input_border-color: var(--danger-color);
 }
-.input:disabled {
-  --input_opacity: var(--opacity_disabled);
-  --input_background-color: var(--grey-200-color);
-}
-@media (prefers-color-scheme: dark) {
-  .input:disabled {
-    --input_background-color: var(--grey-800-color);
-  }
-}
-.input:focus-visible:not(:disabled) {
-  --input_outline-color: var(--outline-color);
-}
 .input::-webkit-datetime-edit {
   padding: 0;
   margin-bottom: -2px;
+}
+.input:focus-visible:not(:disabled) {
+  outline-color: var(--outline-color);
 }
 .input::placeholder {
   color: var(--placeholder_color);
@@ -272,21 +252,14 @@ body {
 .input::-ms-reveal {
   filter: invert(50%);
 }
+.input:disabled {
+  opacity: var(--opacity_disabled);
+}
 
 .select {
   --select_color: var(--body_color);
   --select_border-color: var(--border-color);
   --select_background-color: var(--body_background-color);
-  --select_padding: var(--padding-y) var(--padding-x);
-  --select_border-width: var(--border-width);
-  --select_border-style: var(--border-style);
-  --select_border-radius: var(--border-radius);
-  --select_transition:
-      border-color var(--border-color_transition),
-      outline-color var(--outline-color_transition);
-  --select_opacity_disabled: var(--opacity_disabled);
-  --select_background-color_disabled: var(--grey-200-color);
-  --select_outline-color: var(--outline-color);
   --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
   font-family: inherit;
   font-size: inherit;
@@ -296,16 +269,16 @@ body {
   appearance: none;
   width: 100%;
   margin: 0;
-  padding: var(--select_padding);
+  padding: var(--padding-y) var(--padding-x);
   padding-inline-end: 2.5rem;
-  border-width: var(--select_border-width);
-  border-style: var(--select_border-style);
-  border-radius: var(--select_border-radius);
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-radius: var(--border-radius);
   outline-color: transparent;
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-offset: var(--outline-offset);
-  transition: var(--select_transition);
+  transition: border-color var(--border-color_transition), outline-color var(--outline-color_transition);
   background-image: var(--select_background-image);
   background-repeat: no-repeat;
   background-size: 1.5rem 1.5rem;
@@ -319,54 +292,34 @@ body {
 }
 @media (prefers-color-scheme: dark) {
   .select {
-    --select_background-color_disabled: var(--grey-800-color);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .select {
     --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
   }
 }
 [dir=rtl] .select {
   background-position: left 0.5rem center;
 }
-.select::placeholder {
-  color: var(--placeholder_color);
-}
 .select:focus-visible:not(:disabled) {
-  outline-color: var(--select_outline-color);
+  outline-color: var(--outline-color);
 }
 .select:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: var(--default-button_background-color_hover);
 }
 .select:disabled {
-  opacity: var(--select_opacity_disabled);
-  background-color: var(--select_background-color_disabled);
+  opacity: var(--opacity_disabled);
 }
 
 .radio,
 .checkbox {
   --choice_border-color: var(--border-color);
   --choice_background-color: var(--body_background-color);
-  --choice_outline-color_focus: var(--outline-color);
-  --choice_border-width: var(--border-width);
-  --choice_border-style: var(--border-style);
-  --checkbox_border-radius: 0.25rem;
-  --radio_border-radius: 9999px;
+  --choice_background-color_checked: var(--priamry-color);
+  --choice_border-color_checked: var(--priamry-color);
   --choice_vertical-align: top;
   --choice_margin: .25rem 0 0 0;
   --choice_margin-inline-end: 0.375rem;
-  --choice_transition:
-      background-color .25s ease-in-out 0s,
-      border-color var(--border-color_transition),
-      outline-color var(--outline-color_transition);
   --checkbox_background-image_checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 8 10 17 6 13'></polyline></svg>");
   --checkbox_background-image_indeterminate: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 12 6 12'></polyline></svg>");
   --radio_background-image_checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff' stroke='none' stroke-width='0' stroke-linecap='round' stroke-linejoin='round' class='feather feather-circle'><circle cx='12' cy='12' r='8'></circle></svg>");
-  --choice_background-color_checked: var(--priamry-color);
-  --choice_border-color_checked: var(--priamry-color);
-  --choice_opacity_disabled: var(--opacity_disabled);
-  --choice_background-color_disabled: var(--grey-200-color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -385,34 +338,28 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border-color: var(--choice_border-color);
-  border-width: var(--choice_border-width);
-  border-style: var(--choice_border-style);
-  border-radius: var(--choice_border-radius);
+  border-color: var(--border-color);
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-radius: var(--border-radius);
   outline-color: transparent;
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-offset: var(--outline-offset);
-  transition: var(--choice_transition);
+  transition: background-color 0.25s ease-in-out 0s, border-color var(--border-color_transition), outline-color var(--outline-color_transition);
   background-color: var(--choice_background-color);
-}
-@media (prefers-color-scheme: dark) {
-  .radio,
-  .checkbox {
-    --choice_background-color_disabled: var(--grey-800-color);
-  }
 }
 .radio[type=checkbox],
 .checkbox[type=checkbox] {
-  border-radius: var(--checkbox_border-radius);
+  border-radius: 0.25rem;
 }
 .radio[type=radio],
 .checkbox[type=radio] {
-  border-radius: var(--radio_border-radius);
+  border-radius: 9999px;
 }
 .radio:focus,
 .checkbox:focus {
-  outline-color: var(--choice_outline-color_focus);
+  outline-color: var(--outline-color);
 }
 .radio:checked,
 .checkbox:checked {
@@ -438,15 +385,11 @@ body {
 }
 .radio:disabled,
 .checkbox:disabled {
-  opacity: var(--choice_opacity_disabled);
+  opacity: var(--opacity_disabled);
   pointer-events: none;
 }
-.radio:disabled:not(:checked),
-.checkbox:disabled:not(:checked) {
-  background-color: var(--choice_background-color_disabled);
-}
-.radio:disabled ~ label,
-.checkbox:disabled ~ label {
+.radio:disabled + label,
+.checkbox:disabled + label {
   cursor: default;
   opacity: var(--opacity_disabled);
 }

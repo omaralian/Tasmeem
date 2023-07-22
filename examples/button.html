@@ -12,15 +12,16 @@
         .button.custom-color-green {
 
             --custom-color: #009688;
-            --custom-light-color: #26A69A;
-            --custom-dark-color: #00897B;
+            --custom-color_light: #26A69A;
+            --custom-color_dark: #00897B;
+            --custom-color_contrast-text: #fff;
 
-            --button_color: var(--light-color);
-            --button_color_transparent-background: var(--custom-color);
+            --button_color: var(--custom-color);
+            --button_color_contrast-text: var(--custom-color_contrast-text);
             --button_border-color: var(--custom-color);
             --button_background-color: var(--custom-color);
-            --button_background-color_hover: var(--custom-light-color);
-            --button_background-color_active: var(--custom-dark-color);
+            --button_background-color_hover: var(--custom-color_light);
+            --button_background-color_active: var(--custom-color_dark);
         }
 
         .button.custom-color-green:hover:not(:disabled, .disabled) {

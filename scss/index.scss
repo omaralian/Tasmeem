@@ -1,4 +1,7 @@
-@import './variables';
+@import './functions/color-contrast';
+
+@import './variables/colors';
+
 @import './root';
 @import './components/button';
 @import './components/input';

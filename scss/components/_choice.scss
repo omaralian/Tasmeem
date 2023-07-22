@@ -3,36 +3,16 @@
     
     --choice_border-color: var(--border-color);
     --choice_background-color: var(--body_background-color);
-    
-    --choice_outline-color_focus: var(--outline-color);
-
-    --choice_border-width: var(--border-width);
-    --choice_border-style: var(--border-style);
-
-    --checkbox_border-radius: 0.25rem;
-    --radio_border-radius: 9999px;
+    --choice_background-color_checked: var(--priamry-color);
+    --choice_border-color_checked: var(--priamry-color);
 
     --choice_vertical-align: top;
     --choice_margin: .25rem 0 0 0;
     --choice_margin-inline-end: 0.375rem;
 
-    --choice_transition:
-        background-color .25s ease-in-out 0s,
-        border-color var(--border-color_transition),
-        outline-color var(--outline-color_transition);
-
     --checkbox_background-image_checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 8 10 17 6 13'></polyline></svg>");
     --checkbox_background-image_indeterminate: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 12 6 12'></polyline></svg>");
     --radio_background-image_checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff' stroke='none' stroke-width='0' stroke-linecap='round' stroke-linejoin='round' class='feather feather-circle'><circle cx='12' cy='12' r='8'></circle></svg>");
-    
-    --choice_background-color_checked: var(--priamry-color);
-    --choice_border-color_checked: var(--priamry-color);
-    
-    --choice_opacity_disabled: var(--opacity_disabled);
-    --choice_background-color_disabled: var(--grey-200-color);
-    @media (prefers-color-scheme: dark) {
-        --choice_background-color_disabled: var(--grey-800-color);
-    }
 
 
 
@@ -59,17 +39,17 @@
     background-position: center;
     background-size: contain;
 
-    border-color: var(--choice_border-color);
-    border-width: var(--choice_border-width);
-    border-style: var(--choice_border-style);
-    border-radius: var(--choice_border-radius);
+    border-color: var(--border-color);
+    border-width: var(--border-width);
+    border-style: var(--border-style);
+    border-radius: var(--border-radius);
 
     &[type="checkbox"] {
-        border-radius: var(--checkbox_border-radius);
+        border-radius: 0.25rem;
     }
     
     &[type="radio"] {
-        border-radius: var(--radio_border-radius);
+        border-radius: 9999px;
     }
 
     outline-color: transparent;
@@ -77,12 +57,15 @@
     outline-width: var(--outline-width); 
     outline-offset: var(--outline-offset);
     
-    transition: var(--choice_transition);
+    transition:
+        background-color .25s ease-in-out 0s,
+        border-color var(--border-color_transition),
+        outline-color var(--outline-color_transition);
 
     background-color: var(--choice_background-color);
     
     &:focus {
-        outline-color: var(--choice_outline-color_focus);
+        outline-color: var(--outline-color);
     }
 
     &:checked {
@@ -108,14 +91,10 @@
     }
 
     &:disabled {
-        opacity: var(--choice_opacity_disabled);
+        opacity: var(--opacity_disabled);
         pointer-events: none;
 
-        &:not(:checked) {
-            background-color: var(--choice_background-color_disabled);
-        }
-
-        & ~ label {
+        & + label {
             cursor: default;
             opacity: var(--opacity_disabled);
         }

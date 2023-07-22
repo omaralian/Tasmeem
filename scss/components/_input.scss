@@ -3,34 +3,10 @@
     --input_color: var(--body_color);
     --input_border-color: var(--border-color);
     --input_background-color: var(--body_background-color);
+    --placeholder_color: #{$grey-500-color};
     
     &.danger {
         --input_border-color: var(--danger-color);
-    }
-
-    --input_padding: var(--padding-y) var(--padding-x);
-
-    --input_text-align: start;
-
-    --input_border-width: var(--border-width);
-    --input_border-style: var(--border-style);
-    --input_border-radius: var(--border-radius);
-
-    --input_transition:
-        border-color var(--border-color_transition),
-        outline-color var(--outline-color_transition);
-
-    &:disabled {
-        --input_opacity: var(--opacity_disabled);
-        --input_background-color: var(--grey-200-color);
-        @media (prefers-color-scheme: dark) {
-            --input_background-color: var(--grey-800-color);
-        }
-    }
-
-    --input_outline-color: transparent;
-    &:focus-visible:not(:disabled) {
-        --input_outline-color: var(--outline-color);
     }
 
 
@@ -51,19 +27,24 @@
     }
 
     margin: 0;
-    padding: var(--input_padding);
-    text-align: var(--input_text-align);
+    padding: var(--padding-y) var(--padding-x);
 
-    border-width: var(--input_border-width);
-    border-style: var(--input_border-style);
-    border-radius: var(--input_border-radius);
+    border-width: var(--border-width);
+    border-style: var(--border-style);
+    border-radius: var(--border-radius);
 
-    outline-color: var(--input_outline-color);
+    outline-color: transparent;
     outline-style: var(--outline-style);
     outline-width: var(--outline-width); 
     outline-offset: var(--outline-offset);
+
+    &:focus-visible:not(:disabled) {
+        outline-color: var(--outline-color);
+    }
     
-    transition: var(--input_transition);
+    transition:
+        border-color var(--border-color_transition),
+        outline-color var(--outline-color_transition);
 
     // Placeholder
     &::placeholder {
@@ -73,7 +54,6 @@
     color: var(--input_color);
     border-color: var(--input_border-color);
     background-color: var(--input_background-color);
-    opacity: var(--input_opacity);
 
     // File input buttons theming
     &::file-selector-button {
@@ -100,6 +80,10 @@
 
     &::-ms-reveal {
         filter: invert(50%);
+    }
+
+    &:disabled {
+        opacity: var(--opacity_disabled);
     }
 
 }

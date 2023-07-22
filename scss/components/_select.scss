@@ -8,24 +8,6 @@
         --select_border-color: var(--danger-color);
     }
 
-    --select_padding: var(--padding-y) var(--padding-x);
-
-    --select_border-width: var(--border-width);
-    --select_border-style: var(--border-style);
-    --select_border-radius: var(--border-radius);
-
-    --select_transition:
-        border-color var(--border-color_transition),
-        outline-color var(--outline-color_transition);
-
-    --select_opacity_disabled: var(--opacity_disabled);
-    --select_background-color_disabled: var(--grey-200-color);
-    @media (prefers-color-scheme: dark) {
-        --select_background-color_disabled: var(--grey-800-color);
-    }
-
-    --select_outline-color: var(--outline-color);
-
     --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
     @media (prefers-color-scheme: dark) {
         --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
@@ -42,19 +24,21 @@
     width: 100%;
 
     margin: 0;
-    padding: var(--select_padding);
+    padding: var(--padding-y) var(--padding-x);
     padding-inline-end: 2.5rem;
 
-    border-width: var(--select_border-width);
-    border-style: var(--select_border-style);
-    border-radius: var(--select_border-radius);
+    border-width: var(--border-width);
+    border-style: var(--border-style);
+    border-radius: var(--border-radius);
 
     outline-color: transparent;
     outline-style: var(--outline-style);
     outline-width: var(--outline-width); 
     outline-offset: var(--outline-offset);
     
-    transition: var(--select_transition);
+    transition: 
+        border-color var(--border-color_transition),
+        outline-color var(--outline-color_transition);
 
     background-image: var(--select_background-image);
     background-repeat: no-repeat;
@@ -63,18 +47,13 @@
     [dir="rtl"] & {
         background-position: left .5rem center;
     }
-    
-    // Placeholder
-    &::placeholder {
-        color: var(--placeholder_color);
-    }
 
     color: var(--select_color);
     border-color: var(--select_border-color);
     background-color: var(--select_background-color);
 
     &:focus-visible:not(:disabled) {
-        outline-color: var(--select_outline-color);
+        outline-color: var(--outline-color);
     }
     
     &:hover:not(:disabled):not([readonly])::file-selector-button {
@@ -82,8 +61,7 @@
     }
 
     &:disabled {
-        opacity: var(--select_opacity_disabled);
-        background-color: var(--select_background-color_disabled);
+        opacity: var(--opacity_disabled);
     }
 
 }

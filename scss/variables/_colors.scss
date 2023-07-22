@@ -1,0 +1,63 @@
+
+
+// colors
+
+$grey-000-color: #FFFFFF;
+$grey-050-color: #FAFAFA;
+$grey-100-color: #F5F5F5;
+$grey-200-color: #EEEEEE;
+$grey-300-color: #E0E0E0;
+$grey-400-color: #BDBDBD;
+$grey-500-color: #9E9E9E;
+$grey-600-color: #757575;
+$grey-700-color: #616161;
+$grey-800-color: #424242;
+$grey-900-color: #212121;
+
+/*
+Body
+Default color and background, including components.
+*/
+$body_color: $grey-900-color;
+$body_background-color: $grey-000-color;
+
+/*
+Body Secondary
+Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
+*/
+$body-secondary_color: $grey-700-color;
+$body-secondary_background-color: $grey-200-color;
+$body-secondary_special-state_light: $grey-100-color;
+$body-secondary_special-state_dark: $grey-300-color;
+
+/*
+Border
+For component borders, dividers, and rules.
+*/
+$border_color: $grey-400-color;
+
+/*
+Primary
+Main theme color, used for hyperlinks, focus styles, and component and form active states.
+*/
+$priamry-color: #2196F3; // 500
+$priamry-color_contrast-text: color-contrast($priamry-color, $grey-050-color, $grey-900-color);
+$priamry-color_light: #42A5F5; // 400
+$priamry-color_dark: #1E88E5; // 600
+
+/*
+Secondary
+*/
+$secondary-color: #607D8B; // 500
+$secondary-color_contrast-text: color-contrast($secondary-color, $grey-050-color, $grey-900-color);
+$secondary-color_light: #78909C; // 400
+$secondary-color_dark: #546E7A; // 600
+
+/*
+Danger
+*/
+$danger-color: #F44336; // 500
+$danger-color_contrast-text: color-contrast($danger-color, $grey-050-color, $grey-900-color);
+$danger-color_light: #EF5350; // 400
+$danger-color_dark: #E53935; // 600
+
