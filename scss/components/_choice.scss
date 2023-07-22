@@ -5,7 +5,12 @@
     --choice_background-color: var(--body_background-color);
     --choice_background-color_checked: var(--priamry-color);
     --choice_border-color_checked: var(--priamry-color);
-    --choice_background-color_disabled: var(--border-color);
+
+    &:disabled {
+        &:not(:checked) {
+            --choice_background-color: var(--body-secondary_background-color);
+        }
+    }
 
     --choice_vertical-align: top;
     --choice_margin: .25rem 0 0 0;
@@ -82,22 +87,15 @@
         }
     }
 
-    &:indeterminate {
+    &[type="checkbox"]:indeterminate {
         background-color: var(--choice_background-color_checked);
         border-color: var(--choice_border-color_checked);
-
-        &[type="checkbox"] {
-            background-image: var(--checkbox_background-image_indeterminate);
-        }
+        background-image: var(--checkbox_background-image_indeterminate);
     }
 
     &:disabled {
         opacity: var(--opacity_disabled);
         pointer-events: none;
-
-        &:not(:checked) {
-            background-color: var(--choice_background-color_disabled);
-        }
 
         & + label {
             cursor: default;

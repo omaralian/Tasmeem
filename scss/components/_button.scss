@@ -8,8 +8,8 @@
         --button_color_contrast-text: var(--priamry-color_contrast-text);
         --button_border-color: var(--priamry-color);
         --button_background-color: var(--priamry-color);
-        --button_background-color_hover: var(--priamry-color_light);
-        --button_background-color_active: var(--priamry-color_dark);
+        --button_background-color_hover: var(--priamry-color_dark);
+        --button_background-color_active: var(--priamry-color_darker);
     }
 
     &.secondary {
@@ -17,8 +17,8 @@
         --button_color_contrast-text: var(--secondary-color_contrast-text);
         --button_border-color: var(--secondary-color);
         --button_background-color: var(--secondary-color);
-        --button_background-color_hover: var(--secondary-color_light);
-        --button_background-color_active: var(--secondary-color_dark);
+        --button_background-color_hover: var(--secondary-color_dark);
+        --button_background-color_active: var(--secondary-color_darker);
     }
 
     &.danger {
@@ -26,8 +26,8 @@
         --button_color_contrast-text: var(--danger-color_contrast-text);
         --button_border-color: var(--danger-color);
         --button_background-color: var(--danger-color);
-        --button_background-color_hover: var(--danger-color_light);
-        --button_background-color_active: var(--danger-color_dark);
+        --button_background-color_hover: var(--danger-color_dark);
+        --button_background-color_active: var(--danger-color_darker);
     }
 
 

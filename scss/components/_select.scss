@@ -3,6 +3,10 @@
     --select_color: var(--body_color);
     --select_border-color: var(--border-color);
     --select_background-color: var(--body_background-color);
+
+    &:disabled {
+        --select_background-color: var(--body-secondary_background-color);
+    }
     
     &.danger {
         --select_border-color: var(--danger-color);

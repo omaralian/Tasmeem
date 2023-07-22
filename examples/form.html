@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/all.min.css"></link>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+
+    <style>
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1rem 1rem 1rem 1rem;
+        }
+
+        .row > * {
+            padding: 0rem 1rem 1rem 1rem;
+            /* background-color: aquamarine; */
+        }
+
+        .row > .col {
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 0%;
+        }
+
+        .row > .col-12 {
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: auto;
+            width: 100%;
+        }
+        
+        .row > .col-6 {
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: auto;
+            width: 50%;
+        }
+
+        .row > .col-4 {
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: auto;
+            width: 33.33333%;
+        }
+
+        .form-control .form-label {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: .375rem;
+        }
+
+    </style>
+
+    <title>Form</title>
+</head>
+<body>
+    
+    <div>
+
+        <div class="row">
+
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Birth of date</label>
+                    <input type="date" class="input" placeholder="Enter your first name" />
+                </div>
+
+            </div>
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="input" placeholder="Enter your last / family name" />
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Birth of date</label>
+                    <input type="date" class="input" placeholder="Enter your first name" disabled />
+                </div>
+
+            </div>
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="input" placeholder="Enter your last / family name" disabled />
+                </div>
+
+            </div>
+            
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Weather</label>
+                    <input type="range" class="range" placeholder="Enter your last / family name" />
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Select Part</label>
+                    <input type="radio" class="radio" id="radio-1" name="radio-1" disabled />
+                    <label for="radio-1" style="display: inline-block;">Google</label>
+                    <input type="radio" class="radio" id="radio-2" name="radio-1" />
+                    <label for="radio-2" style="display: inline-block;">Twitter</label>
+                    <input type="radio" class="radio" id="radio-3" name="radio-1" />
+                    <label for="radio-3" style="display: inline-block;">Thirdy</label>
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Weather</label>
+                    <input type="range" class="range" placeholder="Enter your last / family name" disabled />
+                </div>
+
+            </div>
+
+            <div class="col-6">
+                
+                <div class="form-control">
+                    <label class="form-label">Select Part</label>
+                    <input type="radio" class="radio" id="radio-1" name="radio-1" disabled />
+                    <label for="radio-1" style="display: inline-block;">Google</label>
+                    <input type="radio" class="radio" id="radio-2" name="radio-1" disabled />
+                    <label for="radio-2" style="display: inline-block;">Twitter</label>
+                    <input type="radio" class="radio" id="radio-3" name="radio-1" disabled />
+                    <label for="radio-3" style="display: inline-block;">Thirdy</label>
+                </div>
+
+            </div>
+
+            <div class="col-12">
+                
+                <div class="form-control">
+                    <label class="form-label">Class Name</label>
+                    <select class="select" placeholder="Select an option">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                        <option value="6">Six</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="col-12" style="margin-top: 1rem;">
+                
+                <button class="button primary" type="submit" style="margin-inline-end: .5rem;">Submit</button>
+                <button class="button secondary outline" type="submit" style="margin-inline-end: .5rem;">Reset</button>
+                <a class="button" type="submit" style="margin-inline-end: 1rem;">Read Policy</a>
+
+                <div style="display: inline-block;" style="clear: both;">
+                    <input type="checkbox" class="checkbox" id="checkbox-indeterminate" style="display: inline-block;" />
+                    <label for="checkbox-indeterminate" style="display: inline-block;">Checkbox</label>
+                </div>
+
+            </div>
+
+            <div class="col-12" style="margin-top: 1rem;">
+                
+                <div class="form-control">
+                    <label class="form-label">Class Name</label>
+                    <select class="select" placeholder="Select an option" disabled>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                        <option value="6">Six</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="col-12" style="margin-top: 1rem;">
+                
+                <button class="button primary" type="submit" style="margin-inline-end: .5rem;" disabled>Submit</button>
+                <button class="button secondary outline" type="submit" style="margin-inline-end: .5rem;" disabled>Reset</button>
+                <a class="button disabled" type="submit" style="margin-inline-end: 1rem;" disabled>Read Policy</a>
+
+                <div style="display: inline-block;" style="clear: both;">
+                    <input type="checkbox" class="checkbox" id="checkbox-indeterminate" style="display: inline-block;" disabled />
+                    <label for="checkbox-indeterminate" style="display: inline-block;">Checkbox</label>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        var checkboxIndeterminate = document.getElementById("checkbox-indeterminate");
+        checkboxIndeterminate.indeterminate = true;
+    </script>
+
+</body>
+</html>

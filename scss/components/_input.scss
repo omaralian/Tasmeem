@@ -3,7 +3,11 @@
     --input_color: var(--body_color);
     --input_border-color: var(--border-color);
     --input_background-color: var(--body_background-color);
-    --placeholder_color: #{$grey-500-color};
+    --placeholder_color: var(--body-secondary_color);
+
+    &:disabled {
+        --input_background-color: var(--body-secondary_background-color);
+    }
     
     &.danger {
         --input_border-color: var(--danger-color);

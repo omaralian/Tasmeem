@@ -1,18 +1,18 @@
 :root {
 
     --priamry-color: #{$priamry-color};
-    --priamry-color_light: #{$priamry-color_light};
     --priamry-color_dark: #{$priamry-color_dark};
+    --priamry-color_darker: #{$priamry-color_darker};
     --priamry-color_contrast-text: #{$priamry-color_contrast-text};
 
     --secondary-color: #{$secondary-color};
-    --secondary-color_light: #{$secondary-color_light};
     --secondary-color_dark: #{$secondary-color_dark};
+    --secondary-color_darker: #{$secondary-color_darker};
     --secondary-color_contrast-text: #{$secondary-color_contrast-text};
 
     --danger-color: #{$danger-color};
-    --danger-color_light: #{$danger-color_light};
     --danger-color_dark: #{$danger-color_dark};
+    --danger-color_darker: #{$danger-color_darker};
     --danger-color_contrast-text: #{$danger-color_contrast-text};
     
     --body_color: #{$body_color};
@@ -26,21 +26,21 @@
     --border-color: #{$border_color};
 
     --button_color: var(--body_color);
-    --button_background-color: #{$body-secondary_background-color};
-    --button_background-color_hover: #{$body-secondary_special-state_light};
-    --button_background-color_active: #{$body-secondary_special-state_dark};
+    --button_background-color: var(--body-secondary_background-color);
+    --button_background-color_hover: var(--body-secondary_special-state_light);
+    --button_background-color_active: var(--body-secondary_special-state_dark);
     --button_transition: .15s ease-in-out 0s;
 
     @media (prefers-color-scheme: dark) {
 
-        --body_color: var(--light-color);
-        --body_background-color: var(--grey-900-color);
+        --body_color: #FAFAFA;
+        --body_background-color: #212121;
 
-        --border-color: var(--grey-700-color);
+        // --border-color: var(--grey-700-color);
 
-        --default-button_background-color: var(--grey-700-color);
+        // --default-button_background-color: var(--grey-700-color);
 
-        --placeholder_color: var(--grey-700-color);
+        // --placeholder_color: var(--grey-700-color);
     }
 
     // outline color based on primary color
@@ -63,7 +63,7 @@
     --border-radius: 0.375rem;
     --border-color_transition: .25s ease-in-out 0s;
 
-    --opacity_disabled: .65;
+    --opacity_disabled: .7;
 
     font-family: var(--font-family);
     font-size: var(--font-size);
