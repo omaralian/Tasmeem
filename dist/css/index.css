@@ -308,6 +308,7 @@ body {
   --choice_background-color: var(--body_background-color);
   --choice_background-color_checked: var(--priamry-color);
   --choice_border-color_checked: var(--priamry-color);
+  --choice_background-color_disabled: var(--border-color);
   --choice_vertical-align: top;
   --choice_margin: .25rem 0 0 0;
   --choice_margin-inline-end: 0.375rem;
@@ -381,6 +382,10 @@ body {
 .checkbox:disabled {
   opacity: var(--opacity_disabled);
   pointer-events: none;
+}
+.radio:disabled:not(:checked),
+.checkbox:disabled:not(:checked) {
+  background-color: var(--choice_background-color_disabled);
 }
 .radio:disabled + label,
 .checkbox:disabled + label {

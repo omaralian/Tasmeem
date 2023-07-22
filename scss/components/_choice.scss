@@ -5,6 +5,7 @@
     --choice_background-color: var(--body_background-color);
     --choice_background-color_checked: var(--priamry-color);
     --choice_border-color_checked: var(--priamry-color);
+    --choice_background-color_disabled: var(--border-color);
 
     --choice_vertical-align: top;
     --choice_margin: .25rem 0 0 0;
@@ -93,6 +94,10 @@
     &:disabled {
         opacity: var(--opacity_disabled);
         pointer-events: none;
+
+        &:not(:checked) {
+            background-color: var(--choice_background-color_disabled);
+        }
 
         & + label {
             cursor: default;
