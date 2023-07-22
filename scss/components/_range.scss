@@ -1,0 +1,98 @@
+.range {
+    
+    --slider-track_background-color: var(--body-secondary_background-color);
+    --slider-thumb_background-color: var(--priamry-color);
+    --slider-thumb_background-color_hover: var(--priamry-color_light);
+    --slider-thumb_background-color_focus: var(--priamry-color_dark);
+
+
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
+    display: inline-block;
+    appearance: none;
+    width: 100%;
+    height: 1.5rem;
+
+    margin: 0;
+    padding: 0;
+
+    outline: none;
+
+    &:disabled {
+        opacity: var(--opacity_disabled);
+    }
+
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: .5rem;
+        background-color: var(--slider-track_background-color);
+        border: none;
+        border-radius: 1rem;
+    }
+
+    &::-moz-range-track {
+        width: 100%;
+        height: .5rem;
+        background-color: var(--slider-track_background-color);
+        border: none;
+        border-radius: 1rem;
+    }
+
+    &::-webkit-slider-thumb {
+        width: 1rem;
+        height: 1rem;
+        margin-top: -.25rem;
+        border: 0;
+        border-radius: 1rem;
+
+        background-color: var(--slider-thumb_background-color);
+        appearance: none;
+
+        transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out, outline-color .15s ease-in-out;
+
+        outline-color: transparent;
+        outline-style: var(--outline-style);
+        outline-width: var(--outline-width); 
+        outline-offset: var(--outline-offset);
+    }
+
+    &::-moz-range-thumb {
+        width: 1rem;
+        height: 1rem;
+        margin-top: -.25rem;
+        border: 0;
+        border-radius: 1rem;
+
+        background-color: var(--slider-thumb_background-color);
+        appearance: none;
+
+        transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out, outline-color .15s ease-in-out;
+
+        outline-color: transparent;
+        outline-style: var(--outline-style);
+        outline-width: var(--outline-width); 
+        outline-offset: var(--outline-offset);
+    }
+
+    &:hover:not(:disabled)::-webkit-slider-thumb {
+        background-color: var(--slider-thumb_background-color_hover);
+    }
+    
+    &:focus:not(:disabled)::-webkit-slider-thumb {
+        outline-color: var(--outline-color);
+        background-color: var(--slider-thumb_background-color_focus);
+    }
+
+    &:hover:not(:disabled)::-moz-range-thumb {
+        background-color: var(--slider-thumb_background-color_hover);
+    }
+    
+    &:focus:not(:disabled)::-moz-range-thumb {
+        outline-color: var(--outline-color);
+        background-color: var(--slider-thumb_background-color_focus);
+    }
+
+}
