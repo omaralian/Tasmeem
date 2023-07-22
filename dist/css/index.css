@@ -64,7 +64,7 @@ Danger
   --border-style: solid;
   --border-radius: 0.375rem;
   --border-color_transition: .25s ease-in-out 0s;
-  --opacity_disabled: .7;
+  --opacity_disabled: .65;
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
