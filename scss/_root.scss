@@ -20,13 +20,11 @@
 
     --border-color: #{$border_color};
 
-    --default-button_color: var(--body_color);
-    --default-button_color_contrast-text: var(--body_color);
-    --default-button_border-color: var(--border-color);
-    --default-button_background-color: #{$body-secondary_background-color};
-    --default-button_background-color_hover: #{$body-secondary_special-state_light};
-    --default-button_background-color_active: #{$body-secondary_special-state_dark};
-    --default-button_transition: .15s ease-in-out 0s;
+    --button_color: var(--body_color);
+    --button_background-color: #{$body-secondary_background-color};
+    --button_background-color_hover: #{$body-secondary_special-state_light};
+    --button_background-color_active: #{$body-secondary_special-state_dark};
+    --button_transition: .15s ease-in-out 0s;
 
     @media (prefers-color-scheme: dark) {
 

@@ -1,11 +1,7 @@
 .button {
 
-    --button_color: var(--default-button_color);
-    --button_color_contrast-text: var(--default-button_color_contrast-text);
-    --button_border-color: var(--default-button_border-color);
-    --button_background-color: var(--default-button_background-color);
-    --button_background-color_hover: var(--default-button_background-color_hover);
-    --button_background-color_active: var(--default-button_background-color_active);
+    --button_color_contrast-text: var(--button_color);
+    --button_border-color: var(--border-color);
 
     &.primary {
         --button_color: var(--priamry-color);
@@ -70,8 +66,8 @@
     outline-offset: var(--outline-offset);
 
     transition:
-        color var(--default-button_transition),
-        background-color var(--default-button_transition),
+        color var(--button_transition),
+        background-color var(--button_transition),
         border-color var(--border-color_transition),
         outline-color var(--outline-color_transition);
 

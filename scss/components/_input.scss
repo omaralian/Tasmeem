@@ -60,18 +60,18 @@
         padding: 1rem;
         margin: -1rem;
         margin-inline-end: var(--padding-x);
-        color: var(--default-button_color);
-        background-color: var(--default-button_background-color);
+        color: var(--button_color);
+        background-color: var(--button_background-color);
         border: none;
-        transition: var(--default-button_transition);
+        transition: var(--button_transition);
     }
 
     &:hover:not(:disabled):not([readonly])::file-selector-button {
-        background-color: var(--default-button_background-color_hover);
+        background-color: var(--button_background-color_hover);
     }
 
     &:active:not(:disabled):not([readonly])::file-selector-button {
-        background-color: var(--default-button_background-color_active);
+        background-color: var(--button_background-color_active);
     }
 
     &::-webkit-calendar-picker-indicator {

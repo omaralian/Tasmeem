@@ -36,13 +36,11 @@ Danger
   --body_color: #212121;
   --body_background-color: #FFFFFF;
   --border-color: #BDBDBD;
-  --default-button_color: var(--body_color);
-  --default-button_color_contrast-text: var(--body_color);
-  --default-button_border-color: var(--border-color);
-  --default-button_background-color: #EEEEEE;
-  --default-button_background-color_hover: #F5F5F5;
-  --default-button_background-color_active: #E0E0E0;
-  --default-button_transition: .15s ease-in-out 0s;
+  --button_color: var(--body_color);
+  --button_background-color: #EEEEEE;
+  --button_background-color_hover: #F5F5F5;
+  --button_background-color_active: #E0E0E0;
+  --button_transition: .15s ease-in-out 0s;
   --outline-color: var(--priamry-color);
   --outline-color_transition: .45s ease-in-out 0s;
   --outline-style: solid;
@@ -86,12 +84,8 @@ body {
 }
 
 .button {
-  --button_color: var(--default-button_color);
-  --button_color_contrast-text: var(--default-button_color_contrast-text);
-  --button_border-color: var(--default-button_border-color);
-  --button_background-color: var(--default-button_background-color);
-  --button_background-color_hover: var(--default-button_background-color_hover);
-  --button_background-color_active: var(--default-button_background-color_active);
+  --button_color_contrast-text: var(--button_color);
+  --button_border-color: var(--border-color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -118,7 +112,7 @@ body {
   outline-style: var(--outline-style);
   outline-width: var(--outline-width);
   outline-offset: var(--outline-offset);
-  transition: color var(--default-button_transition), background-color var(--default-button_transition), border-color var(--border-color_transition), outline-color var(--outline-color_transition);
+  transition: color var(--button_transition), background-color var(--button_transition), border-color var(--border-color_transition), outline-color var(--outline-color_transition);
   border-color: transparent;
   background-color: var(--button_background-color);
   color: var(--button_color_contrast-text);
@@ -235,16 +229,16 @@ body {
   padding: 1rem;
   margin: -1rem;
   margin-inline-end: var(--padding-x);
-  color: var(--default-button_color);
-  background-color: var(--default-button_background-color);
+  color: var(--button_color);
+  background-color: var(--button_background-color);
   border: none;
-  transition: var(--default-button_transition);
+  transition: var(--button_transition);
 }
 .input:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: var(--default-button_background-color_hover);
+  background-color: var(--button_background-color_hover);
 }
 .input:active:not(:disabled):not([readonly])::file-selector-button {
-  background-color: var(--default-button_background-color_active);
+  background-color: var(--button_background-color_active);
 }
 .input::-webkit-calendar-picker-indicator {
   filter: invert(50%);
