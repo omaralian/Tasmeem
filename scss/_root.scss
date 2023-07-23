@@ -20,15 +20,16 @@
 
     --body-secondary_color: #{$body-secondary_color};
     --body-secondary_background-color: #{$body-secondary_background-color};
-    --body-secondary_special-state_light: #{$body-secondary_special-state_light};
-    --body-secondary_special-state_dark: #{$body-secondary_special-state_dark};
+    
+    --body-tertiary_color: #{$body-tertiary_color};
+    --body-tertiary_background-color: #{$body-tertiary_background-color};
 
     --border-color: #{$border_color};
 
     --button_color: var(--body_color);
-    --button_background-color: var(--body-secondary_background-color);
-    --button_background-color_hover: var(--body-secondary_special-state_light);
-    --button_background-color_active: var(--body-secondary_special-state_dark);
+    --button_background-color: var(--body-tertiary_background-color);
+    --button_background-color_hover: var(--body-tertiary_background-color);
+    --button_background-color_active: var(--body-tertiary_background-color);
     --button_transition: .15s ease-in-out 0s;
 
     @media (prefers-color-scheme: dark) {

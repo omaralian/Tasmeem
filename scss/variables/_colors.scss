@@ -25,28 +25,17 @@ $body_background-color: $grey-000-color;
 Body Secondary
 Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
 */
-$body-secondary_color: $grey-500-color;
+$body-secondary_color: $grey-700-color;
 $body-secondary_background-color: $grey-100-color;
-$body-secondary_special-state_light: $grey-050-color;
-$body-secondary_special-state_dark: $grey-200-color;
+
+$body-tertiary_color: $grey-500-color;
+$body-tertiary_background-color: $grey-200-color;
 
 /*
 Border
 For component borders, dividers, and rules.
 */
-$border_color: $grey-300-color;
-
-/*
-Body disabled
-Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
-*/
-$body_color_disabled: $grey-600-color;
-$body_background-color_disabled: $grey-050-color;
-
-$body-secondary_color_disabled: $grey-400-color;
-$body-secondary_background-color_disabled: $grey-100-color;
-
-$border_color_disabled: $grey-200-color;
+$border_color: $grey-400-color;
 
 /*
 Primary

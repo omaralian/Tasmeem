@@ -11,10 +11,6 @@ Border
 For component borders, dividers, and rules.
 */
 /*
-Body disabled
-Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
-*/
-/*
 Primary
 Main theme color, used for hyperlinks, focus styles, and component and form active states.
 */
@@ -39,15 +35,15 @@ Danger
   --danger-color_contrast-text: #FAFAFA;
   --body_color: #212121;
   --body_background-color: #FFFFFF;
-  --body-secondary_color: #9E9E9E;
+  --body-secondary_color: #616161;
   --body-secondary_background-color: #F5F5F5;
-  --body-secondary_special-state_light: #FAFAFA;
-  --body-secondary_special-state_dark: #EEEEEE;
-  --border-color: #E0E0E0;
+  --body-tertiary_color: #9E9E9E;
+  --body-tertiary_background-color: #EEEEEE;
+  --border-color: #BDBDBD;
   --button_color: var(--body_color);
-  --button_background-color: var(--body-secondary_background-color);
-  --button_background-color_hover: var(--body-secondary_special-state_light);
-  --button_background-color_active: var(--body-secondary_special-state_dark);
+  --button_background-color: var(--body-tertiary_background-color);
+  --button_background-color_hover: var(--body-tertiary_background-color);
+  --button_background-color_active: var(--body-tertiary_background-color);
   --button_transition: .15s ease-in-out 0s;
   --outline-color: var(--priamry-color);
   --outline-color_transition: .45s ease-in-out 0s;
@@ -195,7 +191,7 @@ body {
   --input_color: var(--body_color);
   --input_border-color: var(--border-color);
   --input_background-color: var(--body_background-color);
-  --placeholder_color: var(--body-secondary_color);
+  --placeholder_color: var(--body-tertiary_color);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -239,7 +235,9 @@ body {
   margin-inline-end: var(--padding-x);
   color: var(--button_color);
   background-color: var(--button_background-color);
-  border: none;
+  border-width: inherit;
+  border-style: inherit;
+  border-color: inherit;
   transition: var(--button_transition);
 }
 .input:hover:not(:disabled):not([readonly])::file-selector-button {
@@ -307,7 +305,7 @@ body {
   outline-color: var(--outline-color);
 }
 .select:hover:not(:disabled):not([readonly])::file-selector-button {
-  background-color: var(--default-button_background-color_hover);
+  background-color: var(--button_background-color_hover);
 }
 .select:disabled {
   opacity: var(--opacity_disabled);

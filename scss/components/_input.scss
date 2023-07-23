@@ -3,7 +3,7 @@
     --input_color: var(--body_color);
     --input_border-color: var(--border-color);
     --input_background-color: var(--body_background-color);
-    --placeholder_color: var(--body-secondary_color);
+    --placeholder_color: var(--body-tertiary_color);
 
     &:disabled {
         --input_background-color: var(--body-secondary_background-color);
@@ -66,7 +66,12 @@
         margin-inline-end: var(--padding-x);
         color: var(--button_color);
         background-color: var(--button_background-color);
-        border: none;
+
+        border-width: inherit;
+        border-style: inherit;
+        // border-radius: var(--border-radius);
+        border-color: inherit;
+
         transition: var(--button_transition);
     }
 
