@@ -1,12 +1,12 @@
 .input {
     
-    --input_color: var(--body_color);
-    --input_border-color: var(--border-color);
-    --input_background-color: var(--body_background-color);
-    --placeholder_color: var(--body-tertiary_color);
+    --input_color: var(--foreground_default);
+    --input_border-color: var(--border_default);
+    --input_background-color: var(--background_default);
+    --placeholder_color: var(--foreground_subtle);
 
     &:disabled {
-        --input_background-color: var(--body-secondary_background-color);
+        --input_background-color: var(--background_subtle);
     }
     
     &.danger {

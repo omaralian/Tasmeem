@@ -14,23 +14,23 @@
     --danger-color_dark: #{$danger-color_dark};
     --danger-color_darker: #{$danger-color_darker};
     --danger-color_contrast-text: #{$danger-color_contrast-text};
-    
-    --body_color: #{$body_color};
-    --body_background-color: #{$body_background-color};
 
-    --body-secondary_color: #{$body-secondary_color};
-    --body-secondary_background-color: #{$body-secondary_background-color};
-    
-    --body-tertiary_color: #{$body-tertiary_color};
-    --body-tertiary_background-color: #{$body-tertiary_background-color};
+    --foreground_default: #{$foreground_default};
+    --foreground_muted: #{$foreground_muted};
+    --foreground_subtle: #{$foreground_subtle};
 
-    --border-color: #{$border_color};
+    --background_default: #{$background_default};
+    --background_subtle: #{$background_subtle};
+    --background_inset: #{$background_inset};
 
-    --button_color: var(--body_color);
-    --button_background-color: var(--body_background-color);
-    --button_background-color_hover: var(--body-secondary_background-color);
-    --button_background-color_active: var(--body-tertiary_background-color);
-    --button_transition: .15s ease-in-out 0s;
+    --border_default: #{$border_default};
+    --border_muted: #{$border_muted};
+
+    --button_color: var(--foreground_default);
+    --button_background-color: var(--background_default);
+    --button_background-color_hover: var(--background_subtle);
+    --button_background-color_active: var(--background_inset);
+    --button_transition: .25s ease-in-out 0s;
 
     @media (prefers-color-scheme: dark) {
 
@@ -79,6 +79,6 @@
 }
 
 body {
-    color: var(--body_color);
-    background-color: var(--body_background-color);
+    color: var(--foreground_default);
+    background-color: var(--background_default);
 }

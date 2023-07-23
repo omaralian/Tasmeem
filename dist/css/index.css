@@ -1,14 +1,34 @@
 /*
-Body
-Default color and background, including components.
+Foreground Default
+Primary color for text and icons in any given interface. It should be used for body content, titles and labels.
 */
 /*
-Body Secondary
-Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
+Foreground Muted
+Use for content that is secondary or that provides additional context but is not critical to understanding the flow of an interface.
 */
 /*
-Border
-For component borders, dividers, and rules.
+Foreground Subtle
+Use for placeholder text, icons or decorative foregrounds.
+*/
+/*
+Background Default
+Primary background color.
+*/
+/*
+Background Subtle
+Provides visual rest and contrast against the default background.
+*/
+/*
+Background Inset
+Can be used instead of the default background to create a focal point, such as in conversations or activity feeds.
+*/
+/*
+Border Default
+Use to create bounds around content, for example elements inside a card. Default borders are critical to understanding a page layout.
+*/
+/*
+Border Muted
+Use for dividers to emphasize the separation between items, columns or sections.
 */
 /*
 Primary
@@ -33,18 +53,19 @@ Danger
   --danger-color_dark: #f21f0f;
   --danger-color_darker: #cd180b;
   --danger-color_contrast-text: #FAFAFA;
-  --body_color: #212121;
-  --body_background-color: #FFFFFF;
-  --body-secondary_color: #616161;
-  --body-secondary_background-color: #F5F5F5;
-  --body-tertiary_color: #9E9E9E;
-  --body-tertiary_background-color: #EEEEEE;
-  --border-color: #BDBDBD;
-  --button_color: var(--body_color);
-  --button_background-color: var(--body_background-color);
-  --button_background-color_hover: var(--body-secondary_background-color);
-  --button_background-color_active: var(--body-tertiary_background-color);
-  --button_transition: .15s ease-in-out 0s;
+  --foreground_default: #212121;
+  --foreground_muted: #616161;
+  --foreground_subtle: #9E9E9E;
+  --background_default: #FFFFFF;
+  --background_subtle: #F5F5F5;
+  --background_inset: #EEEEEE;
+  --border_default: #BDBDBD;
+  --border_muted: #E0E0E0;
+  --button_color: var(--foreground_default);
+  --button_background-color: var(--background_default);
+  --button_background-color_hover: var(--background_subtle);
+  --button_background-color_active: var(--background_inset);
+  --button_transition: .25s ease-in-out 0s;
   --outline-color: var(--priamry-color);
   --outline-color_transition: .45s ease-in-out 0s;
   --outline-style: solid;
@@ -80,13 +101,13 @@ Danger
 }
 
 body {
-  color: var(--body_color);
-  background-color: var(--body_background-color);
+  color: var(--foreground_default);
+  background-color: var(--background_default);
 }
 
 .button {
   --button_color_contrast-text: var(--button_color);
-  --button_border-color: var(--border-color);
+  --button_border-color: var(--border_default);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -188,10 +209,10 @@ body {
 }
 
 .input {
-  --input_color: var(--body_color);
-  --input_border-color: var(--border-color);
-  --input_background-color: var(--body_background-color);
-  --placeholder_color: var(--body-tertiary_color);
+  --input_color: var(--foreground_default);
+  --input_border-color: var(--border_default);
+  --input_background-color: var(--background_default);
+  --placeholder_color: var(--foreground_subtle);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -215,7 +236,7 @@ body {
   background-color: var(--input_background-color);
 }
 .input:disabled {
-  --input_background-color: var(--body-secondary_background-color);
+  --input_background-color: var(--background_subtle);
 }
 .input.danger {
   --input_border-color: var(--danger-color);
@@ -278,10 +299,10 @@ body {
 }
 
 .select {
-  --select_color: var(--body_color);
-  --select_border-color: var(--border-color);
-  --select_background-color: var(--body_background-color);
-  --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23616161' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
+  --select_color: var(--foreground_default);
+  --select_border-color: var(--border_default);
+  --select_background-color: var(--background_default);
+  --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23212121' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -309,7 +330,7 @@ body {
   background-color: var(--select_background-color);
 }
 .select:disabled {
-  --select_background-color: var(--body-secondary_background-color);
+  --select_background-color: var(--background_subtle);
 }
 .select.danger {
   --select_border-color: var(--danger-color);
@@ -334,8 +355,8 @@ body {
 
 .radio,
 .checkbox {
-  --choice_border-color: var(--border-color);
-  --choice_background-color: var(--body_background-color);
+  --choice_border-color: var(--border_default);
+  --choice_background-color: var(--background_default);
   --choice_background-color_checked: var(--priamry-color);
   --choice_border-color_checked: var(--priamry-color);
   --choice_vertical-align: top;
@@ -362,7 +383,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border-color: var(--border-color);
+  border-color: var(--choice_border-color);
   border-width: var(--border-width);
   border-style: var(--border-style);
   border-radius: var(--border-radius);
@@ -375,7 +396,7 @@ body {
 }
 .radio:disabled:not(:checked),
 .checkbox:disabled:not(:checked) {
-  --choice_background-color: var(--body-secondary_background-color);
+  --choice_background-color: var(--background_subtle);
 }
 .radio[type=checkbox],
 .checkbox[type=checkbox] {
@@ -420,7 +441,7 @@ body {
 }
 
 .range {
-  --slider-track_background-color: var(--border-color);
+  --slider-track_background-color: var(--border_default);
   --slider-thumb_background-color: var(--priamry-color);
   --slider-thumb_background-color_hover: var(--priamry-color_dark);
   --slider-thumb_background-color_focus: var(--priamry-color_darker);

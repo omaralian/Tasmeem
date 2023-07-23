@@ -15,27 +15,52 @@ $grey-800-color: #424242;
 $grey-900-color: #212121;
 
 /*
-Body
-Default color and background, including components.
+Foreground Default
+Primary color for text and icons in any given interface. It should be used for body content, titles and labels.
 */
-$body_color: $grey-900-color;
-$body_background-color: $grey-000-color;
+$foreground_default: $grey-900-color;
 
 /*
-Body Secondary
-Use the color option for lighter text. Use the bg option for dividers and to indicate disabled component states.
+Foreground Muted
+Use for content that is secondary or that provides additional context but is not critical to understanding the flow of an interface.
 */
-$body-secondary_color: $grey-700-color;
-$body-secondary_background-color: $grey-100-color;
-
-$body-tertiary_color: $grey-500-color;
-$body-tertiary_background-color: $grey-200-color;
+$foreground_muted: $grey-700-color;
 
 /*
-Border
-For component borders, dividers, and rules.
+Foreground Subtle
+Use for placeholder text, icons or decorative foregrounds.
 */
-$border_color: $grey-400-color;
+$foreground_subtle: $grey-500-color;
+
+/*
+Background Default
+Primary background color.
+*/
+$background_default: $grey-000-color;
+
+/*
+Background Subtle
+Provides visual rest and contrast against the default background.
+*/
+$background_subtle: $grey-100-color;
+
+/*
+Background Inset
+Can be used instead of the default background to create a focal point, such as in conversations or activity feeds.
+*/
+$background_inset: $grey-200-color;
+
+/*
+Border Default
+Use to create bounds around content, for example elements inside a card. Default borders are critical to understanding a page layout.
+*/
+$border_default: $grey-400-color;
+
+/*
+Border Muted
+Use for dividers to emphasize the separation between items, columns or sections.
+*/
+$border_muted: $grey-300-color;
 
 /*
 Primary

@@ -1,7 +1,7 @@
 .button {
 
     --button_color_contrast-text: var(--button_color);
-    --button_border-color: var(--border-color);
+    --button_border-color: var(--border_default);
 
     &.primary {
         --button_color: var(--priamry-color);

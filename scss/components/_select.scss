@@ -1,18 +1,18 @@
 .select {
     
-    --select_color: var(--body_color);
-    --select_border-color: var(--border-color);
-    --select_background-color: var(--body_background-color);
+    --select_color: var(--foreground_default);
+    --select_border-color: var(--border_default);
+    --select_background-color: var(--background_default);
 
     &:disabled {
-        --select_background-color: var(--body-secondary_background-color);
+        --select_background-color: var(--background_subtle);
     }
     
     &.danger {
         --select_border-color: var(--danger-color);
     }
     
-    --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#{encode-color($body-secondary_color)}' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
+    --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#{encode-color($foreground_default)}' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
     @media (prefers-color-scheme: dark) {
         --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
     }

@@ -1,14 +1,14 @@
 .radio,
 .checkbox {
     
-    --choice_border-color: var(--border-color);
-    --choice_background-color: var(--body_background-color);
+    --choice_border-color: var(--border_default);
+    --choice_background-color: var(--background_default);
     --choice_background-color_checked: var(--priamry-color);
     --choice_border-color_checked: var(--priamry-color);
 
     &:disabled {
         &:not(:checked) {
-            --choice_background-color: var(--body-secondary_background-color);
+            --choice_background-color: var(--background_subtle);
         }
     }
 
@@ -45,7 +45,7 @@
     background-position: center;
     background-size: contain;
 
-    border-color: var(--border-color);
+    border-color: var(--choice_border-color);
     border-width: var(--border-width);
     border-style: var(--border-style);
     border-radius: var(--border-radius);
