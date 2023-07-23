@@ -73,26 +73,26 @@ Border Muted
 Use for dividers to emphasize the separation between items, columns or sections.
 */
 :root {
-  --priamry-color: #2196F3;
-  --priamry-color_dark: #0c82df;
-  --priamry-color_darker: #0a6bb8;
+  --priamry-color: #3B82F6;
+  --priamry-color_dark: #1469f4;
+  --priamry-color_darker: #0a57d6;
   --priamry-color_contrast-text: #FAFAFA;
-  --secondary-color: #607D8B;
-  --secondary-color_dark: #4f6773;
-  --secondary-color_darker: #3f525b;
+  --secondary-color: #64748B;
+  --secondary-color_dark: #536073;
+  --secondary-color_darker: #424c5c;
   --secondary-color_contrast-text: #FAFAFA;
-  --danger-color: #F44336;
-  --danger-color_dark: #f21f0f;
-  --danger-color_darker: #cd180b;
+  --danger-color: #EF4444;
+  --danger-color_dark: #ec1e1e;
+  --danger-color_darker: #d01212;
   --danger-color_contrast-text: #FAFAFA;
-  --foreground_default: #212121;
-  --foreground_muted: #616161;
-  --foreground_subtle: #9E9E9E;
+  --foreground_default: #18181B;
+  --foreground_muted: #3F3F46;
+  --foreground_subtle: #71717A;
   --background_default: #FFFFFF;
-  --background_subtle: #F5F5F5;
-  --background_inset: #EEEEEE;
-  --border_default: #BDBDBD;
-  --border_muted: #E0E0E0;
+  --background_subtle: #F4F4F5;
+  --background_inset: #E4E4E7;
+  --border_default: #A1A1AA;
+  --border_muted: #D4D4D8;
   --state_hover: var(--background_inset);
   --state_active: var(--border_muted);
   --state_transition: .25s ease-in-out 0s;
@@ -124,13 +124,13 @@ Use for dividers to emphasize the separation between items, columns or sections.
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground_default: #FAFAFA;
-    --foreground_muted: #E0E0E0;
-    --foreground_subtle: #757575;
-    --background_default: #212121;
-    --background_subtle: #424242;
-    --background_inset: #616161;
-    --border_default: #757575;
-    --border_muted: #9E9E9E;
+    --foreground_muted: #D4D4D8;
+    --foreground_subtle: #52525B;
+    --background_default: #18181B;
+    --background_subtle: #27272A;
+    --background_inset: #3F3F46;
+    --border_default: #52525B;
+    --border_muted: #71717A;
   }
 }
 
@@ -343,7 +343,7 @@ body {
   --select_color: var(--foreground_default);
   --select_border-color: var(--border_default);
   --select_background-color: var(--background_default);
-  --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23212121' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
+  --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2318181B' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;

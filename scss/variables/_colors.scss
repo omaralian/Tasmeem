@@ -2,17 +2,41 @@
 
 // colors
 
+// $grey-000-color: #FFFFFF;
+// $grey-050-color: #FAFAFA;
+// $grey-100-color: #F5F5F5;
+// $grey-200-color: #EEEEEE;
+// $grey-300-color: #E0E0E0;
+// $grey-400-color: #BDBDBD;
+// $grey-500-color: #9E9E9E;
+// $grey-600-color: #757575;
+// $grey-700-color: #616161;
+// $grey-800-color: #424242;
+// $grey-900-color: #212121;
+
+// $grey-000-color: #FFFFFF;
+// $grey-050-color: #FAFAFA;
+// $grey-100-color: #F5F5F5;
+// $grey-200-color: #E5E5E5;
+// $grey-300-color: #D4D4D4;
+// $grey-400-color: #A3A3A3;
+// $grey-500-color: #737373;
+// $grey-600-color: #525252;
+// $grey-700-color: #404040;
+// $grey-800-color: #262626;
+// $grey-900-color: #171717;
+
 $grey-000-color: #FFFFFF;
 $grey-050-color: #FAFAFA;
-$grey-100-color: #F5F5F5;
-$grey-200-color: #EEEEEE;
-$grey-300-color: #E0E0E0;
-$grey-400-color: #BDBDBD;
-$grey-500-color: #9E9E9E;
-$grey-600-color: #757575;
-$grey-700-color: #616161;
-$grey-800-color: #424242;
-$grey-900-color: #212121;
+$grey-100-color: #F4F4F5;
+$grey-200-color: #E4E4E7;
+$grey-300-color: #D4D4D8;
+$grey-400-color: #A1A1AA;
+$grey-500-color: #71717A;
+$grey-600-color: #52525B;
+$grey-700-color: #3F3F46;
+$grey-800-color: #27272A;
+$grey-900-color: #18181B;
 
 /*
 Foreground Default
@@ -66,7 +90,7 @@ $border_muted: $grey-300-color;
 Primary
 Main theme color, used for hyperlinks, focus styles, and component and form active states.
 */
-$priamry-color: #2196F3; // 500
+$priamry-color: #3B82F6; // 500
 $priamry-color_contrast-text: color-contrast($priamry-color, $grey-050-color, $grey-900-color);
 $priamry-color_dark: darken($priamry-color, 8%); // #42A5F5; // 400
 $priamry-color_darker: darken($priamry-color, 16%); // 600
@@ -74,7 +98,7 @@ $priamry-color_darker: darken($priamry-color, 16%); // 600
 /*
 Secondary
 */
-$secondary-color: #607D8B; // 500
+$secondary-color: #64748B; // 500
 $secondary-color_contrast-text: color-contrast($secondary-color, $grey-050-color, $grey-900-color);
 $secondary-color_dark: darken($secondary-color, 8%); // 400
 $secondary-color_darker: darken($secondary-color, 16%); // 600
@@ -82,7 +106,7 @@ $secondary-color_darker: darken($secondary-color, 16%); // 600
 /*
 Danger
 */
-$danger-color: #F44336; // 500
+$danger-color: #EF4444; // 500
 $danger-color_contrast-text: color-contrast($danger-color, $grey-050-color, $grey-900-color);
 $danger-color_dark: darken($danger-color, 8%); // 400
 $danger-color_darker: darken($danger-color, 16%); // 600
