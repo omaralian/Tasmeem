@@ -78,13 +78,13 @@ $background_inset: $grey-200-color;
 Border Default
 Use to create bounds around content, for example elements inside a card. Default borders are critical to understanding a page layout.
 */
-$border_default: $grey-400-color;
+$border_default: $grey-300-color;
 
 /*
-Border Muted
-Use for dividers to emphasize the separation between items, columns or sections.
+Background State Changes
 */
-$border_muted: $grey-300-color;
+$state_hover: #{$grey-200-color};
+$state_active: #{$grey-300-color};
 
 /*
 Primary

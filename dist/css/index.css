@@ -27,8 +27,7 @@ Border Default
 Use to create bounds around content, for example elements inside a card. Default borders are critical to understanding a page layout.
 */
 /*
-Border Muted
-Use for dividers to emphasize the separation between items, columns or sections.
+Background State Changes
 */
 /*
 Primary
@@ -69,8 +68,7 @@ Border Default
 Use to create bounds around content, for example elements inside a card. Default borders are critical to understanding a page layout.
 */
 /*
-Border Muted
-Use for dividers to emphasize the separation between items, columns or sections.
+Background State Changes
 */
 :root {
   --priamry-color: #3B82F6;
@@ -91,10 +89,9 @@ Use for dividers to emphasize the separation between items, columns or sections.
   --background_default: #FFFFFF;
   --background_subtle: #F4F4F5;
   --background_inset: #E4E4E7;
-  --border_default: #A1A1AA;
-  --border_muted: #D4D4D8;
-  --state_hover: var(--background_inset);
-  --state_active: var(--border_muted);
+  --border_default: #D4D4D8;
+  --state_hover: #E4E4E7;
+  --state_active: #D4D4D8;
   --state_transition: .25s ease-in-out 0s;
   --button_color: var(--foreground_default);
   --button_background-color: var(--background_subtle);
@@ -130,7 +127,8 @@ Use for dividers to emphasize the separation between items, columns or sections.
     --background_subtle: #27272A;
     --background_inset: #3F3F46;
     --border_default: #52525B;
-    --border_muted: #71717A;
+    --state_hover: #3F3F46;
+    --state_active: #52525B;
   }
 }
 
@@ -253,7 +251,6 @@ body {
   --input_border-color: var(--border_default);
   --input_background-color: var(--background_default);
   --placeholder_color: var(--foreground_subtle);
-  --input_file-selector-button_border-color: var(--border_muted);
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -300,8 +297,8 @@ body {
   background-color: var(--button_background-color);
   border-width: inherit;
   border-style: inherit;
-  border-color: var(--input_file-selector-button_border-color);
-  transition: var(--button_transition);
+  border-color: inherit;
+  transition: var(--state_transition);
 }
 .input[type=file]:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: var(--button_background-color_hover);

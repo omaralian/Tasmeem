@@ -4,7 +4,6 @@
     --input_border-color: var(--border_default);
     --input_background-color: var(--background_default);
     --placeholder_color: var(--foreground_subtle);
-    --input_file-selector-button_border-color: var(--border_muted);
 
     &:disabled {
         --input_background-color: var(--background_subtle);
@@ -72,10 +71,9 @@
 
             border-width: inherit;
             border-style: inherit;
-            // border-radius: var(--border-radius);
-            border-color: var(--input_file-selector-button_border-color);
+            border-color: inherit;
 
-            transition: var(--button_transition);
+            transition: var(--state_transition);
         }
 
         &:hover:not(:disabled):not([readonly])::file-selector-button {

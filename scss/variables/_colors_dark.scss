@@ -16,6 +16,8 @@ Use for placeholder text, icons or decorative foregrounds.
 */
 $foreground_subtle_dark: $grey-600-color;
 
+
+
 /*
 Background Default
 Primary background color.
@@ -40,9 +42,11 @@ Use to create bounds around content, for example elements inside a card. Default
 */
 $border_default_dark: $grey-600-color;
 
+
+
 /*
-Border Muted
-Use for dividers to emphasize the separation between items, columns or sections.
+Background State Changes
 */
-$border_muted_dark: $grey-500-color;
+$state_hover_dark: #{$grey-700-color};
+$state_active_dark: #{$grey-600-color};
 

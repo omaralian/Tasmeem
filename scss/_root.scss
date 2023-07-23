@@ -24,10 +24,9 @@
     --background_inset: #{$background_inset};
 
     --border_default: #{$border_default};
-    --border_muted: #{$border_muted};
 
-    --state_hover: var(--background_inset);
-    --state_active: var(--border_muted);
+    --state_hover: #{$state_hover};
+    --state_active: #{$state_active};
     --state_transition: .25s ease-in-out 0s;
 
     --button_color: var(--foreground_default);
@@ -46,7 +45,9 @@
         --background_inset: #{$background_inset_dark};
 
         --border_default: #{$border_default_dark};
-        --border_muted: #{$border_muted_dark};
+
+        --state_hover: #{$state_hover_dark};
+        --state_active: #{$state_active_dark};
     }
 
     // outline color based on primary color
