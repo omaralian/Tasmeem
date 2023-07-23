@@ -37,14 +37,16 @@
 
     @media (prefers-color-scheme: dark) {
 
-        --body_color: #FAFAFA;
-        --body_background-color: #212121;
+        --foreground_default: #{$foreground_default_dark};
+        --foreground_muted: #{$foreground_muted_dark};
+        --foreground_subtle: #{$foreground_subtle_dark};
 
-        // --border-color: var(--grey-700-color);
+        --background_default: #{$background_default_dark};
+        --background_subtle: #{$background_subtle_dark};
+        --background_inset: #{$background_inset_dark};
 
-        // --default-button_background-color: var(--grey-700-color);
-
-        // --placeholder_color: var(--grey-700-color);
+        --border_default: #{$border_default_dark};
+        --border_muted: #{$border_muted_dark};
     }
 
     // outline color based on primary color

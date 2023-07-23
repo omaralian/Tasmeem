@@ -40,6 +40,38 @@ Secondary
 /*
 Danger
 */
+/*
+Foreground Default
+Primary color for text and icons in any given interface. It should be used for body content, titles and labels.
+*/
+/*
+Foreground Muted
+Use for content that is secondary or that provides additional context but is not critical to understanding the flow of an interface.
+*/
+/*
+Foreground Subtle
+Use for placeholder text, icons or decorative foregrounds.
+*/
+/*
+Background Default
+Primary background color.
+*/
+/*
+Background Subtle
+Provides visual rest and contrast against the default background.
+*/
+/*
+Background Inset
+Can be used instead of the default background to create a focal point, such as in conversations or activity feeds.
+*/
+/*
+Border Default
+Use to create bounds around content, for example elements inside a card. Default borders are critical to understanding a page layout.
+*/
+/*
+Border Muted
+Use for dividers to emphasize the separation between items, columns or sections.
+*/
 :root {
   --priamry-color: #2196F3;
   --priamry-color_dark: #0c82df;
@@ -91,8 +123,14 @@ Danger
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --body_color: #FAFAFA;
-    --body_background-color: #212121;
+    --foreground_default: #FAFAFA;
+    --foreground_muted: #E0E0E0;
+    --foreground_subtle: #757575;
+    --background_default: #212121;
+    --background_subtle: #424242;
+    --background_inset: #616161;
+    --border_default: #757575;
+    --border_muted: #9E9E9E;
   }
 }
 
