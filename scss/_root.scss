@@ -26,11 +26,14 @@
     --border_default: #{$border_default};
     --border_muted: #{$border_muted};
 
+    --state_hover: var(--background_inset);
+    --state_active: var(--border_muted);
+    --state_transition: .25s ease-in-out 0s;
+
     --button_color: var(--foreground_default);
-    --button_background-color: var(--background_default);
-    --button_background-color_hover: var(--background_subtle);
-    --button_background-color_active: var(--background_inset);
-    --button_transition: .25s ease-in-out 0s;
+    --button_background-color: var(--background_subtle);
+    --button_background-color_hover: var(--state_hover);
+    --button_background-color_active: var(--state_active);
 
     @media (prefers-color-scheme: dark) {
 

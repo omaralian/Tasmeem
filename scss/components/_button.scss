@@ -66,8 +66,8 @@
     outline-offset: var(--outline-offset);
 
     transition:
-        color var(--button_transition),
-        background-color var(--button_transition),
+        color var(--state_transition),
+        background-color var(--state_transition),
         border-color var(--border-color_transition),
         outline-color var(--outline-color_transition);
 
