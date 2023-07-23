@@ -41,8 +41,8 @@ Danger
   --body-tertiary_background-color: #EEEEEE;
   --border-color: #BDBDBD;
   --button_color: var(--body_color);
-  --button_background-color: var(--body-tertiary_background-color);
-  --button_background-color_hover: var(--body-tertiary_background-color);
+  --button_background-color: var(--body_background-color);
+  --button_background-color_hover: var(--body-secondary_background-color);
   --button_background-color_active: var(--body-tertiary_background-color);
   --button_transition: .15s ease-in-out 0s;
   --outline-color: var(--priamry-color);
