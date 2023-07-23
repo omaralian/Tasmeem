@@ -260,7 +260,7 @@ body {
   --select_color: var(--body_color);
   --select_border-color: var(--border-color);
   --select_background-color: var(--body_background-color);
-  --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
+  --select_background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23616161' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 10 12 16 6 10'></polyline></svg>");
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
