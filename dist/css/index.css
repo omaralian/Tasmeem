@@ -196,9 +196,10 @@ body {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-  display: inline-flex;
+  display: inline-block;
   appearance: none;
   width: 100%;
+  height: auto;
   margin: 0;
   padding: var(--padding-y) var(--padding-x);
   border-width: var(--border-width);
@@ -229,7 +230,7 @@ body {
 .input::placeholder {
   color: var(--placeholder_color);
 }
-.input::file-selector-button {
+.input[type=file]::file-selector-button {
   padding: 1rem;
   margin: -1rem;
   margin-inline-end: var(--padding-x);
@@ -240,11 +241,31 @@ body {
   border-color: inherit;
   transition: var(--button_transition);
 }
-.input:hover:not(:disabled):not([readonly])::file-selector-button {
+.input[type=file]:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: var(--button_background-color_hover);
+  cursor: pointer;
 }
-.input:active:not(:disabled):not([readonly])::file-selector-button {
+.input[type=file]:active:not(:disabled):not([readonly])::file-selector-button {
   background-color: var(--button_background-color_active);
+}
+.input[type=color] {
+  padding: 0.125rem;
+}
+.input[type=color]::-webkit-color-swatch-wrapper {
+  margin: 0;
+  padding: 0;
+}
+.input[type=color]::-webkit-color-swatch {
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  border-radius: calc(var(--border-radius) - 0.125rem);
+}
+.input[type=color]::-moz-color-swatch {
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  border-radius: calc(var(--border-radius) - 0.125rem);
 }
 .input::-webkit-calendar-picker-indicator {
   filter: invert(50%);

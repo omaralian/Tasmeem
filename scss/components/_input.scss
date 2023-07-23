@@ -20,9 +20,10 @@
     font-weight: inherit;
     line-height: inherit;
 
-    display: inline-flex;
+    display: inline-block;
     appearance: none;
     width: 100%;
+    height: auto;
 
     // https://8yd.no/article/date-input-height-in-safari
     &::-webkit-datetime-edit {
@@ -59,28 +60,55 @@
     border-color: var(--input_border-color);
     background-color: var(--input_background-color);
 
-    // File input buttons theming
-    &::file-selector-button {
-        padding: 1rem;
-        margin: -1rem;
-        margin-inline-end: var(--padding-x);
-        color: var(--button_color);
-        background-color: var(--button_background-color);
+    &[type="file"] {
 
-        border-width: inherit;
-        border-style: inherit;
-        // border-radius: var(--border-radius);
-        border-color: inherit;
+        &::file-selector-button {
+            padding: 1rem;
+            margin: -1rem;
+            margin-inline-end: var(--padding-x);
+            color: var(--button_color);
+            background-color: var(--button_background-color);
 
-        transition: var(--button_transition);
+            border-width: inherit;
+            border-style: inherit;
+            // border-radius: var(--border-radius);
+            border-color: inherit;
+
+            transition: var(--button_transition);
+        }
+
+        &:hover:not(:disabled):not([readonly])::file-selector-button {
+            background-color: var(--button_background-color_hover);
+            cursor: pointer;
+        }
+
+        &:active:not(:disabled):not([readonly])::file-selector-button {
+            background-color: var(--button_background-color_active);
+        }
+
     }
 
-    &:hover:not(:disabled):not([readonly])::file-selector-button {
-        background-color: var(--button_background-color_hover);
-    }
+    &[type="color"] {
+        padding: .125rem;
+        
+        &::-webkit-color-swatch-wrapper {
+            margin: 0;
+            padding: 0;
+        }
 
-    &:active:not(:disabled):not([readonly])::file-selector-button {
-        background-color: var(--button_background-color_active);
+        &::-webkit-color-swatch {
+            margin: 0;
+            padding: 1rem;
+            border: none;
+            border-radius: calc(var(--border-radius) - .125rem);
+        }
+
+        &::-moz-color-swatch {
+            margin: 0;
+            padding: 1rem;
+            border: none;
+            border-radius: calc(var(--border-radius) - .125rem);
+        }
     }
 
     &::-webkit-calendar-picker-indicator {
