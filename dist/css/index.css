@@ -72,16 +72,16 @@ Background State Changes
 */
 :root {
   --priamry-color: #3B82F6;
-  --priamry-color_dark: #1469f4;
-  --priamry-color_darker: #0a57d6;
+  --priamry-color_dark: #1e6ff5;
+  --priamry-color_darker: #0b5fe9;
   --priamry-color_contrast-text: #FAFAFA;
   --secondary-color: #64748B;
-  --secondary-color_dark: #536073;
-  --secondary-color_darker: #424c5c;
+  --secondary-color_dark: #576579;
+  --secondary-color_darker: #4a5667;
   --secondary-color_contrast-text: #FAFAFA;
   --danger-color: #EF4444;
-  --danger-color_dark: #ec1e1e;
-  --danger-color_darker: #d01212;
+  --danger-color_dark: #ed2828;
+  --danger-color_darker: #e21313;
   --danger-color_contrast-text: #FAFAFA;
   --foreground_default: #18181B;
   --foreground_muted: #3F3F46;

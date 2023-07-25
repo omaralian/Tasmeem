@@ -92,22 +92,22 @@ Main theme color, used for hyperlinks, focus styles, and component and form acti
 */
 $priamry-color: #3B82F6; // 500
 $priamry-color_contrast-text: color-contrast($priamry-color, $grey-050-color, $grey-900-color);
-$priamry-color_dark: darken($priamry-color, 8%); // #42A5F5; // 400
-$priamry-color_darker: darken($priamry-color, 16%); // 600
+$priamry-color_dark: darken($priamry-color, 6%); // #42A5F5; // 400
+$priamry-color_darker: darken($priamry-color, 12%); // 600
 
 /*
 Secondary
 */
 $secondary-color: #64748B; // 500
 $secondary-color_contrast-text: color-contrast($secondary-color, $grey-050-color, $grey-900-color);
-$secondary-color_dark: darken($secondary-color, 8%); // 400
-$secondary-color_darker: darken($secondary-color, 16%); // 600
+$secondary-color_dark: darken($secondary-color, 6%); // 400
+$secondary-color_darker: darken($secondary-color, 12%); // 600
 
 /*
 Danger
 */
 $danger-color: #EF4444; // 500
 $danger-color_contrast-text: color-contrast($danger-color, $grey-050-color, $grey-900-color);
-$danger-color_dark: darken($danger-color, 8%); // 400
-$danger-color_darker: darken($danger-color, 16%); // 600
+$danger-color_dark: darken($danger-color, 6%); // 400
+$danger-color_darker: darken($danger-color, 12%); // 600
 
