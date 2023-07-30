@@ -1,0 +1,17 @@
+.input-group {
+
+    display: flex;
+    
+    & > *:nth-child(n):not(:nth-last-child(1)) {
+        border-end-end-radius: 0px 0px;
+        border-start-end-radius: 0px 0px;
+
+        margin-inline-end: -1px;
+    }
+
+    & > *:nth-last-child(n):not(:nth-child(1)) {
+        border-end-start-radius: 0px 0px;
+        border-start-start-radius: 0px 0px;
+    }
+
+}

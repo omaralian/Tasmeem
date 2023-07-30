@@ -285,6 +285,7 @@ body {
 }
 .input:focus-visible:not(:disabled) {
   outline-color: var(--outline-color);
+  z-index: 1;
 }
 .input::placeholder {
   color: var(--placeholder_color);
@@ -554,6 +555,19 @@ body {
 .range:focus:not(:disabled)::-moz-range-thumb {
   outline-color: var(--outline-color);
   background-color: var(--slider-thumb_background-color_focus);
+}
+
+.input-group {
+  display: flex;
+}
+.input-group > *:nth-child(n):not(:nth-last-child(1)) {
+  border-end-end-radius: 0px 0px;
+  border-start-end-radius: 0px 0px;
+  margin-inline-end: -1px;
+}
+.input-group > *:nth-last-child(n):not(:nth-child(1)) {
+  border-end-start-radius: 0px 0px;
+  border-start-start-radius: 0px 0px;
 }
 
 /*# sourceMappingURL=index.css.map */

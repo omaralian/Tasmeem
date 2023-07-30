@@ -45,6 +45,7 @@
 
     &:focus-visible:not(:disabled) {
         outline-color: var(--outline-color);
+        z-index: 1;
     }
     
     transition:
