@@ -63,7 +63,7 @@
   --button-bg-active:     var(--color-success-active);
   --button-color:         var(--color-on-success);
   --button-outline-color: var(--color-success);
-  --focus-ring-color:     hsl(var(--success-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+  --focus-ring-color:     oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.5);
 }
 
 .btn--danger {
@@ -72,7 +72,7 @@
   --button-bg-active:     var(--color-danger-active);
   --button-color:         var(--color-on-danger);
   --button-outline-color: var(--color-danger);
-  --focus-ring-color:     hsl(var(--danger-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+  --focus-ring-color:     oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.5);
 }
 
 .btn--warning {
@@ -81,7 +81,7 @@
   --button-bg-active:     var(--color-warning-active);
   --button-color:         var(--color-on-warning);
   --button-outline-color: var(--color-warning);
-  --focus-ring-color:     hsl(var(--warning-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+  --focus-ring-color:     oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.5);
 }
 
 .btn--info {
@@ -90,5 +90,5 @@
   --button-bg-active:     var(--color-info-active);
   --button-color:         var(--color-on-info);
   --button-outline-color: var(--color-info);
-  --focus-ring-color:     hsl(var(--info-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+  --focus-ring-color:     oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.5);
 }

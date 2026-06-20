@@ -27,7 +27,7 @@
   --link-color-hover: var(--color-primary-hover);
 
   /* Focus ring */
-  --focus-ring-color:  hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+  --focus-ring-color:  oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.5);
   --focus-ring-width:  3px;
   --focus-ring-offset: 2px;
 

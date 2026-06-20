@@ -7,20 +7,21 @@
  * change between themes.
  */
 
-/* Manual override. :root[data-theme="dark"] (0,2,0) beats base :root (0,1,0). */
+/* Manual override. :root[data-theme="dark"] (0,2,0) beats base :root (0,1,0).
+ * Only the surface (and shadow) flip: the brand/status fills are self-contained
+ * buttons that already pass contrast on their own, so leaving --brand-l at its
+ * base value keeps every button at full WCAG AA in dark mode too. */
 :root[data-theme="dark"] {
-  --brand-lightness: 62%;
-  --surface-saturation: 14%;
-  --surface-lightness: 12%;
+  --surface-c: 0.02;
+  --surface-l: 0.18;
   --shadow-strength: 2.4;
 }
 
 /* Automatic dark, unless the page explicitly opted into light. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --brand-lightness: 62%;
-    --surface-saturation: 14%;
-    --surface-lightness: 12%;
+    --surface-c: 0.02;
+    --surface-l: 0.18;
     --shadow-strength: 2.4;
   }
 }

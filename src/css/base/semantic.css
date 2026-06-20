@@ -2,51 +2,79 @@
  * SEMANTIC TOKENS — derived from the base tokens in tokens.css.
  *
  * Don't edit these directly; change the base tokens instead. Colors are
- * expressed as HSL channels so variants come from calc() on lightness/
- * saturation, and surface-based tokens (text/muted/border) auto-invert when
- * --surface-lightness flips between light and dark themes.
+ * expressed as OKLCH channels so variants come from calc() on lightness/
+ * chroma, and every foreground (text on a colored fill, or on a neutral
+ * surface) is computed by the AUTO-CONTRAST ENGINE below rather than guessed.
+ *
+ * Auto-contrast engine
+ * --------------------
+ * OKLCH lightness is perceptual, so "is this background light or dark?" is just
+ * a comparison of its L against --contrast-threshold. The 2-line pattern
+ *
+ *     --_on-<x>-l: clamp(0.15, calc((var(--contrast-threshold) - <bg L>) * 100), 0.98);
+ *     --color-on-<x>: oklch(var(--_on-<x>-l) 0 0);
+ *
+ * is a sharp switch: the `* 100` saturates the result so it lands on the lower
+ * clamp bound (0.15, near-black) when the background is light, or the upper
+ * bound (0.98, near-white) when it's dark. No per-hue bias is needed — the
+ * engine reads each color's real L. Reuse this pattern for any new colored
+ * component (badge, alert, chip): give it a real OKLCH L, then derive its
+ * on-color the same way.
  */
 :root {
   /* Brand / primary */
-  --color-primary:        hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
-  --color-primary-hover:  hsl(var(--brand-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
-  --color-primary-active: hsl(var(--brand-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
-  --color-primary-muted:  hsl(var(--brand-hue) calc(var(--brand-saturation) - 20%) calc(var(--brand-lightness) + 34%));
-  --color-on-primary:     hsl(var(--brand-hue) 25% 98%);
+  --color-primary:        oklch(var(--brand-l) var(--brand-c) var(--brand-h));
+  --color-primary-hover:  oklch(calc(var(--brand-l) - 0.06) var(--brand-c) var(--brand-h));
+  --color-primary-active: oklch(calc(var(--brand-l) - 0.12) var(--brand-c) var(--brand-h));
+  --color-primary-muted:  oklch(calc(var(--brand-l) + 0.30) calc(var(--brand-c) - 0.10) var(--brand-h));
+  --_on-primary-l: clamp(0.15, calc((var(--contrast-threshold) - var(--brand-l)) * 100), 0.98);
+  --color-on-primary:     oklch(var(--_on-primary-l) 0 0);
 
-  /* Status colors — same derivation as primary, keyed off each status hue.
-     Saturation/lightness reuse the brand seed so statuses brighten in dark
-     mode for free (themes.css raises --brand-lightness). */
-  --color-success:        hsl(var(--success-hue) var(--brand-saturation) var(--brand-lightness));
-  --color-success-hover:  hsl(var(--success-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
-  --color-success-active: hsl(var(--success-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
-  --color-on-success:     var(--color-on-primary);
+  /* Status colors — each gets a real perceptual lightness via an offset from
+     --brand-l (so they brighten for free in dark mode, where themes.css raises
+     --brand-l) and reuses the brand chroma. The contrast engine then picks each
+     foreground automatically, including amber's dark text. */
+  --success-l: calc(var(--brand-l) + 0.15);
+  --warning-l: calc(var(--brand-l) + 0.25);  /* amber sits high => dark text */
+  --danger-l:  var(--brand-l);
+  --info-l:    calc(var(--brand-l) + 0.16);  /* light cyan => dark text */
 
-  --color-danger:         hsl(var(--danger-hue) var(--brand-saturation) var(--brand-lightness));
-  --color-danger-hover:   hsl(var(--danger-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
-  --color-danger-active:  hsl(var(--danger-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
-  --color-on-danger:      var(--color-on-primary);
+  --color-success:        oklch(var(--success-l) var(--brand-c) var(--success-h));
+  --color-success-hover:  oklch(calc(var(--success-l) - 0.06) var(--brand-c) var(--success-h));
+  --color-success-active: oklch(calc(var(--success-l) - 0.12) var(--brand-c) var(--success-h));
+  --_on-success-l: clamp(0.15, calc((var(--contrast-threshold) - var(--success-l)) * 100), 0.98);
+  --color-on-success:     oklch(var(--_on-success-l) 0 0);
 
-  --color-info:           hsl(var(--info-hue) var(--brand-saturation) var(--brand-lightness));
-  --color-info-hover:     hsl(var(--info-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
-  --color-info-active:    hsl(var(--info-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
-  --color-on-info:        var(--color-on-primary);
+  --color-danger:         oklch(var(--danger-l) var(--brand-c) var(--danger-h));
+  --color-danger-hover:   oklch(calc(var(--danger-l) - 0.06) var(--brand-c) var(--danger-h));
+  --color-danger-active:  oklch(calc(var(--danger-l) - 0.12) var(--brand-c) var(--danger-h));
+  --_on-danger-l: clamp(0.15, calc((var(--contrast-threshold) - var(--danger-l)) * 100), 0.98);
+  --color-on-danger:      oklch(var(--_on-danger-l) 0 0);
 
-  --color-warning:        hsl(var(--warning-hue) var(--brand-saturation) var(--brand-lightness));
-  --color-warning-hover:  hsl(var(--warning-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
-  --color-warning-active: hsl(var(--warning-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
-  --color-on-warning:     hsl(var(--warning-hue) 35% 18%);  /* dark text — amber can't carry near-white */
+  --color-info:           oklch(var(--info-l) var(--brand-c) var(--info-h));
+  --color-info-hover:     oklch(calc(var(--info-l) - 0.06) var(--brand-c) var(--info-h));
+  --color-info-active:    oklch(calc(var(--info-l) - 0.12) var(--brand-c) var(--info-h));
+  --_on-info-l: clamp(0.15, calc((var(--contrast-threshold) - var(--info-l)) * 100), 0.98);
+  --color-on-info:        oklch(var(--_on-info-l) 0 0);
 
-  /* Surfaces / neutrals (auto-invert via --surface-lightness) */
-  --_text-lightness: clamp(0%, calc(96% - var(--surface-lightness) * 0.9), 100%);
-  --color-bg:      hsl(var(--surface-hue) var(--surface-saturation) var(--surface-lightness));
-  --color-surface: hsl(var(--surface-hue) var(--surface-saturation)
-                       calc(var(--surface-lightness) + (var(--_text-lightness) - var(--surface-lightness)) * 0.05));
-  --color-border:  hsl(var(--surface-hue) var(--surface-saturation)
-                       calc(var(--surface-lightness) + (var(--_text-lightness) - var(--surface-lightness)) * 0.14));
-  --color-text:    hsl(var(--surface-hue) calc(var(--surface-saturation) + 6%) var(--_text-lightness));
-  --color-muted:   hsl(var(--surface-hue) var(--surface-saturation)
-                       calc((var(--_text-lightness) + var(--surface-lightness)) / 2));
+  --color-warning:        oklch(var(--warning-l) var(--brand-c) var(--warning-h));
+  --color-warning-hover:  oklch(calc(var(--warning-l) - 0.06) var(--brand-c) var(--warning-h));
+  --color-warning-active: oklch(calc(var(--warning-l) - 0.12) var(--brand-c) var(--warning-h));
+  --_on-warning-l: clamp(0.15, calc((var(--contrast-threshold) - var(--warning-l)) * 100), 0.98);
+  --color-on-warning:     oklch(var(--_on-warning-l) 0 0);
+
+  /* Surfaces / neutrals — same contrast engine, keyed off --surface-l, so text
+     auto-inverts between light and dark themes and stays readable even at
+     mid-range surface lightness. */
+  --_on-surface-l: clamp(0.15, calc((var(--contrast-threshold) - var(--surface-l)) * 100), 0.98);
+  --color-bg:      oklch(var(--surface-l) var(--surface-c) var(--surface-h));
+  --color-surface: oklch(calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.05)
+                         var(--surface-c) var(--surface-h));
+  --color-border:  oklch(calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.14)
+                         var(--surface-c) var(--surface-h));
+  --color-text:    oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h));
+  --color-muted:   oklch(calc((var(--_on-surface-l) + var(--surface-l)) / 2)
+                         var(--surface-c) var(--surface-h));  /* mid-tone secondary text */
 
   /* Spacing (existing sm/md/lg values preserved; extra steps added) */
   --space-2xs: calc(0.25rem  * var(--spacing-scale));
@@ -90,8 +118,8 @@
       box-shadow var(--duration-fast) var(--ease-standard);
 
   /* Shadows (--shadow-strength 0 => invisible) */
-  --_shadow-channels: var(--surface-hue) calc(var(--surface-saturation) + 10%) 12%;
-  --shadow-sm: 0 1px 2px 0 hsl(var(--_shadow-channels) / calc(0.12 * var(--shadow-strength)));
-  --shadow-md: 0 4px 12px -2px hsl(var(--_shadow-channels) / calc(0.16 * var(--shadow-strength)));
-  --shadow-lg: 0 12px 28px -4px hsl(var(--_shadow-channels) / calc(0.20 * var(--shadow-strength)));
+  --_shadow-channels: 0.18 0.03 var(--surface-h);
+  --shadow-sm: 0 1px 2px 0 oklch(var(--_shadow-channels) / calc(0.12 * var(--shadow-strength)));
+  --shadow-md: 0 4px 12px -2px oklch(var(--_shadow-channels) / calc(0.16 * var(--shadow-strength)));
+  --shadow-lg: 0 12px 28px -4px oklch(var(--_shadow-channels) / calc(0.20 * var(--shadow-strength)));
 }

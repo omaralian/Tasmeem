@@ -5,26 +5,38 @@
  * semantic and component token is derived from these few values, so changing
  * a handful here re-themes everything. See semantic.css for the derivations
  * and themes.css for the light/dark overrides.
+ *
+ * Colors are OKLCH channels: L = lightness 0–1 (perceptually uniform),
+ * C = chroma 0–~0.4 (0 = gray), H = hue angle 0–360. Lightness is stored
+ * unitless so the auto-contrast switch in semantic.css can do math on it.
+ * NOTE: OKLCH hue angles are NOT the same as HSL hues.
  */
 :root {
-  /* Brand seed — drives all primary/accent colors. */
-  --brand-hue: 220;
-  --brand-saturation: 80%;
-  --brand-lightness: 55%;
+  /* Brand seed — drives all primary/accent colors. Chroma kept ~0.13 so every
+     hue stays inside sRGB across the lightness range. */
+  --brand-h: 258;
+  --brand-c: 0.13;
+  --brand-l: 0.55;
 
   /* Surface/neutral seed — drives backgrounds, borders, and text. */
-  --surface-hue: 220;
-  --surface-saturation: 15%;
-  --surface-lightness: 100%;
+  --surface-h: 258;
+  --surface-c: 0.01;
+  --surface-l: 1;
 
-  /* Status hues — semantic state colors share the brand saturation/lightness. */
-  --success-hue: 145;
-  --warning-hue:  40;
-  --danger-hue:    0;
-  --info-hue:    205;
+  /* Status hues — semantic state colors share the brand chroma and derive
+     their lightness from --brand-l (see the --*-l offsets in semantic.css). */
+  --success-h: 152;
+  --warning-h:  75;
+  --danger-h:   27;
+  --info-h:    232;
+
+  /* Auto-contrast threshold — a background whose OKLCH lightness is below this
+     gets light text, above it gets dark text. The one knob that tunes how the
+     contrast engine (semantic.css) splits light vs. dark foregrounds. */
+  --contrast-threshold: 0.65;
 
   /* Unitless scale multipliers (1 = default). */
-  --font-scale: 1;
+  --font-scale: 0.875;
   --spacing-scale: 1;
   --radius-scale: 1;
 
