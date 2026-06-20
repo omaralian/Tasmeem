@@ -47,6 +47,11 @@
   color: var(--button-color);
 }
 
+.btn--outline:not(:disabled):not(.btn--disabled):active {
+  background-color: var(--button-bg-active);
+  color: var(--button-color);
+}
+
 /* Status variants — re-point the button's color tokens only. --focus-ring-color
    is overridden too so the global focus ring (reset.css) matches the variant. */
 .btn--secondary {
