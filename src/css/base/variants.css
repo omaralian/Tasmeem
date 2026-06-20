@@ -40,13 +40,10 @@
  */
 
 /* Neutral / default foundation — seeded on :root so it inherits everywhere and
-   is the fallback whenever no variant class is present. `.neutral`/`.secondary`
-   re-assert it explicitly (e.g. to force neutral inside a variant-colored
-   container). */
+   is the fallback whenever no variant class is present. `.neutral` re-asserts it
+   explicitly (e.g. to force neutral inside a variant-colored container). */
 :root,
-.neutral,
-.secondary,
-.btn--secondary {
+.neutral {
   --variant-bg:        var(--color-surface);
   --variant-bg-hover:  var(--color-border);
   --variant-bg-active: var(--color-muted);

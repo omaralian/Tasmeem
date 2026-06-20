@@ -74,7 +74,7 @@
                          var(--surface-c) var(--surface-h));
   --color-text:    oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h));
   --color-muted:   oklch(calc((var(--_on-surface-l) + var(--surface-l)) / 2)
-                         var(--surface-c) var(--surface-h));  /* mid-tone secondary text */
+                         var(--surface-c) var(--surface-h));  /* mid-tone de-emphasized text */
 
   /* Spacing (existing sm/md/lg values preserved; extra steps added) */
   --space-2xs: calc(0.25rem  * var(--spacing-scale));
