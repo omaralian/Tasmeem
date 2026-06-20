@@ -1,15 +1,25 @@
 /* Button component.
  *
- * The base rules below consume only --button-* tokens, so a status variant is
- * just a re-pointing of those tokens (see the .btn--* blocks). Hover/active are
- * gated to enabled buttons; disabled re-skins to neutral tokens uniformly. */
+ * Color comes entirely from the framework VARIANT role tokens (--variant-*, see
+ * variants.css), so every variant works here with zero per-variant code — the
+ * default `.btn` is the neutral foundation, and `.btn primary`, `.btn success`,
+ * `.btn danger` … recolor automatically.
+ *
+ * STYLE is separate from variant. The three style rules below are the only
+ * button-specific variant code and they are ADDITIVE (one rule each, not one per
+ * variant x style combo), so they compose with any variant:
+ *   solid   (default)  -> `.btn`            fills with --variant-bg
+ *   outline `.outline`  -> `.btn outline`    bordered, fills on hover
+ *   ghost   `.ghost`    -> `.btn ghost`      bare, faint tint on hover
+ * e.g. `.btn danger outline`, `.btn success ghost`. The `.btn--*` forms are
+ * legacy aliases. Layout-only tokens stay as --button-* (component-tokens.css). */
 .btn {
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
-  border: var(--button-border-width) solid var(--button-border-color);
+  border: var(--button-border-width) solid var(--variant-border);
   border-radius: var(--button-radius);
-  background-color: var(--button-bg);
-  color: var(--button-color);
+  background-color: var(--variant-bg);
+  color: var(--variant-fg);
   font-weight: var(--button-font-weight);
   line-height: var(--button-line-height);
   cursor: pointer;
@@ -17,15 +27,20 @@
 }
 
 .btn:not(:disabled):not(.btn--disabled):hover {
-  background-color: var(--button-bg-hover);
-  color: var(--button-color);
+  background-color: var(--variant-bg-hover);
+  border-color: var(--variant-bg-hover);
+  color: var(--variant-fg);
   text-decoration: none;
 }
 
 .btn:not(:disabled):not(.btn--disabled):active {
-  background-color: var(--button-bg-active);
+  background-color: var(--variant-bg-active);
+  border-color: var(--variant-bg-active);
+  color: var(--variant-fg);
 }
 
+/* Disabled re-skins to neutral tokens uniformly, regardless of variant or style.
+   Gating the style rules below with :not(:disabled) lets this win for them too. */
 .btn:disabled,
 .btn--disabled {
   background-color: var(--button-bg-disabled);
@@ -34,67 +49,46 @@
   cursor: not-allowed;
 }
 
-/* Outline modifier — reads --button-outline-color, so it composes with any
-   status variant (e.g. .btn--danger.btn--outline). */
-.btn--outline {
+/* Outline style — bordered with the variant accent, fills with the variant on
+   hover/active. Reads only --variant-* so it borrows whatever variant is set. */
+.btn.outline:not(:disabled):not(.btn--disabled),
+.btn--outline:not(:disabled):not(.btn--disabled) {
   background-color: transparent;
-  border-color: var(--button-outline-color);
-  color: var(--button-outline-color);
+  border-color: var(--variant-color);
+  color: var(--variant-color);
 }
 
+.btn.outline:not(:disabled):not(.btn--disabled):hover,
 .btn--outline:not(:disabled):not(.btn--disabled):hover {
-  background-color: var(--button-outline-color);
-  color: var(--button-color);
+  background-color: var(--variant-bg-hover);
+  border-color: var(--variant-bg-hover);
+  color: var(--variant-fg);
 }
 
+.btn.outline:not(:disabled):not(.btn--disabled):active,
 .btn--outline:not(:disabled):not(.btn--disabled):active {
-  background-color: var(--button-bg-active);
-  color: var(--button-color);
+  background-color: var(--variant-bg-active);
+  border-color: var(--variant-bg-active);
+  color: var(--variant-fg);
 }
 
-/* Status variants — re-point the button's color tokens only. --focus-ring-color
-   is overridden too so the global focus ring (reset.css) matches the variant. */
-.btn--secondary {
-  --button-bg:            var(--color-surface);
-  --button-bg-hover:      var(--color-border);
-  --button-bg-active:     var(--color-muted);
-  --button-color:         var(--color-text);
-  --button-border-color:  var(--color-border);
-  --button-outline-color: var(--color-border);
+/* Ghost style — no fill or border at rest, faint variant tint on hover/active. */
+.btn.ghost:not(:disabled):not(.btn--disabled),
+.btn--ghost:not(:disabled):not(.btn--disabled) {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--variant-color);
 }
 
-.btn--success {
-  --button-bg:            var(--color-success);
-  --button-bg-hover:      var(--color-success-hover);
-  --button-bg-active:     var(--color-success-active);
-  --button-color:         var(--color-on-success);
-  --button-outline-color: var(--color-success);
-  --focus-ring-color:     oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.5);
+.btn.ghost:not(:disabled):not(.btn--disabled):hover,
+.btn--ghost:not(:disabled):not(.btn--disabled):hover {
+  background-color: var(--variant-soft);
+  border-color: transparent;
+  color: var(--variant-color);
 }
 
-.btn--danger {
-  --button-bg:            var(--color-danger);
-  --button-bg-hover:      var(--color-danger-hover);
-  --button-bg-active:     var(--color-danger-active);
-  --button-color:         var(--color-on-danger);
-  --button-outline-color: var(--color-danger);
-  --focus-ring-color:     oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.5);
-}
-
-.btn--warning {
-  --button-bg:            var(--color-warning);
-  --button-bg-hover:      var(--color-warning-hover);
-  --button-bg-active:     var(--color-warning-active);
-  --button-color:         var(--color-on-warning);
-  --button-outline-color: var(--color-warning);
-  --focus-ring-color:     oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.5);
-}
-
-.btn--info {
-  --button-bg:            var(--color-info);
-  --button-bg-hover:      var(--color-info-hover);
-  --button-bg-active:     var(--color-info-active);
-  --button-color:         var(--color-on-info);
-  --button-outline-color: var(--color-info);
-  --focus-ring-color:     oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.5);
+.btn.ghost:not(:disabled):not(.btn--disabled):active,
+.btn--ghost:not(:disabled):not(.btn--disabled):active {
+  background-color: var(--variant-soft);
+  border-color: transparent;
 }

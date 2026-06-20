@@ -10,7 +10,7 @@
   <body>
     <div class="container">
       <p>
-        <button class="btn btn--outline" id="theme-toggle" type="button">
+        <button class="btn outline" id="theme-toggle" type="button">
           Toggle theme
         </button>
       </p>
@@ -19,20 +19,25 @@
       <p>A simple CSS framework. This page previews the built stylesheet.</p>
       <p>See the <a href="buttons.html">buttons showcase</a> for every button case.</p>
 
+      <p>Components are neutral by default; compose a variant (meaning) with a
+        style (appearance) by class — <code>btn primary</code>,
+        <code>btn danger outline</code>, <code>btn success ghost</code>.</p>
+
       <p>
-        <button class="btn">Primary</button>
-        <button class="btn btn--secondary">Secondary</button>
-        <button class="btn btn--success">Success</button>
-        <button class="btn btn--danger">Danger</button>
-        <button class="btn btn--warning">Warning</button>
-        <button class="btn btn--info">Info</button>
+        <button class="btn">Neutral</button>
+        <button class="btn primary">Primary</button>
+        <button class="btn success">Success</button>
+        <button class="btn danger">Danger</button>
+        <button class="btn warning">Warning</button>
+        <button class="btn info">Info</button>
       </p>
 
       <p>
-        <button class="btn btn--outline">Outline</button>
-        <button class="btn btn--danger btn--outline">Danger outline</button>
-        <button class="btn" disabled>Disabled</button>
-        <button class="btn btn--success" disabled>Disabled success</button>
+        <button class="btn primary outline">Outline</button>
+        <button class="btn danger outline">Danger outline</button>
+        <button class="btn success ghost">Success ghost</button>
+        <button class="btn primary" disabled>Disabled</button>
+        <button class="btn success" disabled>Disabled success</button>
       </p>
 
       <!-- Surfaces, borders, radius and shadows all derive from the base

@@ -1,0 +1,118 @@
+/*
+ * VARIANTS — the framework-level semantic-variant contract.
+ *
+ * A "variant" expresses INTENT (primary, success, warning, danger, info, …) as a
+ * small set of generic ROLE tokens (--variant-*). Every component reads these
+ * role tokens for its colors, so a component gains full variant support for free
+ * and never needs a per-variant rule of its own. A variant class only re-points
+ * the role tokens — it carries no component-specific styling — which is why the
+ * same .primary / .danger / … classes compose uniformly with buttons, badges,
+ * alerts, tags, nav items, and any future component.
+ *
+ * NEUTRAL IS THE DEFAULT FOUNDATION. The :root block seeds every role token with
+ * the neutral (grayscale, surface-derived) palette, so a component with NO
+ * variant class is already fully styled. Adding .primary/.success/… overrides
+ * the role tokens on that element and the component recolors automatically — the
+ * neutral palette is simply the fallback that every variant replaces.
+ *
+ * Separation of concerns:
+ *   VARIANT (this file) = meaning  -> sets the --variant-* color roles
+ *   STYLE   (components) = appearance -> solid (default) / outline / ghost, each
+ *                          a single additive rule that renders the role tokens
+ *                          a different way. variant x style compose by class:
+ *                          `.btn danger outline`, `.badge success` (later), …
+ *
+ * The role-token contract (what components read):
+ *   --variant-bg / -hover / -active   solid fill background + interaction states
+ *   --variant-fg                      foreground (text/icon) on the solid fill
+ *   --variant-border                  border of the solid fill
+ *   --variant-color                   the variant's pure accent (outline/ghost text & border)
+ *   --variant-soft                    faint tinted background (ghost hover, soft fills)
+ *   --variant-ring                    focus-ring color matched to the variant
+ *
+ * Colors come from the semantic tokens (semantic.css); the auto-contrast engine
+ * there already picked each --variant-fg, so a variant stays readable in any
+ * theme. To add a new variant, copy a block below and point it at that color's
+ * semantic tokens — no component needs to change.
+ *
+ * The legacy `.btn--*` selectors below are kept as backward-compatible aliases of
+ * the composable bare classes; they map to the exact same role tokens.
+ */
+
+/* Neutral / default foundation — seeded on :root so it inherits everywhere and
+   is the fallback whenever no variant class is present. `.neutral`/`.secondary`
+   re-assert it explicitly (e.g. to force neutral inside a variant-colored
+   container). */
+:root,
+.neutral,
+.secondary,
+.btn--secondary {
+  --variant-bg:        var(--color-surface);
+  --variant-bg-hover:  var(--color-border);
+  --variant-bg-active: var(--color-muted);
+  --variant-fg:        var(--color-text);
+  --variant-border:    var(--color-border);
+  --variant-color:     var(--color-text);
+  --variant-soft:      oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.1);
+  --variant-ring:      var(--focus-ring-color);
+}
+
+.primary,
+.btn--primary {
+  --variant-bg:        var(--color-primary);
+  --variant-bg-hover:  var(--color-primary-hover);
+  --variant-bg-active: var(--color-primary-active);
+  --variant-fg:        var(--color-on-primary);
+  --variant-border:    var(--color-primary);
+  --variant-color:     var(--color-primary);
+  --variant-soft:      oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.14);
+  --variant-ring:      oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.5);
+}
+
+.success,
+.btn--success {
+  --variant-bg:        var(--color-success);
+  --variant-bg-hover:  var(--color-success-hover);
+  --variant-bg-active: var(--color-success-active);
+  --variant-fg:        var(--color-on-success);
+  --variant-border:    var(--color-success);
+  --variant-color:     var(--color-success);
+  --variant-soft:      oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.14);
+  --variant-ring:      oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.5);
+}
+
+.warning,
+.btn--warning {
+  --variant-bg:        var(--color-warning);
+  --variant-bg-hover:  var(--color-warning-hover);
+  --variant-bg-active: var(--color-warning-active);
+  --variant-fg:        var(--color-on-warning);
+  --variant-border:    var(--color-warning);
+  --variant-color:     var(--color-warning);
+  --variant-soft:      oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.14);
+  --variant-ring:      oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.5);
+}
+
+.danger,
+.btn--danger {
+  --variant-bg:        var(--color-danger);
+  --variant-bg-hover:  var(--color-danger-hover);
+  --variant-bg-active: var(--color-danger-active);
+  --variant-fg:        var(--color-on-danger);
+  --variant-border:    var(--color-danger);
+  --variant-color:     var(--color-danger);
+  --variant-soft:      oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.14);
+  --variant-ring:      oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.5);
+}
+
+.info,
+.btn--info {
+  --variant-bg:        var(--color-info);
+  --variant-bg-hover:  var(--color-info-hover);
+  --variant-bg-active: var(--color-info-active);
+  --variant-fg:        var(--color-on-info);
+  --variant-border:    var(--color-info);
+  --variant-color:     var(--color-info);
+  --variant-soft:      oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.14);
+  --variant-ring:      oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.5);
+}

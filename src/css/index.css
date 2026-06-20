@@ -7,7 +7,8 @@
 @import './base/tokens.css';            /* 1. base seed */
 @import './base/semantic.css';          /* 2. derived from base */
 @import './base/component-tokens.css';  /* 3. per-component aliases */
-@import './base/themes.css';            /* 4. light/dark overrides */
+@import './base/variants.css';          /* 4. variant role tokens (neutral default) */
+@import './base/themes.css';            /* 5. light/dark overrides */
 
 /* Base */
 @import './base/reset.css';

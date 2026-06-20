@@ -10,36 +10,54 @@
   <body>
     <div class="container">
       <p>
-        <button class="btn btn--outline" id="theme-toggle" type="button">
+        <button class="btn outline" id="theme-toggle" type="button">
           Toggle theme
         </button>
         <a href="index.html">&larr; Back to demo</a>
       </p>
 
       <h1>Buttons</h1>
-      <p>Every button case the framework supports. Build the stylesheet, then
-        toggle the theme above to verify each case in light and dark.</p>
+      <p>Every button case the framework supports. <strong>Variant</strong>
+        (meaning) and <strong>style</strong> (appearance) are independent classes
+        that compose: <code>btn</code> + a variant (<code>primary</code>,
+        <code>danger</code>, …) + a style (<code>outline</code>,
+        <code>ghost</code>). Build the stylesheet, then toggle the theme above to
+        verify each case in light and dark.</p>
 
       <h2>Solid variants</h2>
+      <p>The bare <code>btn</code> is the neutral default — no variant needed.
+        Add a variant class to recolor.</p>
       <p>
-        <button class="btn">Primary</button>
-        <button class="btn btn--secondary">Secondary</button>
-        <button class="btn btn--success">Success</button>
-        <button class="btn btn--danger">Danger</button>
-        <button class="btn btn--warning">Warning</button>
-        <button class="btn btn--info">Info</button>
+        <button class="btn">Neutral (default)</button>
+        <button class="btn primary">Primary</button>
+        <button class="btn success">Success</button>
+        <button class="btn danger">Danger</button>
+        <button class="btn warning">Warning</button>
+        <button class="btn info">Info</button>
       </p>
 
-      <h2>Outline variants</h2>
-      <p>The <code>btn--outline</code> modifier composes with any status, so it
-        borrows that variant's color. Hover to see it fill.</p>
+      <h2>Outline style</h2>
+      <p>The <code>outline</code> style composes with any variant, so it borrows
+        that variant's color. Hover to see it fill.</p>
       <p>
-        <button class="btn btn--outline">Outline</button>
-        <button class="btn btn--secondary btn--outline">Secondary outline</button>
-        <button class="btn btn--success btn--outline">Success outline</button>
-        <button class="btn btn--danger btn--outline">Danger outline</button>
-        <button class="btn btn--warning btn--outline">Warning outline</button>
-        <button class="btn btn--info btn--outline">Info outline</button>
+        <button class="btn outline">Neutral</button>
+        <button class="btn primary outline">Primary</button>
+        <button class="btn success outline">Success</button>
+        <button class="btn danger outline">Danger</button>
+        <button class="btn warning outline">Warning</button>
+        <button class="btn info outline">Info</button>
+      </p>
+
+      <h2>Ghost style</h2>
+      <p>The <code>ghost</code> style is borderless and shows a faint variant
+        tint on hover — the same variant classes apply.</p>
+      <p>
+        <button class="btn ghost">Neutral</button>
+        <button class="btn primary ghost">Primary</button>
+        <button class="btn success ghost">Success</button>
+        <button class="btn danger ghost">Danger</button>
+        <button class="btn warning ghost">Warning</button>
+        <button class="btn info ghost">Info</button>
       </p>
 
       <h2>States</h2>
@@ -48,15 +66,15 @@
         ring. Disabled buttons re-skin to neutral tokens and show a
         <code>not-allowed</code> cursor.</p>
       <p>
-        <button class="btn">Normal</button>
-        <button class="btn" disabled>Disabled (:disabled)</button>
-        <button class="btn btn--disabled">Disabled (.btn--disabled)</button>
+        <button class="btn primary">Normal</button>
+        <button class="btn primary" disabled>Disabled (:disabled)</button>
+        <button class="btn primary btn--disabled">Disabled (.btn--disabled)</button>
       </p>
       <p>
-        <button class="btn btn--success">Success</button>
-        <button class="btn btn--success" disabled>Disabled success</button>
-        <button class="btn btn--danger btn--outline">Danger outline</button>
-        <button class="btn btn--danger btn--outline" disabled>Disabled outline</button>
+        <button class="btn success">Success</button>
+        <button class="btn success" disabled>Disabled success</button>
+        <button class="btn danger outline">Danger outline</button>
+        <button class="btn danger outline" disabled>Disabled outline</button>
       </p>
 
       <h2>As different elements</h2>

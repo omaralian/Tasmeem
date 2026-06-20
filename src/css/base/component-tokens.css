@@ -5,20 +5,15 @@
  * so a component can be retargeted here without touching its stylesheet.
  */
 :root {
-  /* Button */
-  --button-bg:            var(--color-primary);
-  --button-bg-hover:      var(--color-primary-hover);
-  --button-bg-active:     var(--color-primary-active);
-  --button-color:         var(--color-on-primary);
+  /* Button — color comes from the framework variant role tokens (--variant-*,
+     see variants.css); only layout/disabled aliases live here. */
   --button-padding-y:     var(--space-sm);
   --button-padding-x:     var(--space-md);
   --button-radius:        var(--radius-md);
   --button-border-width:  var(--border-width);
-  --button-border-color:  transparent;
   --button-font-weight:   500;
   --button-line-height:   var(--line-height-none);
   --button-transition:    var(--transition-colors);
-  --button-outline-color: var(--color-primary);
   --button-bg-disabled:    var(--color-border);
   --button-color-disabled: var(--color-muted);
 
