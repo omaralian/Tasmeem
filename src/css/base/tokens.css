@@ -17,6 +17,12 @@
   --surface-saturation: 15%;
   --surface-lightness: 100%;
 
+  /* Status hues — semantic state colors share the brand saturation/lightness. */
+  --success-hue: 145;
+  --warning-hue:  40;
+  --danger-hue:    0;
+  --info-hue:    205;
+
   /* Unitless scale multipliers (1 = default). */
   --font-scale: 1;
   --spacing-scale: 1;

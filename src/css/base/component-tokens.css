@@ -14,10 +14,13 @@
   --button-padding-x:     var(--space-md);
   --button-radius:        var(--radius-md);
   --button-border-width:  var(--border-width);
+  --button-border-color:  transparent;
   --button-font-weight:   500;
   --button-line-height:   var(--line-height-none);
   --button-transition:    var(--transition-colors);
   --button-outline-color: var(--color-primary);
+  --button-bg-disabled:    var(--color-border);
+  --button-color-disabled: var(--color-muted);
 
   /* Link */
   --link-color:       var(--color-primary);

@@ -1,8 +1,12 @@
-/* Button component. */
+/* Button component.
+ *
+ * The base rules below consume only --button-* tokens, so a status variant is
+ * just a re-pointing of those tokens (see the .btn--* blocks). Hover/active are
+ * gated to enabled buttons; disabled re-skins to neutral tokens uniformly. */
 .btn {
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
-  border: var(--button-border-width) solid transparent;
+  border: var(--button-border-width) solid var(--button-border-color);
   border-radius: var(--button-radius);
   background-color: var(--button-bg);
   color: var(--button-color);
@@ -12,22 +16,79 @@
   transition: var(--button-transition);
 }
 
-.btn:hover {
+.btn:not(:disabled):not(.btn--disabled):hover {
   background-color: var(--button-bg-hover);
   text-decoration: none;
 }
 
-.btn:active {
+.btn:not(:disabled):not(.btn--disabled):active {
   background-color: var(--button-bg-active);
 }
 
+.btn:disabled,
+.btn--disabled {
+  background-color: var(--button-bg-disabled);
+  border-color:     var(--button-bg-disabled);
+  color:            var(--button-color-disabled);
+  cursor: not-allowed;
+}
+
+/* Outline modifier — reads --button-outline-color, so it composes with any
+   status variant (e.g. .btn--danger.btn--outline). */
 .btn--outline {
   background-color: transparent;
   border-color: var(--button-outline-color);
   color: var(--button-outline-color);
 }
 
-.btn--outline:hover {
+.btn--outline:not(:disabled):not(.btn--disabled):hover {
   background-color: var(--button-outline-color);
   color: var(--button-color);
+}
+
+/* Status variants — re-point the button's color tokens only. --focus-ring-color
+   is overridden too so the global focus ring (reset.css) matches the variant. */
+.btn--secondary {
+  --button-bg:            var(--color-surface);
+  --button-bg-hover:      var(--color-border);
+  --button-bg-active:     var(--color-muted);
+  --button-color:         var(--color-text);
+  --button-border-color:  var(--color-border);
+  --button-outline-color: var(--color-border);
+}
+
+.btn--success {
+  --button-bg:            var(--color-success);
+  --button-bg-hover:      var(--color-success-hover);
+  --button-bg-active:     var(--color-success-active);
+  --button-color:         var(--color-on-success);
+  --button-outline-color: var(--color-success);
+  --focus-ring-color:     hsl(var(--success-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+}
+
+.btn--danger {
+  --button-bg:            var(--color-danger);
+  --button-bg-hover:      var(--color-danger-hover);
+  --button-bg-active:     var(--color-danger-active);
+  --button-color:         var(--color-on-danger);
+  --button-outline-color: var(--color-danger);
+  --focus-ring-color:     hsl(var(--danger-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+}
+
+.btn--warning {
+  --button-bg:            var(--color-warning);
+  --button-bg-hover:      var(--color-warning-hover);
+  --button-bg-active:     var(--color-warning-active);
+  --button-color:         var(--color-on-warning);
+  --button-outline-color: var(--color-warning);
+  --focus-ring-color:     hsl(var(--warning-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+}
+
+.btn--info {
+  --button-bg:            var(--color-info);
+  --button-bg-hover:      var(--color-info-hover);
+  --button-bg-active:     var(--color-info-active);
+  --button-color:         var(--color-on-info);
+  --button-outline-color: var(--color-info);
+  --focus-ring-color:     hsl(var(--info-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
 }

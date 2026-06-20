@@ -14,6 +14,29 @@
   --color-primary-muted:  hsl(var(--brand-hue) calc(var(--brand-saturation) - 20%) calc(var(--brand-lightness) + 34%));
   --color-on-primary:     hsl(var(--brand-hue) 25% 98%);
 
+  /* Status colors — same derivation as primary, keyed off each status hue.
+     Saturation/lightness reuse the brand seed so statuses brighten in dark
+     mode for free (themes.css raises --brand-lightness). */
+  --color-success:        hsl(var(--success-hue) var(--brand-saturation) var(--brand-lightness));
+  --color-success-hover:  hsl(var(--success-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
+  --color-success-active: hsl(var(--success-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
+  --color-on-success:     var(--color-on-primary);
+
+  --color-danger:         hsl(var(--danger-hue) var(--brand-saturation) var(--brand-lightness));
+  --color-danger-hover:   hsl(var(--danger-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
+  --color-danger-active:  hsl(var(--danger-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
+  --color-on-danger:      var(--color-on-primary);
+
+  --color-info:           hsl(var(--info-hue) var(--brand-saturation) var(--brand-lightness));
+  --color-info-hover:     hsl(var(--info-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
+  --color-info-active:    hsl(var(--info-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
+  --color-on-info:        var(--color-on-primary);
+
+  --color-warning:        hsl(var(--warning-hue) var(--brand-saturation) var(--brand-lightness));
+  --color-warning-hover:  hsl(var(--warning-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
+  --color-warning-active: hsl(var(--warning-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
+  --color-on-warning:     hsl(var(--warning-hue) 35% 18%);  /* dark text — amber can't carry near-white */
+
   /* Surfaces / neutrals (auto-invert via --surface-lightness) */
   --_text-lightness: clamp(0%, calc(96% - var(--surface-lightness) * 0.9), 100%);
   --color-bg:      hsl(var(--surface-hue) var(--surface-saturation) var(--surface-lightness));
