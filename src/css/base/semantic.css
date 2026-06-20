@@ -1,0 +1,74 @@
+/*
+ * SEMANTIC TOKENS — derived from the base tokens in tokens.css.
+ *
+ * Don't edit these directly; change the base tokens instead. Colors are
+ * expressed as HSL channels so variants come from calc() on lightness/
+ * saturation, and surface-based tokens (text/muted/border) auto-invert when
+ * --surface-lightness flips between light and dark themes.
+ */
+:root {
+  /* Brand / primary */
+  --color-primary:        hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+  --color-primary-hover:  hsl(var(--brand-hue) var(--brand-saturation) calc(var(--brand-lightness) - 8%));
+  --color-primary-active: hsl(var(--brand-hue) var(--brand-saturation) calc(var(--brand-lightness) - 15%));
+  --color-primary-muted:  hsl(var(--brand-hue) calc(var(--brand-saturation) - 20%) calc(var(--brand-lightness) + 34%));
+  --color-on-primary:     hsl(var(--brand-hue) 25% 98%);
+
+  /* Surfaces / neutrals (auto-invert via --surface-lightness) */
+  --_text-lightness: clamp(0%, calc(96% - var(--surface-lightness) * 0.9), 100%);
+  --color-bg:      hsl(var(--surface-hue) var(--surface-saturation) var(--surface-lightness));
+  --color-surface: hsl(var(--surface-hue) var(--surface-saturation)
+                       calc(var(--surface-lightness) + (var(--_text-lightness) - var(--surface-lightness)) * 0.05));
+  --color-border:  hsl(var(--surface-hue) var(--surface-saturation)
+                       calc(var(--surface-lightness) + (var(--_text-lightness) - var(--surface-lightness)) * 0.14));
+  --color-text:    hsl(var(--surface-hue) calc(var(--surface-saturation) + 6%) var(--_text-lightness));
+  --color-muted:   hsl(var(--surface-hue) var(--surface-saturation)
+                       calc((var(--_text-lightness) + var(--surface-lightness)) / 2));
+
+  /* Spacing (existing sm/md/lg values preserved; extra steps added) */
+  --space-2xs: calc(0.25rem  * var(--spacing-scale));
+  --space-xs:  calc(0.375rem * var(--spacing-scale));
+  --space-sm:  calc(0.5rem   * var(--spacing-scale));
+  --space-md:  calc(1rem     * var(--spacing-scale));
+  --space-lg:  calc(2rem     * var(--spacing-scale));
+  --space-xl:  calc(3rem     * var(--spacing-scale));
+  --space-2xl: calc(4rem     * var(--spacing-scale));
+
+  /* Radius (--radius kept as an alias of --radius-md) */
+  --radius-sm:   calc(0.25rem  * var(--radius-scale));
+  --radius-md:   calc(0.375rem * var(--radius-scale));
+  --radius-lg:   calc(0.75rem  * var(--radius-scale));
+  --radius-full: 9999px;
+  --radius:      var(--radius-md);
+
+  /* Typography */
+  --font-size-sm:   calc(0.875rem * var(--font-scale));
+  --font-size-base: calc(1rem     * var(--font-scale));
+  --font-size-lg:   calc(1.25rem  * var(--font-scale));
+  --font-size-xl:   calc(1.5rem   * var(--font-scale));
+  --font-size-2xl:  calc(2rem     * var(--font-scale));
+  --line-height:       1.5;
+  --line-height-tight: 1.2;
+  --line-height-none:  1;
+
+  /* Borders */
+  --border-width:       1px;
+  --border-width-thick: 2px;
+
+  /* Motion (--motion-scale 0 => instant) */
+  --duration-fast: calc(150ms * var(--motion-scale));
+  --duration-base: calc(250ms * var(--motion-scale));
+  --duration-slow: calc(400ms * var(--motion-scale));
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-colors:
+      color var(--duration-fast) var(--ease-standard),
+      background-color var(--duration-fast) var(--ease-standard),
+      border-color var(--duration-fast) var(--ease-standard),
+      box-shadow var(--duration-fast) var(--ease-standard);
+
+  /* Shadows (--shadow-strength 0 => invisible) */
+  --_shadow-channels: var(--surface-hue) calc(var(--surface-saturation) + 10%) 12%;
+  --shadow-sm: 0 1px 2px 0 hsl(var(--_shadow-channels) / calc(0.12 * var(--shadow-strength)));
+  --shadow-md: 0 4px 12px -2px hsl(var(--_shadow-channels) / calc(0.16 * var(--shadow-strength)));
+  --shadow-lg: 0 12px 28px -4px hsl(var(--_shadow-channels) / calc(0.20 * var(--shadow-strength)));
+}

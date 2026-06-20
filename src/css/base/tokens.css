@@ -1,0 +1,31 @@
+/*
+ * BASE TOKENS — the design system seed.
+ *
+ * This is the only file you normally edit to theme the framework. Every
+ * semantic and component token is derived from these few values, so changing
+ * a handful here re-themes everything. See semantic.css for the derivations
+ * and themes.css for the light/dark overrides.
+ */
+:root {
+  /* Brand seed — drives all primary/accent colors. */
+  --brand-hue: 220;
+  --brand-saturation: 80%;
+  --brand-lightness: 55%;
+
+  /* Surface/neutral seed — drives backgrounds, borders, and text. */
+  --surface-hue: 220;
+  --surface-saturation: 15%;
+  --surface-lightness: 100%;
+
+  /* Unitless scale multipliers (1 = default). */
+  --font-scale: 1;
+  --spacing-scale: 1;
+  --radius-scale: 1;
+
+  /* Effects. */
+  --shadow-strength: 1;
+  --motion-scale: 1;
+
+  /* Typography primitive (a font stack isn't a derived scale). */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}

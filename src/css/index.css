@@ -3,8 +3,13 @@
  * Single source of truth: every partial is imported here in cascade order.
  */
 
+/* Tokens (design system) */
+@import './base/tokens.css';            /* 1. base seed */
+@import './base/semantic.css';          /* 2. derived from base */
+@import './base/component-tokens.css';  /* 3. per-component aliases */
+@import './base/themes.css';            /* 4. light/dark overrides */
+
 /* Base */
-@import './base/variables.css';
 @import './base/reset.css';
 @import './base/typography.css';
 

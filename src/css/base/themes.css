@@ -1,0 +1,33 @@
+/*
+ * THEMES — override BASE tokens only; semantic/component tokens re-derive.
+ *
+ * Light is the default (defined in tokens.css). Dark is applied either
+ * automatically from the OS preference or manually via [data-theme] on a
+ * host element (typically <html>). The handful of values below are all that
+ * change between themes.
+ */
+
+/* Manual override. :root[data-theme="dark"] (0,2,0) beats base :root (0,1,0). */
+:root[data-theme="dark"] {
+  --brand-lightness: 62%;
+  --surface-saturation: 14%;
+  --surface-lightness: 12%;
+  --shadow-strength: 2.4;
+}
+
+/* Automatic dark, unless the page explicitly opted into light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand-lightness: 62%;
+    --surface-saturation: 14%;
+    --surface-lightness: 12%;
+    --shadow-strength: 2.4;
+  }
+}
+
+/* Honor reduced-motion by zeroing the motion scale (disables all transitions). */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-scale: 0;
+  }
+}

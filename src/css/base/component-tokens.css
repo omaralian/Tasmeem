@@ -1,0 +1,41 @@
+/*
+ * COMPONENT TOKENS — per-component aliases of the semantic tokens.
+ *
+ * Components reference these (never raw colors or semantic tokens directly),
+ * so a component can be retargeted here without touching its stylesheet.
+ */
+:root {
+  /* Button */
+  --button-bg:            var(--color-primary);
+  --button-bg-hover:      var(--color-primary-hover);
+  --button-bg-active:     var(--color-primary-active);
+  --button-color:         var(--color-on-primary);
+  --button-padding-y:     var(--space-sm);
+  --button-padding-x:     var(--space-md);
+  --button-radius:        var(--radius-md);
+  --button-border-width:  var(--border-width);
+  --button-font-weight:   500;
+  --button-line-height:   var(--line-height-none);
+  --button-transition:    var(--transition-colors);
+  --button-outline-color: var(--color-primary);
+
+  /* Link */
+  --link-color:       var(--color-primary);
+  --link-color-hover: var(--color-primary-hover);
+
+  /* Focus ring */
+  --focus-ring-color:  hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness) / 0.5);
+  --focus-ring-width:  3px;
+  --focus-ring-offset: 2px;
+
+  /* Container */
+  --container-max:     1140px;
+  --container-padding: var(--space-md);
+
+  /* Surface / card (demo + future components) */
+  --card-bg:      var(--color-surface);
+  --card-border:  var(--color-border);
+  --card-radius:  var(--radius-lg);
+  --card-shadow:  var(--shadow-md);
+  --card-padding: var(--space-lg);
+}
