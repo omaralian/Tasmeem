@@ -1,0 +1,15 @@
+/*!
+ * tasmeem — a simple CSS framework
+ * Single source of truth: every partial is imported here in cascade order.
+ */
+
+/* Base */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+
+/* Layout */
+@import './layout/container.css';
+
+/* Components */
+@import './components/button.css';
