@@ -11,6 +11,7 @@
  *   solid   (default)  -> `.btn`            fills with --variant-bg
  *   outline `.outline`  -> `.btn outline`    bordered, fills on hover
  *   ghost   `.ghost`    -> `.btn ghost`      bare, faint tint on hover
+ *   subtle  `.subtle`   -> `.btn subtle`     soft tinted fill, no border, darkens on hover
  * e.g. `.btn danger outline`, `.btn success ghost`. Disabled is composable too
  * (`.disabled`, for non-form elements). Layout-only tokens stay as --button-*
  * (component-tokens.css). */
@@ -88,4 +89,25 @@
 .btn.ghost:not(:disabled):not(.disabled):active {
   background-color: var(--variant-soft);
   border-color: transparent;
+}
+
+/* Subtle style — a soft tinted fill at rest (no border) with the variant accent
+   as text, deepening the tint on hover/active. Lower-emphasis than solid but more
+   present than ghost. Reads only --variant-* so it borrows whatever variant is set. */
+.btn.subtle:not(:disabled):not(.disabled) {
+  background-color: var(--variant-soft);
+  border-color: transparent;
+  color: var(--variant-color);
+}
+
+.btn.subtle:not(:disabled):not(.disabled):hover {
+  background-color: var(--variant-soft-strong);
+  border-color: transparent;
+  color: var(--variant-color);
+}
+
+.btn.subtle:not(:disabled):not(.disabled):active {
+  background-color: var(--variant-soft-strong);
+  border-color: transparent;
+  color: var(--variant-color);
 }
