@@ -22,44 +22,44 @@
  * on-color the same way.
  */
 :root {
-  /* Brand / primary */
-  --color-primary:        oklch(var(--brand-l) var(--brand-c) var(--brand-h));
-  --color-primary-hover:  oklch(calc(var(--brand-l) - 0.06) var(--brand-c) var(--brand-h));
-  --color-primary-active: oklch(calc(var(--brand-l) - 0.12) var(--brand-c) var(--brand-h));
-  --color-primary-muted:  oklch(calc(var(--brand-l) + 0.30) calc(var(--brand-c) - 0.10) var(--brand-h));
-  --_on-primary-l: clamp(0.15, calc((var(--contrast-threshold) - var(--brand-l)) * 100), 0.98);
+  /* Primary */
+  --color-primary:        oklch(var(--primary-l) var(--primary-c) var(--primary-h));
+  --color-primary-hover:  oklch(calc(var(--primary-l) - 0.06) var(--primary-c) var(--primary-h));
+  --color-primary-active: oklch(calc(var(--primary-l) - 0.12) var(--primary-c) var(--primary-h));
+  --color-primary-muted:  oklch(calc(var(--primary-l) + 0.30) calc(var(--primary-c) - 0.10) var(--primary-h));
+  --_on-primary-l: clamp(0.15, calc((var(--contrast-threshold) - var(--primary-l)) * 100), 0.98);
   --color-on-primary:     oklch(var(--_on-primary-l) 0 0);
 
   /* Status colors — each gets a real perceptual lightness via an offset from
-     --brand-l (so they brighten for free in dark mode, where themes.css raises
-     --brand-l) and reuses the brand chroma. The contrast engine then picks each
+     --primary-l (so they brighten for free in dark mode, where themes.css raises
+     --primary-l) and reuses the primary chroma. The contrast engine then picks each
      foreground automatically, including amber's dark text. */
-  --success-l: calc(var(--brand-l) + 0.15);
-  --warning-l: calc(var(--brand-l) + 0.25);  /* amber sits high => dark text */
-  --danger-l:  var(--brand-l);
-  --info-l:    calc(var(--brand-l) + 0.16);  /* light cyan => dark text */
+  --success-l: calc(var(--primary-l) + 0.15);
+  --warning-l: calc(var(--primary-l) + 0.25);  /* amber sits high => dark text */
+  --danger-l:  var(--primary-l);
+  --info-l:    calc(var(--primary-l) + 0.16);  /* light cyan => dark text */
 
-  --color-success:        oklch(var(--success-l) var(--brand-c) var(--success-h));
-  --color-success-hover:  oklch(calc(var(--success-l) - 0.06) var(--brand-c) var(--success-h));
-  --color-success-active: oklch(calc(var(--success-l) - 0.12) var(--brand-c) var(--success-h));
+  --color-success:        oklch(var(--success-l) var(--primary-c) var(--success-h));
+  --color-success-hover:  oklch(calc(var(--success-l) - 0.06) var(--primary-c) var(--success-h));
+  --color-success-active: oklch(calc(var(--success-l) - 0.12) var(--primary-c) var(--success-h));
   --_on-success-l: clamp(0.15, calc((var(--contrast-threshold) - var(--success-l)) * 100), 0.98);
   --color-on-success:     oklch(var(--_on-success-l) 0 0);
 
-  --color-danger:         oklch(var(--danger-l) var(--brand-c) var(--danger-h));
-  --color-danger-hover:   oklch(calc(var(--danger-l) - 0.06) var(--brand-c) var(--danger-h));
-  --color-danger-active:  oklch(calc(var(--danger-l) - 0.12) var(--brand-c) var(--danger-h));
+  --color-danger:         oklch(var(--danger-l) var(--primary-c) var(--danger-h));
+  --color-danger-hover:   oklch(calc(var(--danger-l) - 0.06) var(--primary-c) var(--danger-h));
+  --color-danger-active:  oklch(calc(var(--danger-l) - 0.12) var(--primary-c) var(--danger-h));
   --_on-danger-l: clamp(0.15, calc((var(--contrast-threshold) - var(--danger-l)) * 100), 0.98);
   --color-on-danger:      oklch(var(--_on-danger-l) 0 0);
 
-  --color-info:           oklch(var(--info-l) var(--brand-c) var(--info-h));
-  --color-info-hover:     oklch(calc(var(--info-l) - 0.06) var(--brand-c) var(--info-h));
-  --color-info-active:    oklch(calc(var(--info-l) - 0.12) var(--brand-c) var(--info-h));
+  --color-info:           oklch(var(--info-l) var(--primary-c) var(--info-h));
+  --color-info-hover:     oklch(calc(var(--info-l) - 0.06) var(--primary-c) var(--info-h));
+  --color-info-active:    oklch(calc(var(--info-l) - 0.12) var(--primary-c) var(--info-h));
   --_on-info-l: clamp(0.15, calc((var(--contrast-threshold) - var(--info-l)) * 100), 0.98);
   --color-on-info:        oklch(var(--_on-info-l) 0 0);
 
-  --color-warning:        oklch(var(--warning-l) var(--brand-c) var(--warning-h));
-  --color-warning-hover:  oklch(calc(var(--warning-l) - 0.06) var(--brand-c) var(--warning-h));
-  --color-warning-active: oklch(calc(var(--warning-l) - 0.12) var(--brand-c) var(--warning-h));
+  --color-warning:        oklch(var(--warning-l) var(--primary-c) var(--warning-h));
+  --color-warning-hover:  oklch(calc(var(--warning-l) - 0.06) var(--primary-c) var(--warning-h));
+  --color-warning-active: oklch(calc(var(--warning-l) - 0.12) var(--primary-c) var(--warning-h));
   --_on-warning-l: clamp(0.15, calc((var(--contrast-threshold) - var(--warning-l)) * 100), 0.98);
   --color-on-warning:     oklch(var(--_on-warning-l) 0 0);
 

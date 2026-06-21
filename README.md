@@ -59,8 +59,8 @@ Base tokens  →  Semantic tokens  →  Component tokens  →  Components
 (tokens.css)    (semantic.css)      (component-tokens.css)
 ```
 
-- `base/tokens.css` — the ~11 knobs you edit to theme: `--brand-hue`,
-  `--brand-saturation`, `--brand-lightness`, the matching `--surface-*` trio,
+- `base/tokens.css` — the ~11 knobs you edit to theme: `--primary-hue`,
+  `--primary-saturation`, `--primary-lightness`, the matching `--surface-*` trio,
   the `--font-scale` / `--spacing-scale` / `--radius-scale` multipliers, and
   `--shadow-strength` / `--motion-scale`.
 - `base/semantic.css` — colors, spacing, radius, type, motion and shadows
@@ -70,7 +70,7 @@ Base tokens  →  Semantic tokens  →  Component tokens  →  Components
   colors.
 
 Change one base token and everything downstream follows. For example, setting
-`--brand-hue: 30` re-colors buttons, links, focus rings and outlines at once;
+`--primary-hue: 30` re-colors buttons, links, focus rings and outlines at once;
 `--spacing-scale: 1.5` rescales all spacing.
 
 ### Light & dark themes

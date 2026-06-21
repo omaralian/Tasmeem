@@ -29,7 +29,7 @@ textarea {
 }
 
 /* Focus ring matches the focused element's variant (--variant-ring), falling
-   back to the neutral/brand ring when no variant is set. */
+   back to the neutral/primary ring when no variant is set. */
 :focus-visible {
   outline: var(--focus-ring-width) solid var(--variant-ring, var(--focus-ring-color));
   outline-offset: var(--focus-ring-offset);

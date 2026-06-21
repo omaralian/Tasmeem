@@ -12,19 +12,19 @@
  * NOTE: OKLCH hue angles are NOT the same as HSL hues.
  */
 :root {
-  /* Brand seed — drives all primary/accent colors. Chroma kept ~0.13 so every
+  /* Primary seed — drives all primary/accent colors. Chroma kept ~0.13 so every
      hue stays inside sRGB across the lightness range. */
-  --brand-h: 258;
-  --brand-c: 0.13;
-  --brand-l: 0.55;
+  --primary-h: 258;
+  --primary-c: 0.13;
+  --primary-l: 0.55;
 
   /* Surface/neutral seed — drives backgrounds, borders, and text. */
   --surface-h: 258;
   --surface-c: 0.01;
   --surface-l: 1;
 
-  /* Status hues — semantic state colors share the brand chroma and derive
-     their lightness from --brand-l (see the --*-l offsets in semantic.css). */
+  /* Status hues — semantic state colors share the primary chroma and derive
+     their lightness from --primary-l (see the --*-l offsets in semantic.css). */
   --success-h: 152;
   --warning-h:  75;
   --danger-h:   27;

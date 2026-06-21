@@ -62,10 +62,10 @@
   --variant-fg:        var(--color-on-primary);
   --variant-border:    var(--color-primary);
   --variant-color:     var(--color-primary);
-  --variant-soft:          oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.14);
-  --variant-soft-strong:   oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.24);
-  --variant-soft-stronger: oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.34);
-  --variant-ring:      oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.5);
+  --variant-soft:          oklch(var(--primary-l) var(--primary-c) var(--primary-h) / 0.14);
+  --variant-soft-strong:   oklch(var(--primary-l) var(--primary-c) var(--primary-h) / 0.24);
+  --variant-soft-stronger: oklch(var(--primary-l) var(--primary-c) var(--primary-h) / 0.34);
+  --variant-ring:      oklch(var(--primary-l) var(--primary-c) var(--primary-h) / 0.5);
 }
 
 .success {
@@ -75,10 +75,10 @@
   --variant-fg:        var(--color-on-success);
   --variant-border:    var(--color-success);
   --variant-color:     var(--color-success);
-  --variant-soft:          oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.14);
-  --variant-soft-strong:   oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.24);
-  --variant-soft-stronger: oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.34);
-  --variant-ring:      oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.5);
+  --variant-soft:          oklch(var(--success-l) var(--primary-c) var(--success-h) / 0.14);
+  --variant-soft-strong:   oklch(var(--success-l) var(--primary-c) var(--success-h) / 0.24);
+  --variant-soft-stronger: oklch(var(--success-l) var(--primary-c) var(--success-h) / 0.34);
+  --variant-ring:      oklch(var(--success-l) var(--primary-c) var(--success-h) / 0.5);
 }
 
 .warning {
@@ -88,10 +88,10 @@
   --variant-fg:        var(--color-on-warning);
   --variant-border:    var(--color-warning);
   --variant-color:     var(--color-warning);
-  --variant-soft:          oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.14);
-  --variant-soft-strong:   oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.24);
-  --variant-soft-stronger: oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.34);
-  --variant-ring:      oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.5);
+  --variant-soft:          oklch(var(--warning-l) var(--primary-c) var(--warning-h) / 0.14);
+  --variant-soft-strong:   oklch(var(--warning-l) var(--primary-c) var(--warning-h) / 0.24);
+  --variant-soft-stronger: oklch(var(--warning-l) var(--primary-c) var(--warning-h) / 0.34);
+  --variant-ring:      oklch(var(--warning-l) var(--primary-c) var(--warning-h) / 0.5);
 }
 
 .danger {
@@ -101,10 +101,10 @@
   --variant-fg:        var(--color-on-danger);
   --variant-border:    var(--color-danger);
   --variant-color:     var(--color-danger);
-  --variant-soft:          oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.14);
-  --variant-soft-strong:   oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.24);
-  --variant-soft-stronger: oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.34);
-  --variant-ring:      oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.5);
+  --variant-soft:          oklch(var(--danger-l) var(--primary-c) var(--danger-h) / 0.14);
+  --variant-soft-strong:   oklch(var(--danger-l) var(--primary-c) var(--danger-h) / 0.24);
+  --variant-soft-stronger: oklch(var(--danger-l) var(--primary-c) var(--danger-h) / 0.34);
+  --variant-ring:      oklch(var(--danger-l) var(--primary-c) var(--danger-h) / 0.5);
 }
 
 .info {
@@ -114,8 +114,8 @@
   --variant-fg:        var(--color-on-info);
   --variant-border:    var(--color-info);
   --variant-color:     var(--color-info);
-  --variant-soft:          oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.14);
-  --variant-soft-strong:   oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.24);
-  --variant-soft-stronger: oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.34);
-  --variant-ring:      oklch(var(--info-l) var(--brand-c) var(--info-h) / 0.5);
+  --variant-soft:          oklch(var(--info-l) var(--primary-c) var(--info-h) / 0.14);
+  --variant-soft-strong:   oklch(var(--info-l) var(--primary-c) var(--info-h) / 0.24);
+  --variant-soft-stronger: oklch(var(--info-l) var(--primary-c) var(--info-h) / 0.34);
+  --variant-ring:      oklch(var(--info-l) var(--primary-c) var(--info-h) / 0.5);
 }

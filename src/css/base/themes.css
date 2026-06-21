@@ -8,8 +8,8 @@
  */
 
 /* Manual override. :root[data-theme="dark"] (0,2,0) beats base :root (0,1,0).
- * Only the surface (and shadow) flip: the brand/status fills are self-contained
- * buttons that already pass contrast on their own, so leaving --brand-l at its
+ * Only the surface (and shadow) flip: the primary/status fills are self-contained
+ * buttons that already pass contrast on their own, so leaving --primary-l at its
  * base value keeps every button at full WCAG AA in dark mode too. */
 :root[data-theme="dark"] {
   --surface-c: 0.02;
