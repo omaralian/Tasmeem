@@ -28,9 +28,9 @@ textarea {
   font: inherit;
 }
 
-/* Focus ring matches the focused element's variant (--variant-ring), falling
-   back to the neutral/primary ring when no variant is set. */
+/* Focus ring matches the focused element's intent (--intent-ring), falling
+   back to the page accent ring when no intent is set. */
 :focus-visible {
-  outline: var(--focus-ring-width) solid var(--variant-ring, var(--focus-ring-color));
+  outline: var(--focus-ring-width) solid var(--intent-ring, var(--focus-ring-color));
   outline-offset: var(--focus-ring-offset);
 }

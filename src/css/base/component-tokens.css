@@ -5,8 +5,8 @@
  * so a component can be retargeted here without touching its stylesheet.
  */
 :root {
-  /* Button — color comes from the framework variant role tokens (--variant-*,
-     see variants.css); only layout/disabled aliases live here. */
+  /* Button — color comes from the framework intent role tokens (--intent-*,
+     see intents.css); only layout/disabled aliases live here. */
   --button-padding-y:     var(--space-sm);
   --button-padding-x:     var(--space-md);
   --button-radius:        var(--radius-md);
@@ -17,11 +17,13 @@
   --button-bg-disabled:    var(--color-border);
   --button-color-disabled: var(--color-muted);
 
-  /* Link */
-  --link-color:       var(--color-primary);
-  --link-color-hover: var(--color-primary-hover);
+  /* Link — a component that owns its own hover-state mapping, sourced from the
+     page accent ROLE (not a state-named color). */
+  --link-color:       var(--color-accent);
+  --link-color-hover: var(--color-accent-emphasis);
 
-  /* Focus ring */
+  /* Focus ring — global fallback (the page accent at half alpha); an element
+     with an intent class overrides this via --intent-ring (see reset.css). */
   --focus-ring-color:  oklch(var(--primary-l) var(--primary-c) var(--primary-h) / 0.5);
   --focus-ring-width:  3px;
   --focus-ring-offset: 2px;

@@ -1,27 +1,42 @@
 /* Button component.
  *
- * Color comes entirely from the framework VARIANT role tokens (--variant-*, see
- * variants.css), so every variant works here with zero per-variant code — the
- * default `.btn` is the neutral foundation, and `.btn primary`, `.btn success`,
- * `.btn danger` … recolor automatically.
+ * Color comes entirely from the framework INTENT role tokens (--intent-*, see
+ * intents.css / color-recipe.css), so every intent works here with zero
+ * per-intent code — the default `.btn` is the neutral foundation, and
+ * `.btn primary`, `.btn success`, `.btn danger` … recolor automatically.
  *
- * STYLE is separate from variant. The three style rules below are the only
- * button-specific variant code and they are ADDITIVE (one rule each, not one per
- * variant x style combo), so they compose with any variant:
- *   solid   (default)  -> `.btn`            fills with --variant-bg
+ * THE COMPONENT OWNS ITS STATES. The color system never names hover/active; the
+ * button does, by mapping interaction states onto the role family at the top of
+ * `.btn` (--button-bg -> --intent-color, --button-bg-hover -> --intent-emphasis,
+ * --button-bg-active -> --intent-strong, …). These aliases live INSIDE the rule
+ * (not at :root) so they re-resolve when an intent class sets --intent-* on the
+ * element — a :root-level `--button-bg: var(--intent-color)` would freeze to the
+ * neutral default (see intents.css).
+ *
+ * STYLE is separate from intent. The style rules are ADDITIVE (one set each, not
+ * one per intent x style), so they compose with any intent:
+ *   solid   (default)  -> `.btn`            fills with --intent-color
  *   outline `.outline`  -> `.btn outline`    bordered, fills on hover
  *   ghost   `.ghost`    -> `.btn ghost`      bare, faint tint on hover, deeper on active
- *   subtle  `.subtle`   -> `.btn subtle`     soft tinted fill, no border, deepens on hover then active
+ *   subtle  `.subtle`   -> `.btn subtle`     soft tinted fill, deepens on hover then active
  * e.g. `.btn danger outline`, `.btn success ghost`. Disabled is composable too
  * (`.disabled`, for non-form elements). Layout-only tokens stay as --button-*
  * (component-tokens.css). */
 .btn {
+  /* Interaction state -> intent role mapping (this is where hover/active are
+     defined; the color layer doesn't know them). */
+  --button-bg:        var(--intent-color);
+  --button-bg-hover:  var(--intent-emphasis);
+  --button-bg-active: var(--intent-strong);
+  --button-fg:        var(--intent-on-color);
+  --button-bd:        var(--intent-border);
+
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
-  border: var(--button-border-width) solid var(--variant-border);
+  border: var(--button-border-width) solid var(--button-bd);
   border-radius: var(--button-radius);
-  background-color: var(--variant-bg);
-  color: var(--variant-fg);
+  background-color: var(--button-bg);
+  color: var(--button-fg);
   font-weight: var(--button-font-weight);
   line-height: var(--button-line-height);
   cursor: pointer;
@@ -29,19 +44,19 @@
 }
 
 .btn:not(:disabled):not(.disabled):hover {
-  background-color: var(--variant-bg-hover);
-  border-color: var(--variant-bg-hover);
-  color: var(--variant-fg);
+  background-color: var(--button-bg-hover);
+  border-color: var(--button-bg-hover);
+  color: var(--button-fg);
   text-decoration: none;
 }
 
 .btn:not(:disabled):not(.disabled):active {
-  background-color: var(--variant-bg-active);
-  border-color: var(--variant-bg-active);
-  color: var(--variant-fg);
+  background-color: var(--button-bg-active);
+  border-color: var(--button-bg-active);
+  color: var(--button-fg);
 }
 
-/* Disabled re-skins to neutral tokens uniformly, regardless of variant or style.
+/* Disabled re-skins to neutral tokens uniformly, regardless of intent or style.
    Gating the style rules below with :not(:disabled) lets this win for them too.
    `.disabled` is the composable form for non-form elements (e.g. <a class="btn">)
    that can't carry the native :disabled attribute. */
@@ -53,61 +68,62 @@
   cursor: not-allowed;
 }
 
-/* Outline style — bordered with the variant accent, fills with the variant on
-   hover/active. Reads only --variant-* so it borrows whatever variant is set. */
+/* Outline style — bordered with the intent accent, fills with the intent on
+   hover/active (reusing the button's solid state mapping). */
 .btn.outline:not(:disabled):not(.disabled) {
   background-color: transparent;
-  border-color: var(--variant-border);
-  color: var(--variant-color);
+  border-color: var(--intent-border);
+  color: var(--intent-on-subtle);
 }
 
 .btn.outline:not(:disabled):not(.disabled):hover {
-  background-color: var(--variant-bg-hover);
-  border-color: var(--variant-bg-hover);
-  color: var(--variant-fg);
+  background-color: var(--button-bg-hover);
+  border-color: var(--button-bg-hover);
+  color: var(--button-fg);
 }
 
 .btn.outline:not(:disabled):not(.disabled):active {
-  background-color: var(--variant-bg-active);
-  border-color: var(--variant-bg-active);
-  color: var(--variant-fg);
+  background-color: var(--button-bg-active);
+  border-color: var(--button-bg-active);
+  color: var(--button-fg);
 }
 
-/* Ghost style — no fill or border at rest, faint variant tint on hover/active. */
+/* Ghost style — no fill or border at rest, faint intent tint on hover, deeper on
+   active (the soft ramp's first two steps). */
 .btn.ghost:not(:disabled):not(.disabled) {
   background-color: transparent;
   border-color: transparent;
-  color: var(--variant-color);
+  color: var(--intent-on-subtle);
 }
 
 .btn.ghost:not(:disabled):not(.disabled):hover {
-  background-color: var(--variant-soft);
+  background-color: var(--intent-subtle);
   border-color: transparent;
-  color: var(--variant-color);
+  color: var(--intent-on-subtle);
 }
 
 .btn.ghost:not(:disabled):not(.disabled):active {
-  background-color: var(--variant-soft-strong);
+  background-color: var(--intent-muted);
   border-color: transparent;
 }
 
-/* Subtle style — a soft tinted fill at rest (no border) with the variant accent
-   as text, deepening the tint on hover/active. Lower-emphasis than solid but more
-   present than ghost. Reads only --variant-* so it borrows whatever variant is set. */
+/* Subtle style — a soft tinted fill at rest (no border) with the intent accent
+   as text, deepening the tint across the full soft ramp on hover then active.
+   Lower-emphasis than solid but more present than ghost. */
 .btn.subtle:not(:disabled):not(.disabled) {
-  background-color: var(--variant-soft);
+  background-color: var(--intent-subtle);
   border-color: transparent;
-  color: var(--variant-color);
+  color: var(--intent-on-subtle);
 }
 
 .btn.subtle:not(:disabled):not(.disabled):hover {
-  background-color: var(--variant-soft-strong);
+  background-color: var(--intent-muted);
   border-color: transparent;
-  color: var(--variant-color);
+  color: var(--intent-on-subtle);
 }
 
 .btn.subtle:not(:disabled):not(.disabled):active {
-  background-color: var(--variant-soft-stronger);
+  background-color: var(--intent-muted-strong);
   border-color: transparent;
-  color: var(--variant-color);
+  color: var(--intent-on-subtle);
 }

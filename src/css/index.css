@@ -5,10 +5,11 @@
 
 /* Tokens (design system) */
 @import './base/tokens.css';            /* 1. base seed */
-@import './base/semantic.css';          /* 2. derived from base */
-@import './base/component-tokens.css';  /* 3. per-component aliases */
-@import './base/variants.css';          /* 4. variant role tokens (neutral default) */
-@import './base/themes.css';            /* 5. light/dark overrides */
+@import './base/semantic.css';          /* 2. surfaces, accent, scales (non-intent) */
+@import './base/color-recipe.css';      /* 3. the one intent color derivation */
+@import './base/intents.css';           /* 4. per-intent seeds + neutral default */
+@import './base/component-tokens.css';  /* 5. per-component aliases */
+@import './base/themes.css';            /* 6. light/dark overrides */
 
 /* Base */
 @import './base/reset.css';

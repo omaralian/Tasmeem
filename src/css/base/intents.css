@@ -1,0 +1,65 @@
+/*
+ * INTENTS — the semantic meaning layer (renamed from variants.css).
+ *
+ * An "intent" expresses MEANING (primary, success, warning, danger, info, plus
+ * the neutral default) as a class. This file holds the only per-intent code:
+ *   1. the NEUTRAL default foundation, and
+ *   2. each colored intent's OKLCH SEED.
+ * The seed (--_h/--_c/--_l) feeds the single recipe in color-recipe.css, which
+ * derives the full --intent-* role family. So an intent class only declares its
+ * seed (or, for neutral, its explicit roles) — it carries NO component styling,
+ * which is why the same .primary / .danger / … classes recolor every component
+ * (button, and any future badge, alert, tag, nav) uniformly.
+ *
+ * The role family components read (all produced by the recipe):
+ *   --intent-color         main intent color / solid fill
+ *   --intent-emphasis      stronger fill
+ *   --intent-strong        strongest fill
+ *   --intent-on-color      foreground on the fill (auto-contrast)
+ *   --intent-subtle        very soft tint
+ *   --intent-muted         medium soft tint
+ *   --intent-muted-strong  strongest soft tint
+ *   --intent-on-subtle     accent text on a subtle / page background
+ *   --intent-border        border role
+ *   --intent-ring          focus ring
+ *
+ * NEUTRAL IS THE DEFAULT FOUNDATION. Its family is seeded on :root so a component
+ * with NO intent class is already fully styled; an intent class simply overrides
+ * the roles on that element. Neutral is defined EXPLICITLY (not via the recipe)
+ * because it is grayscale and steps along the surface scale (surface -> border ->
+ * muted) rather than darkening a saturated hue, so the recipe's calc() steps
+ * don't apply. .neutral re-asserts it to force neutral inside a colored container.
+ *
+ * IMPORTANT — never alias these roles at :root for a component (e.g.
+ * `:root { --button-bg: var(--intent-color) }`). A var() inside a :root custom
+ * property resolves with :root's (neutral) value and is then inherited already
+ * resolved, so it will NOT re-resolve when an intent class sets --intent-* on the
+ * element — it silently breaks per-element intents. Components read --intent-*
+ * directly, or alias inside their own rule block (see button.css).
+ */
+
+/* Neutral / default foundation. */
+:root,
+.neutral {
+  --intent-color:        var(--color-surface);
+  --intent-emphasis:     var(--color-border);
+  --intent-strong:       var(--color-muted);
+  --intent-on-color:     var(--color-text);
+  --intent-on-subtle:    var(--color-text);
+  --intent-border:       var(--color-border);
+  --intent-ring:         var(--focus-ring-color);
+  --intent-subtle:       oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.10);
+  --intent-muted:        oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.18);
+  --intent-muted-strong: oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.26);
+}
+
+/* Colored intent seeds — the only per-intent code. Status lightnesses derive
+   from --primary-l (a real perceptual L per status) and all reuse the primary
+   chroma; the recipe (color-recipe.css) turns each seed into the role family,
+   and its auto-contrast step then picks each foreground for free (so the bright
+   amber/info/success fills take dark text, the deeper primary/danger take light). */
+.primary { --_h: var(--primary-h); --_c: var(--primary-c); --_l: var(--primary-l); }
+.success { --_h: var(--success-h); --_c: var(--primary-c); --_l: calc(var(--primary-l) + 0.15); }
+.warning { --_h: var(--warning-h); --_c: var(--primary-c); --_l: calc(var(--primary-l) + 0.25); }
+.danger  { --_h: var(--danger-h);  --_c: var(--primary-c); --_l: var(--primary-l); }
+.info    { --_h: var(--info-h);    --_c: var(--primary-c); --_l: calc(var(--primary-l) + 0.16); }

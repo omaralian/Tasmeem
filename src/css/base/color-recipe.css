@@ -1,0 +1,58 @@
+/*
+ * COLOR RECIPE — the single, centralized intent-color derivation.
+ *
+ * This is the framework's only "color generation" code. Given an intent's OKLCH
+ * SEED (--_h / --_c / --_l, set per intent in intents.css), it derives the whole
+ * role family ONCE for every colored intent, instead of hand-copying the same
+ * calc() block per intent. The output is a set of ROLE tokens (--intent-*) that
+ * describe visual roles — fill, emphasis, foreground, soft tint, border, ring —
+ * never component behavior. Components decide how the roles map onto hover,
+ * active, etc. (see button.css).
+ *
+ * How one block serves every intent (and re-resolves per element)
+ * ---------------------------------------------------------------
+ * Custom properties are computed per element. Every element that carries an
+ * intent class (.primary, .success, …) matches BOTH its seed rule (intents.css,
+ * which sets --_h/--_c/--_l) AND this grouped recipe rule, so --intent-* is
+ * recomputed from THAT element's seed. There is no :root-level indirection, so a
+ * variant set on an element re-resolves correctly (the trap documented in
+ * intents.css / button.css). Neutral is the one family the saturated recipe
+ * can't express, so it is defined explicitly in intents.css rather than here.
+ *
+ * Auto-contrast foreground
+ * ------------------------
+ * OKLCH lightness is perceptual, so the readable foreground for a fill is a sharp
+ * clamp() switch on the seed L against --contrast-threshold: the `* 100`
+ * saturates the result to near-black (0.15) on light fills or near-white (0.98)
+ * on dark fills. No per-hue bias is needed.
+ *
+ * Add an intent: add its class to the selector below and a one-line seed in
+ * intents.css. Nothing else changes.
+ */
+.primary,
+.success,
+.warning,
+.danger,
+.info {
+  /* Solid fills — the intent color and its two darker emphasis steps. */
+  --intent-color:        oklch(var(--_l) var(--_c) var(--_h));
+  --intent-emphasis:     oklch(calc(var(--_l) - 0.06) var(--_c) var(--_h));
+  --intent-strong:       oklch(calc(var(--_l) - 0.12) var(--_c) var(--_h));
+
+  /* Foreground on the solid fill (auto-contrast switch on the seed L). */
+  --_on-l: clamp(0.15, calc((var(--contrast-threshold) - var(--_l)) * 100), 0.98);
+  --intent-on-color:     oklch(var(--_on-l) 0 0);
+
+  /* Soft translucent tints — layer over any surface and adapt in dark mode.
+     A three-step ramp (faint -> medium -> strongest) so a component can give
+     rest/hover/active visually distinct soft fills. */
+  --intent-subtle:       oklch(var(--_l) var(--_c) var(--_h) / 0.14);
+  --intent-muted:        oklch(var(--_l) var(--_c) var(--_h) / 0.24);
+  --intent-muted-strong: oklch(var(--_l) var(--_c) var(--_h) / 0.34);
+
+  /* Accent for text/icons on a subtle or page background, the border role, and
+     the focus ring (the intent color at lower alpha). */
+  --intent-on-subtle:    var(--intent-color);
+  --intent-border:       var(--intent-color);
+  --intent-ring:         oklch(var(--_l) var(--_c) var(--_h) / 0.5);
+}
