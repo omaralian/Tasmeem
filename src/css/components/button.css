@@ -10,8 +10,8 @@
  * variant x style combo), so they compose with any variant:
  *   solid   (default)  -> `.btn`            fills with --variant-bg
  *   outline `.outline`  -> `.btn outline`    bordered, fills on hover
- *   ghost   `.ghost`    -> `.btn ghost`      bare, faint tint on hover
- *   subtle  `.subtle`   -> `.btn subtle`     soft tinted fill, no border, darkens on hover
+ *   ghost   `.ghost`    -> `.btn ghost`      bare, faint tint on hover, deeper on active
+ *   subtle  `.subtle`   -> `.btn subtle`     soft tinted fill, no border, deepens on hover then active
  * e.g. `.btn danger outline`, `.btn success ghost`. Disabled is composable too
  * (`.disabled`, for non-form elements). Layout-only tokens stay as --button-*
  * (component-tokens.css). */
@@ -87,7 +87,7 @@
 }
 
 .btn.ghost:not(:disabled):not(.disabled):active {
-  background-color: var(--variant-soft);
+  background-color: var(--variant-soft-strong);
   border-color: transparent;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .btn.subtle:not(:disabled):not(.disabled):active {
-  background-color: var(--variant-soft-strong);
+  background-color: var(--variant-soft-stronger);
   border-color: transparent;
   color: var(--variant-color);
 }
