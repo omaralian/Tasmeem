@@ -3,26 +3,43 @@
  *
  * This is the framework's only "color generation" code. Given an intent's OKLCH
  * SEED (--_h / --_c / --_l, set per intent in intents.css), it derives the whole
- * role family ONCE for every colored intent, instead of hand-copying the same
- * calc() block per intent. The output is a set of ROLE tokens (--intent-*) that
- * describe visual roles — fill, emphasis, foreground, soft tint, border, ring —
- * never component behavior. Components decide how the roles map onto hover,
- * active, etc. (see button.css).
+ * role family ONCE for EVERY intent — neutral included — instead of hand-copying
+ * the same calc() block per intent. The output is a set of ROLE tokens
+ * (--intent-*) that describe visual roles — fill, emphasis, foreground, soft
+ * tint, border, ring — never component behavior. Components decide how the roles
+ * map onto hover, active, etc. (see button.css).
  *
  * How one block serves every intent (and re-resolves per element)
  * ---------------------------------------------------------------
  * Custom properties are computed per element. Every element that carries an
- * intent class (.primary, .success, …) matches BOTH its seed rule (intents.css,
- * which sets --_h/--_c/--_l) AND this grouped recipe rule, so --intent-* is
- * recomputed from THAT element's seed. There is no :root-level indirection, so a
- * variant set on an element re-resolves correctly (the trap documented in
- * intents.css / button.css). Neutral is the one family the saturated recipe
- * can't express, so it is defined explicitly in intents.css rather than here.
+ * intent class (.primary, .success, …) — and :root / .neutral for the default —
+ * matches BOTH its seed rule (intents.css, which sets --_h/--_c/--_l) AND this
+ * grouped recipe rule, so --intent-* is recomputed from THAT element's seed.
+ * There is no :root-level indirection, so a variant set on an element re-resolves
+ * correctly (the trap documented in intents.css / button.css).
+ *
+ * Per-step CONFIGURATION KNOBS (how neutral joins the recipe)
+ * ----------------------------------------------------------
+ * The per-step behavior is parameterized by knobs (--_color-l, --_emph-l,
+ * --_strong-l, --_tint-l, the --_*-a alphas, and --_on-color/--_on-subtle/
+ * --_border/--_ring). Their defaults below ARE the colored "darken by a fixed
+ * delta" model. Neutral (intents.css) overrides them to interpolate along the
+ * surface -> text axis instead (theme-aware: it lightens in dark mode), with the
+ * soft ramp tinted by the contrast lightness and its accents pointing at the
+ * border/text rungs rather than the fill. So neutral is no longer a special case
+ * here — it is a seed + knob overrides, same as any intent.
+ *
+ * The knobs are declared as REAL properties (not `var(--knob, default)`
+ * fallbacks) ON PURPOSE. Neutral sets its knobs at :root and custom properties
+ * INHERIT, so a colored child would inherit neutral's knob value and a var()
+ * fallback would never fire — every colored fill would collapse to neutral. By
+ * assigning each knob locally on every intent element here, the element's own
+ * declaration shadows the inherited neutral value, with no @property needed.
  *
  * Auto-contrast foreground
  * ------------------------
  * OKLCH lightness is perceptual, so the readable foreground for a fill is a sharp
- * clamp() switch on the seed L against --contrast-threshold: the `* 100`
+ * clamp() switch on the fill L against --contrast-threshold: the `* 100`
  * saturates the result to near-black (0.15) on light fills or near-white (0.98)
  * on dark fills. No per-hue bias is needed.
  *
@@ -33,26 +50,44 @@
 .success,
 .warning,
 .danger,
-.info {
-  /* Solid fills — the intent color and its two darker emphasis steps. */
-  --intent-color:        oklch(var(--_l) var(--_c) var(--_h));
-  --intent-emphasis:     oklch(calc(var(--_l) - 0.06) var(--_c) var(--_h));
-  --intent-strong:       oklch(calc(var(--_l) - 0.12) var(--_c) var(--_h));
+.info,
+:root,
+.neutral {
+  /* Step configuration — defaults are the colored "darken by fixed delta" model.
+     Neutral overrides these in intents.css to interpolate along surface -> text.
+     Declared as real properties (not fallbacks) to defeat inheritance — see header. */
+  --_color-l:        var(--_l);
+  --_emph-l:         calc(var(--_l) - 0.06);
+  --_strong-l:       calc(var(--_l) - 0.12);
+  --_tint-l:         var(--_l);
+  --_subtle-a:       0.14;
+  --_muted-a:        0.24;
+  --_muted-strong-a: 0.34;
+  --_on-l:           clamp(0.15, calc((var(--contrast-threshold) - var(--_color-l)) * 100), 0.98);
+  --_on-color:       oklch(var(--_on-l) 0 0);
+  --_on-subtle:      var(--intent-color);
+  --_border:         var(--intent-color);
+  --_ring:           oklch(var(--_color-l) var(--_c) var(--_h) / 0.5);
 
-  /* Foreground on the solid fill (auto-contrast switch on the seed L). */
-  --_on-l: clamp(0.15, calc((var(--contrast-threshold) - var(--_l)) * 100), 0.98);
-  --intent-on-color:     oklch(var(--_on-l) 0 0);
+  /* Role family — one set of formulas for every intent, neutral included. */
+  /* Solid fills — the intent color and its two emphasis steps. */
+  --intent-color:        oklch(var(--_color-l)  var(--_c) var(--_h));
+  --intent-emphasis:     oklch(var(--_emph-l)   var(--_c) var(--_h));
+  --intent-strong:       oklch(var(--_strong-l) var(--_c) var(--_h));
+
+  /* Foreground on the solid fill (auto-contrast switch; neutral overrides --_on-color). */
+  --intent-on-color:     var(--_on-color);
 
   /* Soft translucent tints — layer over any surface and adapt in dark mode.
      A three-step ramp (faint -> medium -> strongest) so a component can give
      rest/hover/active visually distinct soft fills. */
-  --intent-subtle:       oklch(var(--_l) var(--_c) var(--_h) / 0.14);
-  --intent-muted:        oklch(var(--_l) var(--_c) var(--_h) / 0.24);
-  --intent-muted-strong: oklch(var(--_l) var(--_c) var(--_h) / 0.34);
+  --intent-subtle:       oklch(var(--_tint-l) var(--_c) var(--_h) / var(--_subtle-a));
+  --intent-muted:        oklch(var(--_tint-l) var(--_c) var(--_h) / var(--_muted-a));
+  --intent-muted-strong: oklch(var(--_tint-l) var(--_c) var(--_h) / var(--_muted-strong-a));
 
   /* Accent for text/icons on a subtle or page background, the border role, and
      the focus ring (the intent color at lower alpha). */
-  --intent-on-subtle:    var(--intent-color);
-  --intent-border:       var(--intent-color);
-  --intent-ring:         oklch(var(--_l) var(--_c) var(--_h) / 0.5);
+  --intent-on-subtle:    var(--_on-subtle);
+  --intent-border:       var(--_border);
+  --intent-ring:         var(--_ring);
 }

@@ -3,13 +3,14 @@
  *
  * An "intent" expresses MEANING (primary, success, warning, danger, info, plus
  * the neutral default) as a class. This file holds the only per-intent code:
- *   1. the NEUTRAL default foundation, and
+ *   1. the NEUTRAL default seed + knob overrides, and
  *   2. each colored intent's OKLCH SEED.
  * The seed (--_h/--_c/--_l) feeds the single recipe in color-recipe.css, which
  * derives the full --intent-* role family. So an intent class only declares its
- * seed (or, for neutral, its explicit roles) — it carries NO component styling,
- * which is why the same .primary / .danger / … classes recolor every component
- * (button, and any future badge, alert, tag, nav) uniformly.
+ * seed (and, for neutral, the knob overrides that retarget the recipe) — it
+ * carries NO component styling, which is why the same .primary / .danger / …
+ * classes recolor every component (button, and any future badge, alert, tag,
+ * nav) uniformly.
  *
  * The role family components read (all produced by the recipe):
  *   --intent-color         main intent color / solid fill
@@ -25,10 +26,14 @@
  *
  * NEUTRAL IS THE DEFAULT FOUNDATION. Its family is seeded on :root so a component
  * with NO intent class is already fully styled; an intent class simply overrides
- * the roles on that element. Neutral is defined EXPLICITLY (not via the recipe)
- * because it is grayscale and steps along the surface scale (surface -> border ->
- * muted) rather than darkening a saturated hue, so the recipe's calc() steps
- * don't apply. .neutral re-asserts it to force neutral inside a colored container.
+ * the roles on that element. Neutral is NO LONGER defined explicitly — it is a
+ * seed (surface hue/chroma/lightness) plus KNOB OVERRIDES consumed by the recipe.
+ * The overrides express how neutral diverges from a darker saturated hue: its
+ * fill steps interpolate along the surface -> text axis (theme-aware — it lightens
+ * in dark mode) instead of darkening by a fixed delta, its soft ramp is tinted by
+ * the contrast lightness so it reads over the surface, and its accents point at
+ * the border/text rungs rather than the fill. .neutral re-asserts the seed + knobs
+ * locally to force neutral inside a colored container.
  *
  * IMPORTANT — never alias these roles at :root for a component (e.g.
  * `:root { --button-bg: var(--intent-color) }`). A var() inside a :root custom
@@ -38,19 +43,32 @@
  * directly, or alias inside their own rule block (see button.css).
  */
 
-/* Neutral / default foundation. */
+/* Neutral / default foundation — seed + knob overrides (the recipe builds the
+   --intent-* family from these, same as any intent). */
 :root,
 .neutral {
-  --intent-color:        var(--color-surface);
-  --intent-emphasis:     var(--color-border);
-  --intent-strong:       var(--color-muted);
-  --intent-on-color:     var(--color-text);
-  --intent-on-subtle:    var(--color-text);
-  --intent-border:       var(--color-border);
-  --intent-ring:         var(--focus-ring-color);
-  --intent-subtle:       oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.10);
-  --intent-muted:        oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.18);
-  --intent-muted-strong: oklch(var(--_on-surface-l) var(--surface-c) var(--surface-h) / 0.26);
+  /* Grayscale seed (surface hue/chroma/lightness). */
+  --_h: var(--surface-h);
+  --_c: var(--surface-c);
+  --_l: var(--surface-l);
+
+  /* Fill steps interpolate along surface -> on-surface (theme-aware), matching the
+     semantic surface ramp rung-for-rung instead of darkening by a fixed delta. */
+  --_color-l:  calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.05); /* = --color-surface */
+  --_emph-l:   calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.14); /* = --color-border  */
+  --_strong-l: calc((var(--_on-surface-l) + var(--surface-l)) / 2);                       /* = --color-muted   */
+
+  /* Tints use the contrast lightness so they read over the surface; softer alphas. */
+  --_tint-l:         var(--_on-surface-l);
+  --_subtle-a:       0.10;
+  --_muted-a:        0.18;
+  --_muted-strong-a: 0.26;
+
+  /* Accents point at different rungs than the fill. */
+  --_on-color:  var(--color-text);
+  --_on-subtle: var(--color-text);
+  --_border:    var(--color-border);
+  --_ring:      var(--focus-ring-color);
 }
 
 /* Colored intent seeds — the only per-intent code. Status lightnesses derive
