@@ -11,8 +11,9 @@
  *   solid   (default)  -> `.btn`            fills with --variant-bg
  *   outline `.outline`  -> `.btn outline`    bordered, fills on hover
  *   ghost   `.ghost`    -> `.btn ghost`      bare, faint tint on hover
- * e.g. `.btn danger outline`, `.btn success ghost`. The `.btn--*` forms are
- * legacy aliases. Layout-only tokens stay as --button-* (component-tokens.css). */
+ * e.g. `.btn danger outline`, `.btn success ghost`. Disabled is composable too
+ * (`.disabled`, for non-form elements). Layout-only tokens stay as --button-*
+ * (component-tokens.css). */
 .btn {
   display: inline-block;
   padding: var(--button-padding-y) var(--button-padding-x);
@@ -26,23 +27,25 @@
   transition: var(--button-transition);
 }
 
-.btn:not(:disabled):not(.btn--disabled):hover {
+.btn:not(:disabled):not(.disabled):hover {
   background-color: var(--variant-bg-hover);
   border-color: var(--variant-bg-hover);
   color: var(--variant-fg);
   text-decoration: none;
 }
 
-.btn:not(:disabled):not(.btn--disabled):active {
+.btn:not(:disabled):not(.disabled):active {
   background-color: var(--variant-bg-active);
   border-color: var(--variant-bg-active);
   color: var(--variant-fg);
 }
 
 /* Disabled re-skins to neutral tokens uniformly, regardless of variant or style.
-   Gating the style rules below with :not(:disabled) lets this win for them too. */
+   Gating the style rules below with :not(:disabled) lets this win for them too.
+   `.disabled` is the composable form for non-form elements (e.g. <a class="btn">)
+   that can't carry the native :disabled attribute. */
 .btn:disabled,
-.btn--disabled {
+.btn.disabled {
   background-color: var(--button-bg-disabled);
   border-color:     var(--button-bg-disabled);
   color:            var(--button-color-disabled);
@@ -51,44 +54,38 @@
 
 /* Outline style — bordered with the variant accent, fills with the variant on
    hover/active. Reads only --variant-* so it borrows whatever variant is set. */
-.btn.outline:not(:disabled):not(.btn--disabled),
-.btn--outline:not(:disabled):not(.btn--disabled) {
+.btn.outline:not(:disabled):not(.disabled) {
   background-color: transparent;
   border-color: var(--variant-border);
   color: var(--variant-color);
 }
 
-.btn.outline:not(:disabled):not(.btn--disabled):hover,
-.btn--outline:not(:disabled):not(.btn--disabled):hover {
+.btn.outline:not(:disabled):not(.disabled):hover {
   background-color: var(--variant-bg-hover);
   border-color: var(--variant-bg-hover);
   color: var(--variant-fg);
 }
 
-.btn.outline:not(:disabled):not(.btn--disabled):active,
-.btn--outline:not(:disabled):not(.btn--disabled):active {
+.btn.outline:not(:disabled):not(.disabled):active {
   background-color: var(--variant-bg-active);
   border-color: var(--variant-bg-active);
   color: var(--variant-fg);
 }
 
 /* Ghost style — no fill or border at rest, faint variant tint on hover/active. */
-.btn.ghost:not(:disabled):not(.btn--disabled),
-.btn--ghost:not(:disabled):not(.btn--disabled) {
+.btn.ghost:not(:disabled):not(.disabled) {
   background-color: transparent;
   border-color: transparent;
   color: var(--variant-color);
 }
 
-.btn.ghost:not(:disabled):not(.btn--disabled):hover,
-.btn--ghost:not(:disabled):not(.btn--disabled):hover {
+.btn.ghost:not(:disabled):not(.disabled):hover {
   background-color: var(--variant-soft);
   border-color: transparent;
   color: var(--variant-color);
 }
 
-.btn.ghost:not(:disabled):not(.btn--disabled):active,
-.btn--ghost:not(:disabled):not(.btn--disabled):active {
+.btn.ghost:not(:disabled):not(.disabled):active {
   background-color: var(--variant-soft);
   border-color: transparent;
 }

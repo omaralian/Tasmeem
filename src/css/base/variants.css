@@ -34,9 +34,6 @@
  * there already picked each --variant-fg, so a variant stays readable in any
  * theme. To add a new variant, copy a block below and point it at that color's
  * semantic tokens — no component needs to change.
- *
- * The legacy `.btn--*` selectors below are kept as backward-compatible aliases of
- * the composable bare classes; they map to the exact same role tokens.
  */
 
 /* Neutral / default foundation — seeded on :root so it inherits everywhere and
@@ -54,8 +51,7 @@
   --variant-ring:      var(--focus-ring-color);
 }
 
-.primary,
-.btn--primary {
+.primary {
   --variant-bg:        var(--color-primary);
   --variant-bg-hover:  var(--color-primary-hover);
   --variant-bg-active: var(--color-primary-active);
@@ -66,8 +62,7 @@
   --variant-ring:      oklch(var(--brand-l) var(--brand-c) var(--brand-h) / 0.5);
 }
 
-.success,
-.btn--success {
+.success {
   --variant-bg:        var(--color-success);
   --variant-bg-hover:  var(--color-success-hover);
   --variant-bg-active: var(--color-success-active);
@@ -78,8 +73,7 @@
   --variant-ring:      oklch(var(--success-l) var(--brand-c) var(--success-h) / 0.5);
 }
 
-.warning,
-.btn--warning {
+.warning {
   --variant-bg:        var(--color-warning);
   --variant-bg-hover:  var(--color-warning-hover);
   --variant-bg-active: var(--color-warning-active);
@@ -90,8 +84,7 @@
   --variant-ring:      oklch(var(--warning-l) var(--brand-c) var(--warning-h) / 0.5);
 }
 
-.danger,
-.btn--danger {
+.danger {
   --variant-bg:        var(--color-danger);
   --variant-bg-hover:  var(--color-danger-hover);
   --variant-bg-active: var(--color-danger-active);
@@ -102,8 +95,7 @@
   --variant-ring:      oklch(var(--danger-l) var(--brand-c) var(--danger-h) / 0.5);
 }
 
-.info,
-.btn--info {
+.info {
   --variant-bg:        var(--color-info);
   --variant-bg-hover:  var(--color-info-hover);
   --variant-bg-active: var(--color-info-active);
