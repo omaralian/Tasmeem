@@ -54,7 +54,7 @@
 .btn.outline:not(:disabled):not(.btn--disabled),
 .btn--outline:not(:disabled):not(.btn--disabled) {
   background-color: transparent;
-  border-color: var(--variant-color);
+  border-color: var(--variant-border);
   color: var(--variant-color);
 }
 
