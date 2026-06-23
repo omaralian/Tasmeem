@@ -33,7 +33,7 @@
      mid-range surface lightness. */
   --_on-surface-l: clamp(0.15, calc((var(--contrast-threshold) - var(--surface-l)) * 100), 0.98);
   --color-bg:      oklch(var(--surface-l) var(--surface-c) var(--surface-h));
-  --color-surface: oklch(calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.05)
+  --color-surface: oklch(calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.015)
                          var(--surface-c) var(--surface-h));
   --color-border:  oklch(calc(var(--surface-l) + (var(--_on-surface-l) - var(--surface-l)) * 0.14)
                          var(--surface-c) var(--surface-h));

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tasmeem — cards</title>
+    <!-- Build first with `npm run build:dev`, then open this file. -->
+    <link rel="stylesheet" href="../dist/tasmeem.css" />
+    <style>
+      /* Demo-only layout helper — the framework has no grid utility yet, so the
+         showcase rows use a local responsive grid (same approach as index.html's
+         inline card). Nothing here is part of the card component itself. */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: var(--space-md);
+        margin-block: var(--space-md);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        <button class="btn outline" id="theme-toggle" type="button">
+          Toggle theme
+        </button>
+        <a href="index.html">&larr; Back to demo</a>
+      </p>
+
+      <h1>Cards</h1>
+      <p>The <code>card</code> is a surface container. As with buttons,
+        <strong>intent</strong> (meaning) and <strong>style</strong> (appearance)
+        are independent classes that compose: <code>card</code> + an intent
+        (<code>primary</code>, <code>danger</code>, …) + a style
+        (<code>outline</code>, <code>subtle</code>, <code>accent</code>). Lay out
+        content with <code>card-header</code>, <code>card-body</code>, and
+        <code>card-footer</code>. Build the stylesheet, then toggle the theme above
+        to verify each case in light and dark.</p>
+
+      <h2>Anatomy</h2>
+      <p>A card clips its corners and carries no padding of its own; sections
+        provide it. <code>card-header</code> and <code>card-footer</code> add a
+        divider; <code>card-body</code> grows to fill the height.</p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">With header & footer</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">The body holds the main content and stretches so
+              footers line up across a row of cards.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn primary">Action</button>
+            <button class="btn ghost">Cancel</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Body only</h3>
+            <p class="card-text">The simplest card: a single
+              <code>card-body</code> with a title and some text.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            class="card-img"
+            alt="Gradient placeholder"
+            src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='400' height='180'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0' stop-color='%236366f1'/&gt;&lt;stop offset='1' stop-color='%2306b6d4'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='400' height='180' fill='url(%23g)'/&gt;&lt;/svg&gt;"
+          />
+          <div class="card-body">
+            <h3 class="card-title">With media</h3>
+            <p class="card-text">A full-bleed <code>card-img</code> clips to the
+              rounded corners.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Solid intents</h2>
+      <p>The default card is the neutral surface. Adding an intent on its own
+        leaves the surface fill but retargets the accent the styles below use.</p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-body"><h3 class="card-title">Neutral</h3>
+            <p class="card-text">The bare <code>card</code> default.</p></div>
+        </div>
+        <div class="card primary">
+          <div class="card-body"><h3 class="card-title">Primary</h3>
+            <p class="card-text">Surface fill, primary accent.</p></div>
+        </div>
+        <div class="card success">
+          <div class="card-body"><h3 class="card-title">Success</h3>
+            <p class="card-text">Surface fill, success accent.</p></div>
+        </div>
+        <div class="card info">
+          <div class="card-body"><h3 class="card-title">Info</h3>
+            <p class="card-text">Surface fill, info accent.</p></div>
+        </div>
+      </div>
+
+      <h2>Subtle style</h2>
+      <p>The <code>subtle</code> style is a soft intent-tinted fill with
+        intent-colored text — the same intent classes apply.</p>
+      <div class="card-grid">
+        <div class="card subtle">
+          <div class="card-body"><h3 class="card-title">Neutral</h3>
+            <p class="card-text">Soft neutral tint.</p></div>
+        </div>
+        <div class="card primary subtle">
+          <div class="card-body"><h3 class="card-title">Primary</h3>
+            <p class="card-text">Soft primary tint.</p></div>
+        </div>
+        <div class="card success subtle">
+          <div class="card-body"><h3 class="card-title">Success</h3>
+            <p class="card-text">Soft success tint.</p></div>
+        </div>
+        <div class="card warning subtle">
+          <div class="card-body"><h3 class="card-title">Warning</h3>
+            <p class="card-text">Soft warning tint.</p></div>
+        </div>
+        <div class="card danger subtle">
+          <div class="card-body"><h3 class="card-title">Danger</h3>
+            <p class="card-text">Soft danger tint.</p></div>
+        </div>
+      </div>
+
+      <h2>Outline style</h2>
+      <p>The <code>outline</code> style drops the shadow and borders in the intent
+        accent color.</p>
+      <div class="card-grid">
+        <div class="card outline">
+          <div class="card-body"><h3 class="card-title">Neutral</h3>
+            <p class="card-text">Bordered, no shadow.</p></div>
+        </div>
+        <div class="card primary outline">
+          <div class="card-body"><h3 class="card-title">Primary</h3>
+            <p class="card-text">Primary border.</p></div>
+        </div>
+        <div class="card danger outline">
+          <div class="card-body"><h3 class="card-title">Danger</h3>
+            <p class="card-text">Danger border.</p></div>
+        </div>
+        <div class="card info outline">
+          <div class="card-body"><h3 class="card-title">Info</h3>
+            <p class="card-text">Info border.</p></div>
+        </div>
+      </div>
+
+      <h2>Accent style</h2>
+      <p>The <code>accent</code> style keeps the surface fill but adds a solid
+        intent-colored strip along the top edge.</p>
+      <div class="card-grid">
+        <div class="card primary accent">
+          <div class="card-body"><h3 class="card-title">Primary</h3>
+            <p class="card-text">Top strip in the primary color.</p></div>
+        </div>
+        <div class="card success accent">
+          <div class="card-body"><h3 class="card-title">Success</h3>
+            <p class="card-text">Top strip in the success color.</p></div>
+        </div>
+        <div class="card warning accent">
+          <div class="card-body"><h3 class="card-title">Warning</h3>
+            <p class="card-text">Top strip in the warning color.</p></div>
+        </div>
+        <div class="card danger accent">
+          <div class="card-body"><h3 class="card-title">Danger</h3>
+            <p class="card-text">Top strip in the danger color.</p></div>
+        </div>
+      </div>
+
+      <h2>Interactive</h2>
+      <p>An <code>&lt;a class="card"&gt;</code> (or any card with
+        <code>interactive</code>) lifts on hover and shows the intent focus ring
+        when tabbed to. Hover or tab through these.</p>
+      <div class="card-grid">
+        <a class="card" href="#">
+          <div class="card-body"><h3 class="card-title">Link card</h3>
+            <p class="card-text">The whole card is the link. Hover to see it
+              lift.</p></div>
+        </a>
+        <a class="card primary accent" href="#">
+          <div class="card-body"><h3 class="card-title">Primary link</h3>
+            <p class="card-text">Composes with intent and style.</p></div>
+        </a>
+        <div class="card success interactive" tabindex="0">
+          <div class="card-body"><h3 class="card-title">Interactive div</h3>
+            <p class="card-text">Same behavior without an anchor.</p></div>
+        </div>
+      </div>
+
+      <p><small>Edit the partials in <code>src/css/</code> and rebuild.</small></p>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var saved = localStorage.getItem("theme");
+        if (saved) root.setAttribute("data-theme", saved);
+
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", function () {
+            var current = root.getAttribute("data-theme");
+            // Fall back to the OS preference when nothing is set yet.
+            if (!current) {
+              current = window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+            }
+            var next = current === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+          });
+      })();
+    </script>
+  </body>
+</html>

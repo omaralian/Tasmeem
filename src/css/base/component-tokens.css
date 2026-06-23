@@ -32,10 +32,17 @@
   --container-max:     1140px;
   --container-padding: var(--space-md);
 
-  /* Surface / card (demo + future components) */
-  --card-bg:      var(--color-surface);
-  --card-border:  var(--color-border);
-  --card-radius:  var(--radius-lg);
-  --card-shadow:  var(--shadow-md);
-  --card-padding: var(--space-lg);
+  /* Card — surface container. Color flows through the framework intent role
+     tokens (--intent-*) inside card.css; only layout aliases live here. */
+  --card-bg:           var(--color-surface);
+  --card-border:       var(--color-border);
+  --card-radius:       var(--radius-lg);
+  --card-shadow:       var(--shadow-md);
+  --card-shadow-hover: var(--shadow-lg);
+  --card-padding:      var(--space-lg);
+  --card-gap:          var(--space-sm);
+  --card-section-padding-y: var(--space-md);
+  --card-accent-width: 4px;
+  --card-title-size:   var(--font-size-lg);
+  --card-title-weight: 600;
 }

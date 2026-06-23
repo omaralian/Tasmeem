@@ -1,0 +1,128 @@
+/* Card component — a surface container.
+ *
+ * Like the button, the card reads the framework INTENT role tokens (--intent-*,
+ * see intents.css / color-recipe.css), so every intent recolors it with zero
+ * per-intent code: the default `.card` is the neutral surface, and an intent
+ * class (`.card primary`, `.card success`, …) retargets the accent / tint.
+ *
+ * THE COMPONENT OWNS ITS STATES & STYLES. The color layer never names hover or
+ * "accent"; the card maps them onto the role family itself. Style is separate
+ * from intent and the style rules are ADDITIVE (one set each, not one per
+ * intent x style), so they compose with any intent:
+ *   solid   (default)  -> `.card`          surface fill, border, shadow
+ *   outline `.outline`  -> `.card outline`  bordered, no shadow
+ *   subtle  `.subtle`   -> `.card subtle`   soft intent-tinted fill
+ *   accent  `.accent`   -> `.card accent`   surface fill + a colored edge strip
+ * e.g. `.card primary accent`, `.card danger subtle`, `.card success outline`.
+ *
+ * STRUCTURE. A bare `.card` clips its corners and carries no padding; lay content
+ * out with `.card-body` (padded), plus optional `.card-header` / `.card-footer`
+ * (padded + a divider) and a full-bleed `.card-img`. Layout-only values stay as
+ * --card-* tokens (component-tokens.css). */
+.card {
+  /* Per-element role mapping (re-resolves when an intent class sets --intent-*
+     on this element — declared INSIDE the rule, not at :root, for that reason). */
+  --card-divider: var(--card-border);
+  --card-accent:  var(--intent-border);
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  color: var(--color-text);
+  border: var(--border-width) solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden; /* clip card-img / section dividers to the rounded corners */
+  transition: var(--transition-colors), transform var(--duration-fast) var(--ease-standard);
+}
+
+/* Sections ----------------------------------------------------------------- */
+.card-body {
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  flex: 1 1 auto; /* let the body grow so footers align in an equal-height row */
+}
+
+.card-header,
+.card-footer {
+  padding: var(--card-section-padding-y) var(--card-padding);
+}
+
+.card-header {
+  border-bottom: var(--border-width) solid var(--card-divider);
+}
+
+.card-footer {
+  border-top: var(--border-width) solid var(--card-divider);
+}
+
+/* Full-bleed media at the top (or anywhere) of a card. */
+.card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Title / text helpers — tuned for the card, not global headings. */
+.card-title {
+  margin: 0;
+  font-size: var(--card-title-size);
+  font-weight: var(--card-title-weight);
+  line-height: var(--line-height-tight);
+}
+
+.card-text {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* Styles ------------------------------------------------------------------- */
+
+/* Outline — bordered with the intent accent, no shadow. */
+.card.outline {
+  border-color: var(--card-accent);
+  box-shadow: none;
+}
+
+/* Subtle — a soft intent-tinted fill; the divider follows the intent border. */
+.card.subtle {
+  --card-divider: var(--intent-border);
+  background-color: var(--intent-subtle);
+  border-color: var(--intent-border);
+  color: var(--intent-on-subtle);
+}
+
+.card.subtle .card-text {
+  color: var(--intent-on-subtle);
+}
+
+/* Accent — surface fill with a solid intent-colored edge strip (top by default). */
+.card.accent {
+  border-top: var(--card-accent-width) solid var(--intent-color);
+}
+
+/* States ------------------------------------------------------------------- */
+
+/* Interactive — a card that is itself a link or carries `.interactive` lifts on
+   hover and shows the intent focus ring. Gated so non-interactive cards stay flat. */
+a.card,
+.card.interactive {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.card:hover,
+.card.interactive:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+a.card:focus-visible,
+.card.interactive:focus-visible {
+  outline: var(--focus-ring-width) solid var(--intent-ring);
+  outline-offset: var(--focus-ring-offset);
+}
